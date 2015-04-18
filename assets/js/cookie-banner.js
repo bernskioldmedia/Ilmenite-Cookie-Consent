@@ -2,7 +2,7 @@
 // by Bernskiold Media
 
 // Variables
-var noCookieMode = true;						// Debug Mode: true will disable the cookie, allowing you to debug the banner.
+var noCookieMode = false;						// Debug Mode: true will disable the cookie, allowing you to debug the banner.
 var consentDuration = 30;						// Duration in Days: The number of days before the cookie should expire.
 var containerID = 'cookie-consent-block';		// The ID of the notice container div
 var cookieName = 'EUCookieConsent';				// The name of the cookie
