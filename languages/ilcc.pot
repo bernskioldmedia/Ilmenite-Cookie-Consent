@@ -1,0 +1,48 @@
+# Copyright (C) 2015 Bernskiold Media
+# This file is distributed under the same license as the Ilmenite Cookie Consent package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ilmenite Cookie Consent 0.0.1\n"
+"Report-Msgid-Bugs-To: "
+"https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/issues\n"
+"POT-Creation-Date: 2015-04-18 10:47:35+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Bernskiold Media <info@bernskioldmedia.com>\n"
+"X-Generator: grunt-wp-i18n 0.5.1\n"
+
+#: ilmenite-cookie-consent.php:101
+msgid ""
+"<span>This website uses cookies to enhance the browsing experience. "
+"</span>By continuing you give us permission to deploy cookies as per our <a "
+"href=\"%s\" rel=\"nofollow\">privacy and cookies policy</a>."
+msgstr ""
+
+#: ilmenite-cookie-consent.php:102
+msgid "I Understand"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Ilmenite Cookie Consent"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"A simple, developer-friendly WordPress plugin that lets visitors know that "
+"the site is using cookies."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Bernskiold Media"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.bernskioldmedia.com/"
+msgstr ""

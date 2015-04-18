@@ -1,0 +1,54 @@
+/**
+ * Cookie Banner Stylesheet
+ */
+body.has-cookie-banner {
+	padding-top: 2.4rem;
+}
+
+#cookie-consent-block {
+	position: fixed;
+	height: 2.4rem;
+	top: 0;
+	z-index: 99999;
+	background: #282b2d;
+	color: #ccc;
+	text-align: center;
+	width: 100%;
+	padding: 1.4rem 0;
+	font-size: 0.9rem;
+	line-height: 1.4;
+}
+
+	#cookie-consent-block p {
+		max-width: 1000px;
+		margin: 0 auto 0 auto;
+		text-align: left;
+		overflow: hidden;
+		position: relative;
+	}
+
+		#cookie-consent-block p span {
+			display: block;
+			font-weight: bold;
+			font-size: 1rem;
+			color: #eee;
+		}
+
+	.close-cookie-block {
+		position: absolute;
+		right: 2rem;
+		top: 0;
+		background: #474D50;
+		border-radius: 4px;
+		padding: 0.8rem 1.3rem;
+		display: inline-block;
+		text-decoration: none;
+		color: white;
+		font-weight: bold;
+		line-height: 1;
+	}
+
+		.close-cookie-block:hover {
+			background: white;
+			color: black;
+		}
