@@ -66,6 +66,25 @@ module.exports = function(grunt) {
 		   },
 		},
 
+		uglify: {
+			build: {
+				src: 'assets/js/cookie-banner.js',
+				dest: 'assets/js/cookie-banner.min.js'
+			}
+		},
+
+		cssmin: {
+		  target: {
+		    files: [{
+		      expand: true,
+		      cwd: 'assets/css',
+		      src: ['*.css', '!*.min.css'],
+		      dest: 'assets/css',
+		      ext: '.min.css'
+		    }]
+		  }
+		}
+
 	});
 
 	// Load Plugins
@@ -73,9 +92,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-checktextdomain' );
 	grunt.loadNpmTasks( 'grunt-contrib-imagemin' );
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
+	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
 
 	// Run!
 	grunt.registerTask( 'test', [ 'checktextdomain' ] );
-	grunt.registerTask( 'build', [ 'makemot', 'newer:imagemin' ] );
+	grunt.registerTask( 'build', [ 'makepot', 'uglify', 'cssmin', 'newer:imagemin' ] );
 
 }

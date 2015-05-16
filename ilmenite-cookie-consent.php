@@ -100,7 +100,7 @@ class Ilmenite_Cookie_Consent {
 	public function scripts() {
 
 		// Register Scripts
-		wp_register_script( 'ilmenite-cookie-consent', $this->plugin_url . '/assets/js/cookie-banner.js', false, $this->plugin_version, true );
+		wp_register_script( 'ilmenite-cookie-consent', $this->plugin_url . '/assets/js/cookie-banner.min.js', false, $this->plugin_version, true );
 
 		// Localize the script
 		wp_localize_script( 'ilmenite-cookie-consent', 'ilcc', array(
@@ -119,7 +119,7 @@ class Ilmenite_Cookie_Consent {
 	public function styles() {
 
 		// Register them...
-		wp_register_style( 'ilmenite-cookie-consent', $this->plugin_url . '/assets/css/cookie-banner.css', false, $this->plugin_version, 'all' );
+		wp_register_style( 'ilmenite-cookie-consent', $this->plugin_url . '/assets/css/cookie-banner.min.css', false, $this->plugin_version, 'all' );
 
 		// Enqueue if developer mode isn't turned on
 		if ( ! ILCC_DEV_MODE ) {
