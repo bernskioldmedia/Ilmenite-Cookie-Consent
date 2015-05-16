@@ -34,6 +34,7 @@ A complete *.pot* file is available in the *translations/* directory. If you use
 - Added GitHub updater
 - Added settings field for policy URL
 - Minify script and style
+- Added German translation
 
 **Version 0.1.0**
 - First plugin version.
