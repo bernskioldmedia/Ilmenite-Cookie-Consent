@@ -5,6 +5,8 @@ There are many WordPress plugins out there which does a lot of fancy things with
 
 It isn't meant for the masses who want tons of configurable options in the admin (although it will work fine out of the box). For the developer who wants the functionality and being able to convenietly override the styles in the theme without bloat—here's a plugin for you.
 
+~Current Version:0.2.0~
+
 ## Configuration
 The plugin works out of the box with minimal settings. However here are a few things you will probably want to be aware about.
 
