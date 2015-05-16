@@ -79,6 +79,9 @@ class Ilmenite_Cookie_Consent {
 		// Add Styles
 		add_action( 'wp_enqueue_scripts', array( $this, 'styles' ) );
 
+		// Register Settings Fields
+		add_filter( 'admin_init', array( $this, 'settings_fields' ) );
+
 	}
 
 	/**
@@ -98,7 +101,7 @@ class Ilmenite_Cookie_Consent {
 
 		// Localize the script
 		wp_localize_script( 'ilmenite-cookie-consent', 'ilcc', array(
-			'cookieConsentText' => sprintf( apply_filters( 'ilcc_consent_text', __( '<span>This website uses cookies to enhance the browsing experience. </span>By continuing you give us permission to deploy cookies as per our <a href="%s" rel="nofollow">privacy and cookies policy</a>.' ) ), '#' ),
+			'cookieConsentText' => sprintf( apply_filters( 'ilcc_consent_text', __( '<span>This website uses cookies to enhance the browsing experience. </span>By continuing you give us permission to deploy cookies as per our <a href="%s" rel="nofollow">privacy and cookies policy</a>.' ) ), get_option( 'ilcc_policy_url' ) ),
 			'acceptText'		=> apply_filters( 'ilcc_accept_text', __( 'I Understand', 'ilcc' ) ),
 		) );
 
@@ -121,6 +124,23 @@ class Ilmenite_Cookie_Consent {
 		}
 
 	}
+
+	/**
+	 * Admin Settings Fields
+	 */
+	public function settings_fields() {
+
+		// Policy URL
+		register_setting( 'general', 'ilcc_policy_url', 'esc_attr' );
+        add_settings_field( 'ilcc_policy_url', '<label for="ilcc_policy_url">' . __( 'Privacy and Cookie Policy URL' , 'ilcc' ) . '</label>' , array( $this, 'settings_fields_html' ) , 'reading' );
+
+	}
+
+	function settings_fields_html() {
+        $value = get_option( 'ilcc_policy_url', '' );
+        echo '<input type="url" class="regular-text code" id="ilcc_policy_url" name="ilcc_policy_url" value="' . $value . '" />';
+        echo '<p class="description">' . __( 'Enter a link to your privacy and cookie policy where you outline the use of cookies. This link will be used in the cookie consent banner.' ) . '</p>';
+    }
 
 }
 
