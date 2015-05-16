@@ -40,10 +40,7 @@ function createConsentDiv() {
 	bodytag.appendChild(div);
 
 	// Add class to body
-	document.getElementsByTagName('body')[0].className+=' has-cookie-banner';
-
-	// Set the cookie
-	setComplianceCookie();
+	jQuery('body').addClass('has-cookie-banner');
 
 }
 
@@ -65,6 +62,15 @@ window.onload = function(){
 }
 
 function removeMe(){
-	var element = document.getElementById( window.containerID );
-	element.parentNode.removeChild(element);
+
+	// Hide the cookie banner
+	jQuery( '#' + window.containerID).slideToggle(function() {
+
+		// Remove cookie banner class
+		jQuery('body').removeClass('has-cookie-banner');
+
+	});
+
+	// Set the cookie
+	setComplianceCookie();
 }

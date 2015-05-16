@@ -2,11 +2,11 @@
  * Cookie Banner Stylesheet
  */
 body.has-cookie-banner {
-	padding-top: 2.4rem;
+	padding-top: 5.2rem;
 }
 
 #cookie-consent-block {
-	position: fixed;
+	position: absolute;
 	height: 2.4rem;
 	top: 0;
 	z-index: 99999;

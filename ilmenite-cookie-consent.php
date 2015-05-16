@@ -99,8 +99,11 @@ class Ilmenite_Cookie_Consent {
 	 */
 	public function scripts() {
 
+		// WP Enqueue Script
+		wp_enqueue_script( 'jquery' );
+
 		// Register Scripts
-		wp_register_script( 'ilmenite-cookie-consent', $this->plugin_url . '/assets/js/cookie-banner.min.js', false, $this->plugin_version, true );
+		wp_register_script( 'ilmenite-cookie-consent', $this->plugin_url . '/assets/js/cookie-banner.min.js', array( 'jquery' ), $this->plugin_version, true );
 
 		// Localize the script
 		wp_localize_script( 'ilmenite-cookie-consent', 'ilcc', array(
