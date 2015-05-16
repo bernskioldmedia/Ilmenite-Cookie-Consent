@@ -30,6 +30,11 @@ A complete *.pot* file is available in the *translations/* directory. If you use
 
 ## Changelog
 
+**Version 0.2.0**
+- Added GitHub updater
+- Added settings field for policy URL
+- Minify script and style
+
 **Version 0.1.0**
 - First plugin version.
 
