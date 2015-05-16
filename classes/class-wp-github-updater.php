@@ -67,7 +67,7 @@ class WP_GitHub_Updater {
 		$this->config = wp_parse_args( $config, $defaults );
 		// if the minimum config isn't set, issue a warning and bail
 		if ( ! $this->has_minimum_config() ) {
-			$message = 'The GitHub Updater was initialized without the minimum required configuration, please check the config in your plugin. The following params are missing: ';
+			$message = __( 'The GitHub Updater was initialized without the minimum required configuration, please check the config in your plugin. The following params are missing: ', 'ilcc' );
 			$message .= implode( ',', $this->missing_config );
 			_doing_it_wrong( __CLASS__, $message , self::VERSION );
 			return;
@@ -341,8 +341,8 @@ class WP_GitHub_Updater {
 		$result['destination'] = $proper_destination;
 		$activate = activate_plugin( WP_PLUGIN_DIR.'/'.$this->config['slug'] );
 		// Output the update message
-		$fail  = __( 'The plugin has been updated, but could not be reactivated. Please reactivate it manually.', 'github_plugin_updater' );
-		$success = __( 'Plugin reactivated successfully.', 'github_plugin_updater' );
+		$fail  = __( 'The plugin has been updated, but could not be reactivated. Please reactivate it manually.', 'ilcc' );
+		$success = __( 'Plugin reactivated successfully.', 'ilcc' );
 		echo is_wp_error( $activate ) ? $fail : $success;
 		return $result;
 	}
