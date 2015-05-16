@@ -25,6 +25,7 @@ To change the text in the banner, there is a filter available 'ilcc_consent_text
 ## Translations
 Included in the package are translations for the following languages:
 - Swedish
+- German
 
 A complete *.pot* file is available in the *translations/* directory. If you use and translate this little plugin, please send us the translation so it can be included!
 
