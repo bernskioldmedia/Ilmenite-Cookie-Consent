@@ -11,7 +11,7 @@ It isn't meant for the masses who want tons of configurable options in the admin
 The plugin works out of the box with minimal settings. However here are a few things you will probably want to be aware about.
 
 ### Set the policy link
-A settings field is appended to the Settings > General screen where you can insert a link to the privacy and cookie policy page.
+A settings field is appended to the Settings > Reading screen where you can insert a link to the privacy and cookie policy page.
 
 ### Custom Styling
 Out of the box, the plugin includes a lightweight stylesheet. We suggest you implement it in your theme however. To prevent this plugin from loading its own stylesheet, just set the following constant in your theme:
