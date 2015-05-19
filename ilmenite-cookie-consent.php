@@ -85,6 +85,9 @@ class Ilmenite_Cookie_Consent {
 		// Add GitHub Plugin Updater
 		add_action( 'init', array( $this, 'plugin_updater' ) );
 
+		// Add Translation Loading
+		add_action( 'plugins_loaded', array( $this, 'add_textdomain' ) );
+
 	}
 
 	/**
