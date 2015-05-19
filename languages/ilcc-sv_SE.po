@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Ilmenite Cookie Consent 0.0.1\n"
 "Report-Msgid-Bugs-To: https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/"
 "issues\n"
-"POT-Creation-Date: 2015-05-16 11:33:45+00:00\n"
-"PO-Revision-Date: 2015-05-16 13:38+0100\n"
+"POT-Creation-Date: 2015-05-19 17:45:17+00:00\n"
+"PO-Revision-Date: 2015-05-19 19:45+0100\n"
 "Last-Translator: Erik Bernskiold <erik@bernskioldmedia.com>\n"
 "Language-Team: Bernskiold Media <info@bernskioldmedia.com>\n"
 "Language: sv_SE\n"
@@ -15,6 +15,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.7.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: classes/class-wp-github-updater.php:70
+msgid ""
+"The GitHub Updater was initialized without the minimum required configuration, please "
+"check the config in your plugin. The following params are missing: "
+msgstr ""
 
 #: classes/class-wp-github-updater.php:344
 msgid ""
@@ -27,7 +33,7 @@ msgstr ""
 msgid "Plugin reactivated successfully."
 msgstr "Tillägget återaktiverades."
 
-#: ilmenite-cookie-consent.php:107
+#: ilmenite-cookie-consent.php:113
 msgid ""
 "<span>This website uses cookies to enhance the browsing experience. </span>By "
 "continuing you give us permission to deploy cookies as per our <a href=\"%s\" rel="
@@ -37,15 +43,15 @@ msgstr ""
 "att fortsätta ger du oss tillåtelse att lagra cookies enligt vår <a href=\"%s\" rel="
 "\"nofollow\">policy</a>."
 
-#: ilmenite-cookie-consent.php:108
+#: ilmenite-cookie-consent.php:114
 msgid "I Understand"
 msgstr "Jag förstår"
 
-#: ilmenite-cookie-consent.php:138
+#: ilmenite-cookie-consent.php:144
 msgid "Privacy and Cookie Policy URL"
 msgstr "Länk till Cookie-policy"
 
-#: ilmenite-cookie-consent.php:145
+#: ilmenite-cookie-consent.php:151
 msgid ""
 "Enter a link to your privacy and cookie policy where you outline the use of cookies. "
 "This link will be used in the cookie consent banner."
