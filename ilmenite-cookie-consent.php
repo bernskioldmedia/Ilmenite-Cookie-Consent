@@ -138,10 +138,11 @@ class Ilmenite_Cookie_Consent {
 	 * Admin Settings Fields
 	 */
 	public function settings_fields() {
+		$option_group = 'reading';
 
 		// Policy URL
-		register_setting( 'general', 'ilcc_policy_url', 'esc_attr' );
-        add_settings_field( 'ilcc_policy_url', '<label for="ilcc_policy_url">' . __( 'Privacy and Cookie Policy URL' , 'ilcc' ) . '</label>' , array( $this, 'settings_fields_html' ) , 'reading' );
+		register_setting( $option_group, 'ilcc_policy_url', 'esc_attr' );
+        add_settings_field( 'ilcc_policy_url', '<label for="ilcc_policy_url">' . __( 'Privacy and Cookie Policy URL' , 'ilcc' ) . '</label>' , array( $this, 'settings_fields_html' ) , $option_group );
 
 	}
 
