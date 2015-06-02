@@ -45,7 +45,7 @@ function createConsentDiv() {
 
 	// Add class to body
 	jQuery('body').addClass('has-cookie-banner');
-	jQuery('body').css('margin-top', consentBlockHeight + 'px');
+	jQuery('body').css('padding-top', consentBlockHeight + 'px');
 
 }
 
@@ -73,7 +73,7 @@ function removeMe(){
 
 		// Remove cookie banner class
 		jQuery('body').removeClass('has-cookie-banner');
-		jQuery('body').css('margin-top', '0px');
+		jQuery('body').css('padding-top', '0px');
 
 	});
 
