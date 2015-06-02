@@ -1,13 +1,11 @@
 /**
  * Cookie Banner Stylesheet
  */
-body.has-cookie-banner {
-	padding-top: 5.2rem;
-}
+body.has-cookie-banner {}
 
 #cookie-consent-block {
 	position: absolute;
-	height: 2.4rem;
+	height: auto;
 	top: 0;
 	z-index: 99999;
 	background: #282b2d;
@@ -52,3 +50,21 @@ body.has-cookie-banner {
 			background: white;
 			color: black;
 		}
+
+@media screen and (max-width: 1024px) {
+
+	#cookie-consent-block p {
+		text-align: center;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	.close-cookie-block {
+		display: block;
+		position: relative;
+		margin-top: 1rem;
+		right: 0;
+		width: 90%;
+	}
+
+}

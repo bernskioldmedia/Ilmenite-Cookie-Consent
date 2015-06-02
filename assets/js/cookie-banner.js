@@ -39,8 +39,13 @@ function createConsentDiv() {
 	// Append to body
 	bodytag.appendChild(div);
 
+	// Get the height of the consent block
+	var consentBlockHeight = jQuery('#' + window.containerID).innerHeight();
+	console.log(consentBlockHeight);
+
 	// Add class to body
 	jQuery('body').addClass('has-cookie-banner');
+	jQuery('body').css('margin-top', consentBlockHeight + 'px');
 
 }
 
@@ -68,6 +73,7 @@ function removeMe(){
 
 		// Remove cookie banner class
 		jQuery('body').removeClass('has-cookie-banner');
+		jQuery('body').css('margin-top', '0px');
 
 	});
 
