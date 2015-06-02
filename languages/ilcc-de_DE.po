@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Ilmenite Cookie Consent 0.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/bernskioldmedia/Ilmenite-Cookie-"
 "Consent/issues\n"
-"POT-Creation-Date: 2015-05-19 17:45:17+00:00\n"
+"POT-Creation-Date: 2015-06-02 13:57:11+00:00\n"
 "PO-Revision-Date: 2015-05-16 16:36+0100\n"
 "Last-Translator: Erik Bernskiold <erik@bernskioldmedia.com>\n"
 "Language-Team: Bernskiold Media <info@bernskioldmedia.com>\n"
@@ -49,11 +49,11 @@ msgstr ""
 msgid "I Understand"
 msgstr "Ich Verstehe"
 
-#: ilmenite-cookie-consent.php:144
+#: ilmenite-cookie-consent.php:145
 msgid "Privacy and Cookie Policy URL"
 msgstr "Datenschutz und Cookie Policy URL"
 
-#: ilmenite-cookie-consent.php:151
+#: ilmenite-cookie-consent.php:152
 msgid ""
 "Enter a link to your privacy and cookie policy where you outline the use of "
 "cookies. This link will be used in the cookie consent banner."

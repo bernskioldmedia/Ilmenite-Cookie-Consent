@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Ilmenite Cookie Consent 0.0.1\n"
 "Report-Msgid-Bugs-To: https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/"
 "issues\n"
-"POT-Creation-Date: 2015-05-19 17:45:17+00:00\n"
-"PO-Revision-Date: 2015-05-19 19:45+0100\n"
+"POT-Creation-Date: 2015-06-02 13:57:11+00:00\n"
+"PO-Revision-Date: 2015-06-02 16:09+0100\n"
 "Last-Translator: Erik Bernskiold <erik@bernskioldmedia.com>\n"
 "Language-Team: Bernskiold Media <info@bernskioldmedia.com>\n"
 "Language: sv_SE\n"
@@ -21,6 +21,8 @@ msgid ""
 "The GitHub Updater was initialized without the minimum required configuration, please "
 "check the config in your plugin. The following params are missing: "
 msgstr ""
+"GitHub-uppdateraren initierades utan minimikraven för konfigurationen. Vänligen "
+"kontrollera hur den är konfigurerad i ditt tillägg. Följande parametrar saknas: "
 
 #: classes/class-wp-github-updater.php:344
 msgid ""
@@ -47,11 +49,11 @@ msgstr ""
 msgid "I Understand"
 msgstr "Jag förstår"
 
-#: ilmenite-cookie-consent.php:144
+#: ilmenite-cookie-consent.php:145
 msgid "Privacy and Cookie Policy URL"
 msgstr "Länk till Cookie-policy"
 
-#: ilmenite-cookie-consent.php:151
+#: ilmenite-cookie-consent.php:152
 msgid ""
 "Enter a link to your privacy and cookie policy where you outline the use of cookies. "
 "This link will be used in the cookie consent banner."
