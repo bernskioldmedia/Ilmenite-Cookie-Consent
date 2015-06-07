@@ -4,7 +4,7 @@
  *	Plugin URI: https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent
  *	Description: A simple, developer-friendly WordPress plugin that lets visitors know that the site is using cookies.
  *	Author: Bernskiold Media
- *	Version: 0.2.4
+ *	Version: 0.2.5
  *	Author URI: http://www.bernskioldmedia.com/
  *	Text Domain: ilcc
  *	Domain Path: /languages
@@ -71,7 +71,7 @@ class Ilmenite_Cookie_Consent {
 		$this->plugin_url = untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) );
 
 		// Set the plugin version
-		$this->plugin_version = '0.2.4';
+		$this->plugin_version = '0.2.5';
 
 		// Add Scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
@@ -114,8 +114,10 @@ class Ilmenite_Cookie_Consent {
 			'acceptText'		=> apply_filters( 'ilcc_accept_text', __( 'I Understand', 'ilcc' ) ),
 		) );
 
-		// Enqueue them
-		wp_enqueue_script( 'ilmenite-cookie-consent' );
+		// Load script if the consent cookie isn't set
+		if ( ! isset ( $_COOKIE['EUCookieConsent'] ) ) {
+			wp_enqueue_script( 'ilmenite-cookie-consent' );
+		}
 
 	}
 
@@ -128,7 +130,8 @@ class Ilmenite_Cookie_Consent {
 		wp_register_style( 'ilmenite-cookie-consent', $this->plugin_url . '/assets/css/cookie-banner.min.css', false, $this->plugin_version, 'all' );
 
 		// Enqueue if developer mode isn't turned on
-		if ( ! ILCC_DEV_MODE ) {
+		// also don't enqueue if consent cookie is set
+		if ( ! ILCC_DEV_MODE && ! isset ( $_COOKIE['EUCookieConsent'] ) ) {
 			wp_enqueue_style( 'ilmenite-cookie-consent' );
 		}
 
