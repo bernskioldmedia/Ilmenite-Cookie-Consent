@@ -5,7 +5,7 @@ There are many WordPress plugins out there which does a lot of fancy things with
 
 It isn't meant for the masses who want tons of configurable options in the admin (although it will work fine out of the box). For the developer who wants the functionality and being able to convenietly override the styles in the theme without bloat—here's a plugin for you.
 
-~Current Version:0.2.4~
+~Current Version:0.2.5~
 
 ## Configuration
 The plugin works out of the box with minimal settings. However here are a few things you will probably want to be aware about.
@@ -30,6 +30,9 @@ Included in the package are translations for the following languages:
 A complete *.pot* file is available in the *translations/* directory. If you use and translate this little plugin, please send us the translation so it can be included!
 
 ## Changelog
+
+**Version 0.2.5**
+- Performance Increase: Don't load scripts and styles if the cookie has already been set.
 
 **Version 0.2.4**
 - Fixed a miss in the new CSS
