@@ -94,7 +94,10 @@ class Ilmenite_Cookie_Consent {
 	 * Load the Translations
 	 */
 	public function add_textdomain() {
-		load_plugin_textdomain( 'ilcc', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		$domain = 'ilcc';
+
+		// Let users specify their own translations under WP_LANG_DIR 
+		load_plugin_textdomain( $domain ) || load_plugin_textdomain( $domain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**
