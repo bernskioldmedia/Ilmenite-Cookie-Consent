@@ -62,7 +62,7 @@ class Ilmenite_Cookie_Consent {
 	public function __construct() {
 
 		// Set Developer Mode Constant
-		define( 'ILCC_DEV_MODE', false );
+		define( 'ILCC_DEV_MODE', get_option( 'ilcc_dev_mode' ) );
 
 		// Set the plugin path
 		$this->plugin_path = untrailingslashit( plugin_dir_path( __FILE__ ) );
@@ -148,15 +148,28 @@ class Ilmenite_Cookie_Consent {
 
 		// Policy URL
 		register_setting( $option_group, 'ilcc_policy_url', 'esc_attr' );
-        add_settings_field( 'ilcc_policy_url', '<label for="ilcc_policy_url">' . __( 'Privacy and Cookie Policy URL' , 'ilcc' ) . '</label>' , array( $this, 'settings_fields_html' ) , $option_group );
+		add_settings_field( 'ilcc_policy_url', '<label for="ilcc_policy_url">' . __( 'Privacy and Cookie Policy URL' , 'ilcc' ) . '</label>' , array( $this, 'settings_fields_html_policy_url' ) , $option_group );
+
+		// Developer Mode
+		register_setting( $option_group, 'ilcc_dev_mode');
+		add_settings_field( 'ilcc_dev_mode', '<label for="ilcc_dev_mode">' . __( 'ILCC Developer Mode' , 'ilcc' ) . '</label>' , array( $this, 'settings_fields_html_dev_mode' ), $option_group );
+
 
 	}
 
-	function settings_fields_html() {
+	function settings_fields_html_policy_url() {
         $value = get_option( 'ilcc_policy_url', '' );
         echo '<input type="url" class="regular-text code" id="ilcc_policy_url" name="ilcc_policy_url" value="' . $value . '" />';
         echo '<p class="description">' . __( 'Enter a link to your privacy and cookie policy where you outline the use of cookies. This link will be used in the cookie consent banner.', 'ilcc' ) . '</p>';
     }
+
+	function settings_fields_html_dev_mode() {
+        $value = get_option( 'ilcc_dev_mode', '' );
+		echo '<input type="checkbox" id="ilcc_dev_mode" name="ilcc_dev_mode" value="1"';
+		checked( '1', $value );
+		echo '" />';
+        echo '<p class="description">' . __( 'Check if you want to use the developer mode for the Ilmenite Cookie Connsent', 'ilcc' ) . '</p>';
+	}
 
     /**
      * GitHub Plugin Updater
