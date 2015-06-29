@@ -113,7 +113,7 @@ class Ilmenite_Cookie_Consent {
 
 		// Localize the script
 		wp_localize_script( 'ilmenite-cookie-consent', 'ilcc', array(
-			'cookieConsentText' => sprintf( apply_filters( 'ilcc_consent_text', __( '<span>This website uses cookies to enhance the browsing experience. </span>By continuing you give us permission to deploy cookies as per our <a href="%s" rel="nofollow">privacy and cookies policy</a>.', 'ilcc' ) ), get_option( 'ilcc_policy_url' ) ),
+			'cookieConsentText' => sprintf( apply_filters( 'ilcc_consent_text', __( '<span>This website uses cookies to enhance the browsing experience. </span>By continuing you give us permission to deploy cookies as per <a href="%s" rel="nofollow">our privacy and cookies policy</a>.', 'ilcc' ) ), get_option( 'ilcc_policy_url' ) ),
 			'acceptText'		=> apply_filters( 'ilcc_accept_text', __( 'I Understand', 'ilcc' ) ),
 		) );
 
