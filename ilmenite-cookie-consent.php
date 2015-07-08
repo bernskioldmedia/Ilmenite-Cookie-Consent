@@ -83,7 +83,7 @@ class Ilmenite_Cookie_Consent {
 		add_filter( 'admin_init', array( $this, 'settings_fields' ) );
 
 		// Add GitHub Plugin Updater
-		add_action( 'init', array( $this, 'plugin_updater' ) );
+		//add_action( 'init', array( $this, 'plugin_updater' ) );
 
 		// Add Translation Loading
 		add_action( 'plugins_loaded', array( $this, 'add_textdomain' ) );
@@ -176,15 +176,15 @@ class Ilmenite_Cookie_Consent {
      *
      * Adds support for updating this plugin directly from GitHub.
      */
-    function plugin_updater() {
+    /*function plugin_updater() {
 
-    	// Include updater class
-    	include_once 'classes/class-wp-github-updater.php';
+		// Include updater class
+		include_once 'classes/class-wp-github-updater.php';
 
-    	define( 'WP_GITHUB_FORCE_UPDATE', true );
+		define( 'WP_GITHUB_FORCE_UPDATE', true );			
 
     	if ( is_admin() ) { // note the use of is_admin() to double check that this is happening in the admin
-
+    	
     		$config = array(
     			'slug'               => plugin_basename( __FILE__ ),
     			'proper_folder_name' => 'ilmenite-cookie-consent',
@@ -204,7 +204,7 @@ class Ilmenite_Cookie_Consent {
 
     	}
 
-    }
+    }*/
 
 
 }
