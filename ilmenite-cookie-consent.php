@@ -62,7 +62,7 @@ class Ilmenite_Cookie_Consent {
 	public function __construct() {
 
 		// Set Developer Mode Constant
-		define( 'ILCC_DEV_MODE', false );
+		define( 'ILCC_DEV_MODE', get_option( 'ilcc_dev_mode' ) );
 
 		// Set the plugin path
 		$this->plugin_path = untrailingslashit( plugin_dir_path( __FILE__ ) );
@@ -83,7 +83,7 @@ class Ilmenite_Cookie_Consent {
 		add_filter( 'admin_init', array( $this, 'settings_fields' ) );
 
 		// Add GitHub Plugin Updater
-		add_action( 'init', array( $this, 'plugin_updater' ) );
+		//add_action( 'init', array( $this, 'plugin_updater' ) );
 
 		// Add Translation Loading
 		add_action( 'plugins_loaded', array( $this, 'add_textdomain' ) );
@@ -113,7 +113,7 @@ class Ilmenite_Cookie_Consent {
 
 		// Localize the script
 		wp_localize_script( 'ilmenite-cookie-consent', 'ilcc', array(
-			'cookieConsentText' => sprintf( apply_filters( 'ilcc_consent_text', __( '<span>This website uses cookies to enhance the browsing experience. </span>By continuing you give us permission to deploy cookies as per our <a href="%s" rel="nofollow">privacy and cookies policy</a>.', 'ilcc' ) ), get_option( 'ilcc_policy_url' ) ),
+			'cookieConsentText' => sprintf( apply_filters( 'ilcc_consent_text', __( '<span>This website uses cookies to enhance the browsing experience. </span>By continuing you give us permission to deploy cookies as per <a href="%s" rel="nofollow">our privacy and cookies policy</a>.', 'ilcc' ) ), get_option( 'ilcc_policy_url' ) ),
 			'acceptText'		=> apply_filters( 'ilcc_accept_text', __( 'I Understand', 'ilcc' ) ),
 		) );
 
@@ -148,30 +148,43 @@ class Ilmenite_Cookie_Consent {
 
 		// Policy URL
 		register_setting( $option_group, 'ilcc_policy_url', 'esc_attr' );
-        add_settings_field( 'ilcc_policy_url', '<label for="ilcc_policy_url">' . __( 'Privacy and Cookie Policy URL' , 'ilcc' ) . '</label>' , array( $this, 'settings_fields_html' ) , $option_group );
+		add_settings_field( 'ilcc_policy_url', '<label for="ilcc_policy_url">' . __( 'Privacy and Cookie Policy URL' , 'ilcc' ) . '</label>' , array( $this, 'settings_fields_html_policy_url' ) , $option_group );
+
+		// Developer Mode
+		register_setting( $option_group, 'ilcc_dev_mode');
+		add_settings_field( 'ilcc_dev_mode', '<label for="ilcc_dev_mode">' . __( 'ILCC Developer Mode' , 'ilcc' ) . '</label>' , array( $this, 'settings_fields_html_dev_mode' ), $option_group );
+
 
 	}
 
-	function settings_fields_html() {
+	function settings_fields_html_policy_url() {
         $value = get_option( 'ilcc_policy_url', '' );
         echo '<input type="url" class="regular-text code" id="ilcc_policy_url" name="ilcc_policy_url" value="' . $value . '" />';
         echo '<p class="description">' . __( 'Enter a link to your privacy and cookie policy where you outline the use of cookies. This link will be used in the cookie consent banner.', 'ilcc' ) . '</p>';
     }
+
+	function settings_fields_html_dev_mode() {
+        $value = get_option( 'ilcc_dev_mode', '' );
+		echo '<input type="checkbox" id="ilcc_dev_mode" name="ilcc_dev_mode" value="1"';
+		checked( '1', $value );
+		echo '" />';
+        echo '<p class="description">' . __( 'Check if you want to use the developer mode for the Ilmenite Cookie Connsent', 'ilcc' ) . '</p>';
+	}
 
     /**
      * GitHub Plugin Updater
      *
      * Adds support for updating this plugin directly from GitHub.
      */
-    function plugin_updater() {
+    /*function plugin_updater() {
 
-    	// Include updater class
-    	include_once 'classes/class-wp-github-updater.php';
+		// Include updater class
+		include_once 'classes/class-wp-github-updater.php';
 
-    	define( 'WP_GITHUB_FORCE_UPDATE', true );
+		define( 'WP_GITHUB_FORCE_UPDATE', true );			
 
     	if ( is_admin() ) { // note the use of is_admin() to double check that this is happening in the admin
-
+    	
     		$config = array(
     			'slug'               => plugin_basename( __FILE__ ),
     			'proper_folder_name' => 'ilmenite-cookie-consent',
@@ -191,7 +204,7 @@ class Ilmenite_Cookie_Consent {
 
     	}
 
-    }
+    }*/
 
 
 }
