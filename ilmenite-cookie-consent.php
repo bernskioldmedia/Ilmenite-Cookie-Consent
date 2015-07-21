@@ -4,7 +4,7 @@
  *	Plugin URI: https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent
  *	Description: A simple, developer-friendly WordPress plugin that lets visitors know that the site is using cookies.
  *	Author: Bernskiold Media
- *	Version: 0.2.5
+ *	Version: 0.2.6
  *	Author URI: http://www.bernskioldmedia.com/
  *	Text Domain: ilcc
  *	Domain Path: /languages
@@ -62,7 +62,9 @@ class Ilmenite_Cookie_Consent {
 	public function __construct() {
 
 		// Set Developer Mode Constant
-		define( 'ILCC_DEV_MODE', false );
+		if ( ! defined( 'ILCC_DEV_MODE' ) ) {
+			define( 'ILCC_DEV_MODE', false );
+		}
 
 		// Set the plugin path
 		$this->plugin_path = untrailingslashit( plugin_dir_path( __FILE__ ) );
@@ -71,7 +73,7 @@ class Ilmenite_Cookie_Consent {
 		$this->plugin_url = untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) );
 
 		// Set the plugin version
-		$this->plugin_version = '0.2.5';
+		$this->plugin_version = '0.2.6';
 
 		// Add Scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
@@ -96,7 +98,7 @@ class Ilmenite_Cookie_Consent {
 	public function add_textdomain() {
 		$domain = 'ilcc';
 
-		// Let users specify their own translations under WP_LANG_DIR 
+		// Let users specify their own translations under WP_LANG_DIR
 		load_plugin_textdomain( $domain ) || load_plugin_textdomain( $domain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
@@ -134,7 +136,7 @@ class Ilmenite_Cookie_Consent {
 
 		// Enqueue if developer mode isn't turned on
 		// also don't enqueue if consent cookie is set
-		if ( ! ILCC_DEV_MODE && ! isset ( $_COOKIE['EUCookieConsent'] ) ) {
+		if ( false == ILCC_DEV_MODE && ! isset ( $_COOKIE['EUCookieConsent'] ) ) {
 			wp_enqueue_style( 'ilmenite-cookie-consent' );
 		}
 
@@ -181,7 +183,7 @@ class Ilmenite_Cookie_Consent {
     			'zip_url'            => 'https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/archive/master.zip',
     			'sslverify'          => true,
     			'requires'           => '3.0',
-    			'tested'             => '4.2',
+    			'tested'             => '4.3',
     			'readme'             => 'README.md',
     			'access_token'       => '',
     		);
