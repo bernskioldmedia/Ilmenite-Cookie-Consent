@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Ilmenite Cookie Consent 0.2.0\n"
-"Report-Msgid-Bugs-To: https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/"
-"issues\n"
-"POT-Creation-Date: 2015-06-02 13:57:11+00:00\n"
+"Report-Msgid-Bugs-To: https://github.com/bernskioldmedia/Ilmenite-Cookie-"
+"Consent/issues\n"
+"POT-Creation-Date: 2015-07-21 19:36:25+00:00\n"
 "PO-Revision-Date: 2015-07-21 20:56+0100\n"
 "Last-Translator: Erik Bernskiold <erik@bernskioldmedia.com>\n"
 "Language-Team: Bernskiold Media <info@bernskioldmedia.com>\n"
@@ -16,52 +16,32 @@ msgstr ""
 "X-Generator: Poedit 1.8.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: classes/class-wp-github-updater.php:70
+#: ilmenite-cookie-consent.php:118
 msgid ""
-"The GitHub Updater was initialized without the minimum required configuration, please "
-"check the config in your plugin. The following params are missing: "
+"<span>This website uses cookies to enhance the browsing experience. </"
+"span>By continuing you give us permission to deploy cookies as per our <a "
+"href=\"%s\" rel=\"nofollow\">privacy and cookies policy</a>."
 msgstr ""
-"Das GitHub-Updater wurde ohne die erforderliche Mindestkonfiguration initialisiert. "
-"Bitte überprüfen Sie die Konfiguration Ihres Plugins. Die folgenden Parametern fehlen:"
+"<span>Diese Website verwendet Cookies, um Ihre Surferlebnis zu verbessern.</"
+"span> Wenn Sie die Website weiter nutzen, stimmen Sie unsere <a href=\"%s\" "
+"rel=\"nofollow\">Datenschutz und Cookies Policies</a> zu."
 
-#: classes/class-wp-github-updater.php:344
-msgid ""
-"The plugin has been updated, but could not be reactivated. Please reactivate it "
-"manually."
-msgstr ""
-"Das Plugin wurde aktualisiert aber konnte nicht wieder aktiviert werden. Bitte "
-"reaktivieren Sie es manuell."
-
-#: classes/class-wp-github-updater.php:345
-msgid "Plugin reactivated successfully."
-msgstr "Plugin wurde erfolgreich aktiviert."
-
-#: ilmenite-cookie-consent.php:113
-msgid ""
-"<span>This website uses cookies to enhance the browsing experience. </span>By "
-"continuing you give us permission to deploy cookies as per our <a href=\"%s\" rel="
-"\"nofollow\">privacy and cookies policy</a>."
-msgstr ""
-"<span>Diese Website verwendet Cookies, um Ihre Surferlebnis zu verbessern.</span> Wenn "
-"Sie die Website weiter nutzen, stimmen Sie unsere <a href=\"%s\" rel=\"nofollow"
-"\">Datenschutz und Cookies Policies</a> zu."
-
-#: ilmenite-cookie-consent.php:114
+#: ilmenite-cookie-consent.php:119
 msgid "I Understand"
 msgstr "Ich Verstehe"
 
-#: ilmenite-cookie-consent.php:145
+#: ilmenite-cookie-consent.php:153
 msgid "Privacy and Cookie Policy URL"
 msgstr "Datenschutz und Cookie Policy URL"
 
-#: ilmenite-cookie-consent.php:152
+#: ilmenite-cookie-consent.php:160
 msgid ""
-"Enter a link to your privacy and cookie policy where you outline the use of cookies. "
-"This link will be used in the cookie consent banner."
+"Enter a link to your privacy and cookie policy where you outline the use of "
+"cookies. This link will be used in the cookie consent banner."
 msgstr ""
-"Tragen Sie bitte eine Link zu Ihrem Datenschutz und Cookie Policy ein, indem Sie Ihre "
-"Nutzung von Cookies beschreiben. Dieser Link wird in den Cookie-Banner verwendet "
-"werden."
+"Tragen Sie bitte eine Link zu Ihrem Datenschutz und Cookie Policy ein, indem "
+"Sie Ihre Nutzung von Cookies beschreiben. Dieser Link wird in den Cookie-"
+"Banner verwendet werden."
 
 #. Plugin Name of the plugin/theme
 msgid "Ilmenite Cookie Consent"
@@ -73,11 +53,11 @@ msgstr "https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent"
 
 #. Description of the plugin/theme
 msgid ""
-"A simple, developer-friendly WordPress plugin that lets visitors know that the site is "
-"using cookies."
+"A simple, developer-friendly WordPress plugin that lets visitors know that "
+"the site is using cookies."
 msgstr ""
-"Ein einfaches, entwicklerfreundliches WordPress-Plugin, dass die Besucher von Cookies "
-"informiert."
+"Ein einfaches, entwicklerfreundliches WordPress-Plugin, dass die Besucher "
+"von Cookies informiert."
 
 #. Author of the plugin/theme
 msgid "Bernskiold Media"
@@ -86,3 +66,22 @@ msgstr "Bernskiold Media"
 #. Author URI of the plugin/theme
 msgid "http://www.bernskioldmedia.com/"
 msgstr "http://www.bernskioldmedia.de/"
+
+#~ msgid ""
+#~ "The GitHub Updater was initialized without the minimum required "
+#~ "configuration, please check the config in your plugin. The following "
+#~ "params are missing: "
+#~ msgstr ""
+#~ "Das GitHub-Updater wurde ohne die erforderliche Mindestkonfiguration "
+#~ "initialisiert. Bitte überprüfen Sie die Konfiguration Ihres Plugins. Die "
+#~ "folgenden Parametern fehlen:"
+
+#~ msgid ""
+#~ "The plugin has been updated, but could not be reactivated. Please "
+#~ "reactivate it manually."
+#~ msgstr ""
+#~ "Das Plugin wurde aktualisiert aber konnte nicht wieder aktiviert werden. "
+#~ "Bitte reaktivieren Sie es manuell."
+
+#~ msgid "Plugin reactivated successfully."
+#~ msgstr "Plugin wurde erfolgreich aktiviert."

@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Ilmenite Cookie Consent 0.0.1\n"
-"Report-Msgid-Bugs-To: https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/"
-"issues\n"
-"POT-Creation-Date: 2015-06-02 13:57:11+00:00\n"
+"Report-Msgid-Bugs-To: https://github.com/bernskioldmedia/Ilmenite-Cookie-"
+"Consent/issues\n"
+"POT-Creation-Date: 2015-07-21 19:36:25+00:00\n"
 "PO-Revision-Date: 2015-06-02 16:09+0100\n"
 "Last-Translator: Erik Bernskiold <erik@bernskioldmedia.com>\n"
 "Language-Team: Bernskiold Media <info@bernskioldmedia.com>\n"
@@ -16,47 +16,28 @@ msgstr ""
 "X-Generator: Poedit 1.7.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: classes/class-wp-github-updater.php:70
+#: ilmenite-cookie-consent.php:118
 msgid ""
-"The GitHub Updater was initialized without the minimum required configuration, please "
-"check the config in your plugin. The following params are missing: "
+"<span>This website uses cookies to enhance the browsing experience. </"
+"span>By continuing you give us permission to deploy cookies as per our <a "
+"href=\"%s\" rel=\"nofollow\">privacy and cookies policy</a>."
 msgstr ""
-"GitHub-uppdateraren initierades utan minimikraven för konfigurationen. Vänligen "
-"kontrollera hur den är konfigurerad i ditt tillägg. Följande parametrar saknas: "
+"<span>Denna webbplats använder cookies för att förbättra surfupplevelsen. </"
+"span>Genom att fortsätta ger du oss tillåtelse att lagra cookies enligt vår "
+"<a href=\"%s\" rel=\"nofollow\">policy</a>."
 
-#: classes/class-wp-github-updater.php:344
-msgid ""
-"The plugin has been updated, but could not be reactivated. Please reactivate it "
-"manually."
-msgstr ""
-"Tillägget har uppdaterats men kunde inte återaktiveras. Vänligen aktivera det manuellt."
-
-#: classes/class-wp-github-updater.php:345
-msgid "Plugin reactivated successfully."
-msgstr "Tillägget återaktiverades."
-
-#: ilmenite-cookie-consent.php:113
-msgid ""
-"<span>This website uses cookies to enhance the browsing experience. </span>By "
-"continuing you give us permission to deploy cookies as per our <a href=\"%s\" rel="
-"\"nofollow\">privacy and cookies policy</a>."
-msgstr ""
-"<span>Denna webbplats använder cookies för att förbättra surfupplevelsen. </span>Genom "
-"att fortsätta ger du oss tillåtelse att lagra cookies enligt vår <a href=\"%s\" rel="
-"\"nofollow\">policy</a>."
-
-#: ilmenite-cookie-consent.php:114
+#: ilmenite-cookie-consent.php:119
 msgid "I Understand"
 msgstr "Jag förstår"
 
-#: ilmenite-cookie-consent.php:145
+#: ilmenite-cookie-consent.php:153
 msgid "Privacy and Cookie Policy URL"
 msgstr "Länk till Cookie-policy"
 
-#: ilmenite-cookie-consent.php:152
+#: ilmenite-cookie-consent.php:160
 msgid ""
-"Enter a link to your privacy and cookie policy where you outline the use of cookies. "
-"This link will be used in the cookie consent banner."
+"Enter a link to your privacy and cookie policy where you outline the use of "
+"cookies. This link will be used in the cookie consent banner."
 msgstr ""
 "Ange en länk till din cookie-policy där du beskriver hur cookies används på "
 "webbplatsen. Länken används i cookie-bannern."
@@ -71,11 +52,11 @@ msgstr "https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent"
 
 #. Description of the plugin/theme
 msgid ""
-"A simple, developer-friendly WordPress plugin that lets visitors know that the site is "
-"using cookies."
+"A simple, developer-friendly WordPress plugin that lets visitors know that "
+"the site is using cookies."
 msgstr ""
-"Ett enkel, utvecklarvänligt WordPress-tillägg som ger besökare information om att "
-"webbplatsen använder cookies."
+"Ett enkel, utvecklarvänligt WordPress-tillägg som ger besökare information "
+"om att webbplatsen använder cookies."
 
 #. Author of the plugin/theme
 msgid "Bernskiold Media"
@@ -84,3 +65,22 @@ msgstr "Bernskiold Media"
 #. Author URI of the plugin/theme
 msgid "http://www.bernskioldmedia.com/"
 msgstr "http://www.bernskioldmedia.se/"
+
+#~ msgid ""
+#~ "The GitHub Updater was initialized without the minimum required "
+#~ "configuration, please check the config in your plugin. The following "
+#~ "params are missing: "
+#~ msgstr ""
+#~ "GitHub-uppdateraren initierades utan minimikraven för konfigurationen. "
+#~ "Vänligen kontrollera hur den är konfigurerad i ditt tillägg. Följande "
+#~ "parametrar saknas: "
+
+#~ msgid ""
+#~ "The plugin has been updated, but could not be reactivated. Please "
+#~ "reactivate it manually."
+#~ msgstr ""
+#~ "Tillägget har uppdaterats men kunde inte återaktiveras. Vänligen aktivera "
+#~ "det manuellt."
+
+#~ msgid "Plugin reactivated successfully."
+#~ msgstr "Tillägget återaktiverades."
