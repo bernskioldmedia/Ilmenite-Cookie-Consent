@@ -5,7 +5,7 @@ There are many WordPress plugins out there which does a lot of fancy things with
 
 It isn't meant for the masses who want tons of configurable options in the admin (although it will work fine out of the box). For the developer who wants the functionality and being able to convenietly override the styles in the theme without bloat—here's a plugin for you.
 
-~Current Version:0.2.5~
+~Current Version:0.2.6~
 
 ## Configuration
 The plugin works out of the box with minimal settings. However here are a few things you will probably want to be aware about.
@@ -14,10 +14,12 @@ The plugin works out of the box with minimal settings. However here are a few th
 A settings field is appended to the Settings > Reading screen where you can insert a link to the privacy and cookie policy page.
 
 ### Custom Styling
-Out of the box, the plugin includes a lightweight stylesheet. We suggest you implement it in your theme however. To prevent this plugin from loading its own stylesheet, just set the following constant in your theme:
+Out of the box, the plugin includes a lightweight stylesheet. We suggest you implement it in your theme however. To prevent this plugin from loading its own stylesheet, just set the following constant in your wp-config file:
 
     // Don't load 'Ilmenite Cookie Consent' stylesheets
     define( 'ILCC_DEV_MODE', true );
+
+Note: The constant needs to be defined before the plugin runs.
 
 ### Changing the text
 To change the text in the banner, there is a filter available 'ilcc_consent_text'. To modify the accept button, the filter 'ilcc_accept_text' is also available.
@@ -26,10 +28,16 @@ To change the text in the banner, there is a filter available 'ilcc_consent_text
 Included in the package are translations for the following languages:
 - Swedish
 - German
+- Norwegian (Thanks Kristofer)
 
 A complete *.pot* file is available in the *translations/* directory. If you use and translate this little plugin, please send us the translation so it can be included!
 
 ## Changelog
+
+**Version 0.2.6**
+- Added Norwegian (Bokmål) translation (Thanks Kristofer!)
+- Updated German translation with missing string
+- Fixes dev mode constant
 
 **Version 0.2.5**
 - Performance Increase: Don't load scripts and styles if the cookie has already been set.
