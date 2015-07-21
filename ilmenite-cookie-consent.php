@@ -160,42 +160,6 @@ class Ilmenite_Cookie_Consent {
         echo '<p class="description">' . __( 'Enter a link to your privacy and cookie policy where you outline the use of cookies. This link will be used in the cookie consent banner.', 'ilcc' ) . '</p>';
     }
 
-    /**
-     * GitHub Plugin Updater
-     *
-     * Adds support for updating this plugin directly from GitHub.
-     */
-    function plugin_updater() {
-
-    	// Include updater class
-    	include_once 'classes/class-wp-github-updater.php';
-
-    	define( 'WP_GITHUB_FORCE_UPDATE', true );
-
-    	if ( is_admin() ) { // note the use of is_admin() to double check that this is happening in the admin
-
-    		$config = array(
-    			'slug'               => plugin_basename( __FILE__ ),
-    			'proper_folder_name' => 'ilmenite-cookie-consent',
-    			'api_url'            => 'https://api.github.com/repos/bernskioldmedia/Ilmenite-Cookie-Consent',
-    			'raw_url'            => 'https://raw.github.com/bernskioldmedia/Ilmenite-Cookie-Consent/master',
-    			'github_url'         => 'https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent',
-    			'zip_url'            => 'https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/archive/master.zip',
-    			'sslverify'          => true,
-    			'requires'           => '3.0',
-    			'tested'             => '4.3',
-    			'readme'             => 'README.md',
-    			'access_token'       => '',
-    		);
-
-    		// Initialize the class
-    		new WP_GitHub_Updater( $config );
-
-    	}
-
-    }
-
-
 }
 
 function IlmeniteCookieConsent() {
