@@ -53,6 +53,10 @@ Note: The constant needs to be defined before the plugin runs.
 Yes of course. To change the main text in the banner, there is a filter available 'ilcc_consent_text'.
 To modify the accept button, the filter 'ilcc_accept_text' is also available.
 
+== Screenshots ==
+
+1. The default design of the cookie consent box on the website.
+
 == Changelog ==
 
 = Version 0.2.6 =
