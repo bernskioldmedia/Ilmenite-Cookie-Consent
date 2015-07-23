@@ -84,9 +84,6 @@ class Ilmenite_Cookie_Consent {
 		// Register Settings Fields
 		add_filter( 'admin_init', array( $this, 'settings_fields' ) );
 
-		// Add GitHub Plugin Updater
-		add_action( 'init', array( $this, 'plugin_updater' ) );
-
 		// Add Translation Loading
 		add_action( 'plugins_loaded', array( $this, 'add_textdomain' ) );
 
