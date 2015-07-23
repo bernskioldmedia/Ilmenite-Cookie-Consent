@@ -59,7 +59,7 @@ class Ilmenite_Cookie_Consent {
 		return self::$_instance;
 	}
 
-	public function __construct() {
+	private function __construct() {
 
 		// Set Developer Mode Constant
 		if ( ! defined( 'ILCC_DEV_MODE' ) ) {
