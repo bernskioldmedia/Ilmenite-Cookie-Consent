@@ -27,10 +27,14 @@ Included in the package are translations for the following languages:
 - Swedish
 - German
 - Norwegian (Thanks Kristofer)
+- Slovak (Thanks Peter)
 
 A complete *.pot* file is available in the *translations/* directory. If you use and translate this little plugin, please send us the translation so it can be included!
 
 ## Changelog
+
+**Version 0.2.7**
+- Added Slovak translation (Thanks Peter!)
 
 **Version 0.2.6**
 - Added Norwegian (Bokmål) translation (Thanks Kristofer!)

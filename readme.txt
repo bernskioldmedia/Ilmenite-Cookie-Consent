@@ -97,5 +97,8 @@ To modify the accept button, the filter 'ilcc_accept_text' is also available.
 
 == Upgrade Notice ==
 
+= 0.2.7 =
+Added Slovak language.
+
 = 0.2.6 =
 Improved translations and added Norwegian to the list of supported languages.
