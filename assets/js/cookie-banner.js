@@ -41,7 +41,6 @@ function createConsentDiv() {
 
 	// Get the height of the consent block
 	var consentBlockHeight = jQuery('#' + window.containerID).innerHeight();
-	console.log(consentBlockHeight);
 
 	// Add class to body
 	jQuery('body').addClass('has-cookie-banner');
