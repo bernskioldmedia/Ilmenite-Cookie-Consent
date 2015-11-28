@@ -28,10 +28,15 @@ Included in the package are translations for the following languages:
 - German
 - Norwegian (Thanks Kristofer)
 - Slovak (Thanks Peter)
+- Spanish (Thanks Vigdis)
 
 A complete *.pot* file is available in the *translations/* directory. If you use and translate this little plugin, please send us the translation so it can be included!
 
 ## Changelog
+
+**Version 0.2.8**
+- Added Spanish translation (Thanks Vigdis!)
+- Fixed a bug where the cookie banner height would be outputted in the JS console.
 
 **Version 0.2.7**
 - Added Slovak translation (Thanks Peter!)
