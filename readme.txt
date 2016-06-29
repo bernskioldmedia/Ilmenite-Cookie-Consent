@@ -63,6 +63,9 @@ To modify the accept button, the filter 'ilcc_accept_text' is also available.
 
 == Changelog ==
 
+= Version 1.1.1 =
+We managed to change a string we shouldn't have changed in Version 1.1.0. Sorry about that!
+
 = Version 1.1.0 =
 It's time we switch this plugin over to above 1.0 releases.
 - Changed the textdomain to conform with the plugin name = text domain. This means we will have full support for the WordPress.org Plugin translations.
@@ -113,6 +116,9 @@ It's time we switch this plugin over to above 1.0 releases.
 - First plugin version.
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+We managed to change a string we shouldn't have changed in Version 1.1.0. Sorry about that!
 
 = 1.1.0 =
 It's time we switch this plugin over to above 1.0 releases.

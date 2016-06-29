@@ -36,6 +36,8 @@ A complete *.pot* file is available in the *translations/* directory. If you use
 
 ## Changelog
 
+**Version 1.1.1**
+
 **Version 1.1.0**
 It's time we switch this plugin over to above 1.0 releases.
 - Changed the textdomain to conform with the plugin name = text domain. This means we will have full support for the WordPress.org Plugin translations.
