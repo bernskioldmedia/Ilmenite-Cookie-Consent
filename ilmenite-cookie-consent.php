@@ -111,7 +111,7 @@ class Ilmenite_Cookie_Consent {
 		wp_register_script( 'ilmenite-cookie-consent', $this->plugin_url . '/assets/js/cookie-banner.min.js', array( 'jquery' ), $this->plugin_version, true );
 
 		// Localize the script
-		wp_localize_script( 'ilmenite-cookie-consent', 'ilmenite-cookie-consent', array(
+		wp_localize_script( 'ilmenite-cookie-consent', 'ilcc', array(
 			'cookieConsentText' => sprintf( apply_filters( 'ilcc_consent_text', __( '<span>This website uses cookies to enhance the browsing experience. </span>By continuing you give us permission to deploy cookies as per our <a href="%s" rel="nofollow">privacy and cookies policy</a>.', 'ilmenite-cookie-consent' ) ), get_option( 'ilcc_policy_url' ) ),
 			'acceptText'		=> apply_filters( 'ilcc_accept_text', __( 'I Understand', 'ilmenite-cookie-consent' ) ),
 		) );
