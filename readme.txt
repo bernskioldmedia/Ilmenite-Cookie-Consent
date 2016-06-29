@@ -2,7 +2,7 @@
 Contributors: Erik Bernskiold
 Tags: cookies, cookie notice, eu cookie law, cookie compliance, cookie banner, cookie consent
 Requires at least: 4.0
-Tested up to: 4.5
+Tested up to: 4.6
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -27,6 +27,7 @@ Included in the package are translations for the following languages:
 - Slovak (Thanks Peter)
 - Spanish (Thanks Vigdis)
 - Lithuanian
+- Italian (Thanks Matteo)
 
 A complete *.pot* file is available in the *translations/* directory. If you use and translate this little plugin, please send us the translation so it can be included!
 
@@ -61,6 +62,11 @@ To modify the accept button, the filter 'ilcc_accept_text' is also available.
 1. The default design of the cookie consent box on the website.
 
 == Changelog ==
+
+= Version 1.1.0 =
+It's time we switch this plugin over to above 1.0 releases.
+- Changed the textdomain to conform with the plugin name = text domain. This means we will have full support for the WordPress.org Plugin translations.
+- Added Italian translation (Thanks Matteo)
 
 = Version 0.2.9 =
 - Improved German translation (Thanks Frank!)
@@ -107,6 +113,11 @@ To modify the accept button, the filter 'ilcc_accept_text' is also available.
 - First plugin version.
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+It's time we switch this plugin over to above 1.0 releases.
+- Changed the textdomain to conform with the plugin name = text domain. This means we will have full support for the WordPress.org Plugin translations.
+- Added Italian translation (Thanks Matteo)
 
 = 0.2.9 =
 Improved the German translation.

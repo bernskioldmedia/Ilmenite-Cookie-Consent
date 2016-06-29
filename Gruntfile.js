@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 	                	'node_modules'
 	                ],
 	                mainFile: 'ilmenite-cookie-consent.php',
-	                potFilename: 'ilcc.pot',
+	                potFilename: 'ilmenite-cookie-consent.pot',
 	                processPot: function( pot, options ) {
 	                    pot.headers['report-msgid-bugs-to'] = 'https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/issues';
 	                    pot.headers['language-team'] = 'Bernskiold Media <info@bernskioldmedia.com>';
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
 
 		checktextdomain: {
 		   options:{
-		      text_domain: 'ilcc',
+		      text_domain: 'ilmenite-cookie-consent',
 		      correct_domain: true, // Will correct missing/variable domains
 		      keywords: [ // WordPress localisation functions
 		            '__:1,2d',

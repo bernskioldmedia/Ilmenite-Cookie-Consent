@@ -30,10 +30,16 @@ Included in the package are translations for the following languages:
 - Slovak (Thanks Peter)
 - Spanish (Thanks Vigdis)
 - Lithuanian
+- Italian (Thanks Matteo)
 
 A complete *.pot* file is available in the *translations/* directory. If you use and translate this little plugin, please send us the translation so it can be included!
 
 ## Changelog
+
+**Version 1.1.0**
+It's time we switch this plugin over to above 1.0 releases.
+- Changed the textdomain to conform with the plugin name = text domain. This means we will have full support for the WordPress.org Plugin translations.
+- Added Italian translation (Thanks Matteo)
 
 **Version 0.2.9**
 - Improved German translation (Thanks Frank!)
