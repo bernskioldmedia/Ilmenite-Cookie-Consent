@@ -1,5 +1,5 @@
 === Ilmenite Cookie Consent ===
-Contributors: Erik Bernskiold
+Contributors: Erik Bernskiold, BernskioldMedia
 Tags: cookies, cookie notice, eu cookie law, cookie compliance, cookie banner, cookie consent
 Requires at least: 4.0
 Tested up to: 4.7
