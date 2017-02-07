@@ -25,7 +25,7 @@ Included in the package are translations for the following languages:
 - German (Thanks Frank)
 - Norwegian (Thanks Kristofer)
 - Slovak (Thanks Peter)
-- Spanish (Thanks Vigdis)
+- Spanish (Thanks Vigdis & ibertrix)
 - Lithuanian
 - Italian (Thanks Matteo)
 
@@ -62,6 +62,9 @@ To modify the accept button, the filter 'ilcc_accept_text' is also available.
 1. The default design of the cookie consent box on the website.
 
 == Changelog ==
+
+= Version 1.1.2 =
+Updated a string in the Spanish translation (thanks ibertrix)
 
 = Version 1.1.1 =
 We managed to change a string we shouldn't have changed in Version 1.1.0. Sorry about that!

@@ -24,11 +24,12 @@ To change the text in the banner, there is a filter available 'ilcc_consent_text
 
 ## Translations
 Included in the package are translations for the following languages:
+
 - Swedish
 - German (Thanks Frank)
 - Norwegian (Thanks Kristofer)
 - Slovak (Thanks Peter)
-- Spanish (Thanks Vigdis)
+- Spanish (Thanks Vigdis & ibertrix)
 - Lithuanian
 - Italian (Thanks Matteo)
 
@@ -36,7 +37,11 @@ A complete *.pot* file is available in the *translations/* directory. If you use
 
 ## Changelog
 
+**Version 1.1.2**
+Updated a string in the Spanish translation (thanks ibertrix)
+
 **Version 1.1.1**
+We managed to change a string we shouldn't have changed in Version 1.1.0. Sorry about that!
 
 **Version 1.1.0**
 It's time we switch this plugin over to above 1.0 releases.
