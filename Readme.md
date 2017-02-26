@@ -32,10 +32,14 @@ Included in the package are translations for the following languages:
 - Spanish (Thanks Vigdis & ibertrix)
 - Lithuanian
 - Italian (Thanks Matteo)
+- Hungarian (Thanks Miklos)
 
 A complete *.pot* file is available in the *translations/* directory. If you use and translate this little plugin, please send us the translation so it can be included!
 
 ## Changelog
+
+**Version 1.1.3**
+Included a Hungarian translation (Thanks Miklos)
 
 **Version 1.1.2**
 Updated a string in the Spanish translation (thanks ibertrix)

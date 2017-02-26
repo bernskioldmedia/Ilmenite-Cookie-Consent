@@ -63,6 +63,9 @@ To modify the accept button, the filter 'ilcc_accept_text' is also available.
 
 == Changelog ==
 
+= Version 1.1.3 =
+Added an Hungarian translation. (Thanks Miklos)
+
 = Version 1.1.2 =
 Updated a string in the Spanish translation (thanks ibertrix)
 
