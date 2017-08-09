@@ -25,18 +25,25 @@ To change the text in the banner, there is a filter available 'ilcc_consent_text
 ## Translations
 Included in the package are translations for the following languages:
 
-- Swedish
+- Danish (Thanks Magnus)
 - German (Thanks Frank)
+- Hungarian (Thanks Miklos)
+- Italian (Thanks Matteo)
+- Lithuanian
 - Norwegian (Thanks Kristofer)
 - Slovak (Thanks Peter)
-- Spanish (Thanks Vigdis & ibertrix)
-- Lithuanian
-- Italian (Thanks Matteo)
-- Hungarian (Thanks Miklos)
+- Spanish (Thanks Vigdis & Ibertrix)
+- Swedish
 
 A complete *.pot* file is available in the *translations/* directory. If you use and translate this little plugin, please send us the translation so it can be included!
 
+**Even better** is if you use Translate.WordPress.org for your translations. That way, they will be automatically distributed with the WordPress updater.
+However, in some locales, the work with the Translate site is not up to speed. We will continue to support included translations a while longer.
+
 ## Changelog
+
+**Version 1.1.4**
+Included Danish translation (Thanks Magnus)
 
 **Version 1.1.3**
 Included a Hungarian translation (Thanks Miklos)

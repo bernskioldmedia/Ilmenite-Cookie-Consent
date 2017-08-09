@@ -21,15 +21,20 @@ See the installation section for more information on how to install. The FAQ sec
 
 Included in the package are translations for the following languages:
 
-- Swedish
+- Danish (Thanks Magnus)
 - German (Thanks Frank)
+- Hungarian (Thanks Miklos)
+- Italian (Thanks Matteo)
+- Lithuanian
 - Norwegian (Thanks Kristofer)
 - Slovak (Thanks Peter)
-- Spanish (Thanks Vigdis & ibertrix)
-- Lithuanian
-- Italian (Thanks Matteo)
+- Spanish (Thanks Vigdis & Ibertrix)
+- Swedish
 
 A complete *.pot* file is available in the *translations/* directory. If you use and translate this little plugin, please send us the translation so it can be included!
+
+**Even better** is if you use Translate.WordPress.org for your translations. That way, they will be automatically distributed with the WordPress updater.
+However, in some locales, the work with the Translate site is not up to speed. We will continue to support included translations a while longer.
 
 == Installation ==
 
@@ -62,6 +67,9 @@ To modify the accept button, the filter 'ilcc_accept_text' is also available.
 1. The default design of the cookie consent box on the website.
 
 == Changelog ==
+
+= Version 1.1.4 =
+Added Danish translation. (Thanks Magnus!)
 
 = Version 1.1.3 =
 Added an Hungarian translation. (Thanks Miklos)
