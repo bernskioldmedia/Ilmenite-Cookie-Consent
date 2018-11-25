@@ -3,24 +3,66 @@ A simple, developer-friendly WordPress plugin that lets visitors know that the s
 
 There are many WordPress plugins out there which does a lot of fancy things with the cookie consent. We didn't find one we really liked that was really lightweight and developer friendly and so we created our own.
 
-It isn't meant for the masses who want tons of configurable options in the admin (although it will work fine out of the box). For the developer who wants the functionality and being able to convenietly override the styles in the theme without bloat—here's a plugin for you.
+It isn't meant for the masses who want tons of configurable options in the admin (although it will work and look fine out of the box). Many use this plugin with the default styling because it is so light-weight and good-looking.
+
+For the developer who wants the functionality and being able to convenietly override the styles in the theme without bloat—here's a plugin for you. You have filters and actions available to you at every step of the process.
 
 ## Configuration
 The plugin works out of the box with minimal settings. However here are a few things you will probably want to be aware about.
 
 ### Set the policy link
-A settings field is appended to the Settings > Reading screen where you can insert a link to the privacy and cookie policy page.
+You can set the URL to the cookie policy page in the customizer under the "Site Identity" section.
 
 ### Custom Styling
-Out of the box, the plugin includes a lightweight stylesheet. We suggest you implement it in your theme however. To prevent this plugin from loading its own stylesheet, just set the following constant in your wp-config file:
+Out of the box, the plugin includes a lightweight stylesheet. If you don't want to use our default coloring, you can easily prevent us from including the styles.
 
-    // Don't load 'Ilmenite Cookie Consent' stylesheets
-    define( 'ILCC_DEV_MODE', true );
+Just define the following filter somewhere in your code, such as the theme functions.php file:
 
-Note: The constant needs to be defined before the plugin runs.
+    apply_filters( 'ilcc_load_stylesheet', '__return_false' );
 
-### Changing the text
-To change the text in the banner, there is a filter available 'ilcc_consent_text'. To modify the accept button, the filter 'ilcc_accept_text' is also available.
+### Changing the text and/or the button label.
+To change the text in the consent banner and/or the button label, there are two filters: ilcc_consent_text and ilcc_accept_text.
+
+Just set their value somewhere in your code, such as in the functions.php file of your theme:
+
+    function ilcc_modify_consent_text( $text ) {
+        $text = __( 'This is my custom text about how we use cookies.', 'YOURTEXTDOMAIN' );
+        return $text;
+    }
+
+    apply_filters( 'ilcc_consent_text', 'ilcc_modify_consent_text' );
+
+    function ilcc_modify_accept_text( $text ) {
+        $text = __( 'I Accept', 'YOURTEXTDOMAIN' );
+        return $text;
+    }
+
+    apply_filters( 'ilcc_accept_text', 'ilcc_modify_accept_text' );
+
+### List of Actions
+
+`ilcc_loaded` - Runs on constructor.
+`before_ilcc_init` - Runs before we have run any init actions.
+`ilcc_init` - Runs when all init hooks have run.
+
+### List of Filters
+
+`ilcc_has_user_consented` - Specifiy if the user has accepted or not. True or false value. Has arguments $cookie_name and $cookie_value.
+
+`ilcc_cookie_active_value` - Set which value is "active" for the cookie, ie. consented. Defaults to 1.
+
+`ilcc_cookie_name` - Set the name of the cookie. Defaults to 'EUConsentCookie'.
+
+`ilcc_accept_text` - Set the accept button text.
+
+`ilcc_consent_text` - Set the consent text. Has $policy_url as argument.
+
+`ilcc_policy_url` - Allows you to modify the Policy URL. Has the url from the options as argument.
+
+`ilcc_edit_policy_url_capability` - Allows you to modify which capability is required for editing the policy URL in the customizer. Defaults to `edit_theme_options`.
+
+`ilcc_load_stylesheets` - (bool) Set if you want the stylesheets to be loaded or not. Defaults to true.
+
 
 ## Translations
 Included in the package are translations for the following languages:
@@ -38,9 +80,30 @@ Included in the package are translations for the following languages:
 A complete *.pot* file is available in the *translations/* directory. If you use and translate this little plugin, please send us the translation so it can be included!
 
 **Even better** is if you use Translate.WordPress.org for your translations. That way, they will be automatically distributed with the WordPress updater.
-However, in some locales, the work with the Translate site is not up to speed. We will continue to support included translations a while longer.
+
+However, in some locales, the work with the Translate site is not up to speed. We will continue to support bundled translations because of this.
 
 ## Changelog
+
+**Version 1.2.0**
+In this release we've made some code improvements as well as improvements to class names
+and the JavaScript that powers most of the features. You will also have better and more
+access to filters and actions for customization.
+
+- Improvement: Better class names for the consent box.
+- Improvement: Switched to setting the policy URL in the customizer instead of under Settings > Reading.
+- Improvement: Re-structured the JavaScript code.
+- Improvement: Ensure we get languages from all possible storage folders in WordPress.
+- Improvement: Added filter to disable stylesheet loading.
+- Improvement: Never process any of the the JS or CSS logic if the user has already consented.
+- Improvement: Added filter when we check if user has consented.
+- Improvement: Added filter for cookie name.
+- Improvement: Added filter for cookie acceptance value.
+- Improvement: Modified consent text filter to include the policy URL as a variable.
+- Improvement: Added filter for when getting the policy URL.
+- Improvement: Switched from an `<a>` tag for the acceptance button, to a more proper `button`.
+- Improvement: Added filter to edit the capbility required for editing the Policy URL in the customizer. Defaults to `edit_theme_options`.
+- Bug: Fixed a bug where the consent block could add to the DOM multiple times.
 
 **Version 1.1.4**
 Included Danish translation (Thanks Magnus)
