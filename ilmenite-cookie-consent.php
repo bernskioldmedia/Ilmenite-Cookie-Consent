@@ -218,18 +218,23 @@ class Ilmenite_Cookie_Consent {
 
 	}
 
+	/**
+	 * Add settings in the customer.
+	 *
+	 * @return void
+	 */
 	public function customizer_settings() {
 
 		// Register new settings to the WP database
 		$wp_customize->add_setting( 'ilcc_policy_url', array(
 			'type' 			=> 'option',
-			'capability' 	=> 'edit_theme_options',
+			'capability' 	=> apply_filter( 'ilcc_edit_policy_url_capability', 'edit_theme_options' ),
 		) );
 
 		// Finally, we define the control itself (which links a setting to a section and renders the HTML controls)...
 		$wp_customize->add_control( new \WP_Customize_Control( $wp_customize, 'ilcc_policy_url', array(
-			'label'    		=> __( 'Cookie Policy URL', 'skr-master-plugin' ),
-			'description' 	=> __( 'Enter a URL to your privacy and cookie policy where you outline the use of cookies. This URL will be used in the cookie consent banner.', 'ilmenite-cookie-consent' ),
+			'label'    		=> __( 'Cookie Policy Link', 'skr-master-plugin' ),
+			'description' 	=> __( 'Enter a link to your privacy and cookie policy where you outline the use of cookies. This link will be used in the cookie consent banner.', 'ilmenite-cookie-consent' ),
 			'settings' 		=> 'ilcc_policy_url',
 			'section'  		=> 'title_tagline',
 		) ) );
