@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Ilmenite Cookie Consent
  * 
@@ -51,17 +53,17 @@ let Ilmenite_Cookie_Consent = function($, ilcc) {
 			const consentBlock = '<div class="ilcc-cookie-consent-notice js--ilcc-cookie-consent-notice" id="#cookie-consent-block"><p>' + ilcc.cookieConsentText + '<button class="ilcc-cookie-consent-close js--ilcc-cookie-consent-close close-cookie-block">' + ilcc.acceptText + '</button></p></div>';
 
 			// Get body tag
-			const body = $('body');
+			const $body = $('body');
 
 			// Append to body
-			bodytag.appendChild(consentBlock);
+			$body.append(consentBlock);
 
 			// Get the height of the consent block
 			var consentBlockHeight = $('.js--ilcc-cookie-consent-notice').innerHeight();
 
 			// Add class to body
-			$('body').addClass('has-cookie-banner');
-			$('body').css('padding-top', consentBlockHeight + 'px');
+			$body.addClass('has-cookie-banner');
+			$body.css('padding-top', consentBlockHeight + 'px');
 
 		},
 
