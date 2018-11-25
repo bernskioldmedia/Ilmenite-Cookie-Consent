@@ -3,7 +3,7 @@
  */
 body.has-cookie-banner {}
 
-#cookie-consent-block {
+.ilcc-cookie-consent-notice {
 	position: absolute;
 	height: auto;
 	top: 0;
@@ -17,7 +17,7 @@ body.has-cookie-banner {}
 	line-height: 1.4;
 }
 
-	#cookie-consent-block p {
+	.ilcc-cookie-consent-notice p {
 		max-width: 1000px;
 		margin: 0 auto 0 auto;
 		text-align: left;
@@ -25,14 +25,14 @@ body.has-cookie-banner {}
 		position: relative;
 	}
 
-		#cookie-consent-block p span {
+		.ilcc-cookie-consent-notice p span {
 			display: block;
 			font-weight: bold;
 			font-size: 1rem;
 			color: #eee;
 		}
 
-	.close-cookie-block {
+	.ilcc-cookie-consent-close {
 		position: absolute;
 		right: 2rem;
 		top: 0;
@@ -46,20 +46,20 @@ body.has-cookie-banner {}
 		line-height: 1;
 	}
 
-		.close-cookie-block:hover {
+		.ilcc-cookie-consent-close:hover {
 			background: white;
 			color: black;
 		}
 
 @media screen and (max-width: 1024px) {
 
-	#cookie-consent-block p {
+	.ilcc-cookie-consent-notice p {
 		text-align: center;
 		padding-left: 1rem;
 		padding-right: 1rem;
 	}
 
-	.close-cookie-block {
+	.ilcc-cookie-consent-close {
 		display: block;
 		position: relative;
 		margin-top: 1rem;

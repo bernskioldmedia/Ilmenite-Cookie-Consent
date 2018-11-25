@@ -1,81 +1,125 @@
-// Ilmenite Cookie Banner v 0.0.1
-// by Bernskiold Media
+/**
+ * Ilmenite Cookie Consent
+ * 
+ * @author Bernskiold Media <info@bernskioldmedia.com>
+ */
+let Ilmenite_Cookie_Consent = function($, ilcc) {
 
-// Variables
-var noCookieMode = false;						// Debug Mode: true will disable the cookie, allowing you to debug the banner.
-var consentDuration = 30;						// Duration in Days: The number of days before the cookie should expire.
-var containerID = 'cookie-consent-block';		// The ID of the notice container div
-var cookieName = 'EUCookieConsent';				// The name of the cookie
-var cookieActiveValue = '1';					// The active value of the cookie.
+	/**
+	 * Module Definition
+	 *
+	 * @type {{}}
+	 */
+	let module = {
 
-function setComplianceCookie() {
+		/**
+		 * Settings
+		 */
+		settings: {
+			noCookieMode: false, // Debug Mode: true will disable the cookie, allowing you to debug the banner.
+			consentRememberDuration: 30, // Duration in Days: The number of days before the cookie should expire.
+			cookieName: 'EUCookieConsent', // The name of the cookie.
+			cookieActiveValue: 1 // The active value of the cookie.
+		},
 
-    // If no debug mode, set the cookie
-    if ( ! window.noCookieMode ) {
+		/**
+		 * Sets the cookie with the active value.
+		 */
+		setCookie: function() {
 
-    	// Set the consent duration into a cookie date string
-		var date = new Date();
-	    date.setTime(date.getTime()+(window.consentDuration*24*60*60*1000));
+			// If no debug mode, set the cookie
+			if ( ! module.settings.noCookieMode ) {
 
-	    // Set the actual cookie
-		document.cookie = window.cookieName + '=' + window.cookieActiveValue + '; expires=' + date.toGMTString() + '; path=/';
+				// Set the consent duration into a cookie date string
+				var date = new Date();
+				date.setTime(date.getTime()+(module.settings.consentDuration*24*60*60*1000));
 
-	}
+				// Set the actual cookie
+				document.cookie = module.settings.cookieName + '=' + module.settings.cookieActiveValue + '; expires=' + date.toGMTString() + '; path=/';
 
-}
+			}
 
-function createConsentDiv() {
+		},
 
-	// Get body tag
-	var bodytag = document.getElementsByTagName('body')[0];
+		/**
+		 * Create the cookie consent banner and add it
+		 * to the DOM.
+		 */
+		createBanner: function() {
 
-	// Create Cookie Div
-	var div = document.createElement('div');
-	div.setAttribute('id', window.containerID);
+			// Set the contents.
+			const consentBlock = '<div class="ilcc-cookie-consent-notice js--ilcc-cookie-consent-notice" id="#cookie-consent-block"><p>' + ilcc.cookieConsentText + '<button class="ilcc-cookie-consent-close js--ilcc-cookie-consent-close close-cookie-block">' + ilcc.acceptText + '</button></p></div>';
 
-	// Set the contents
-	div.innerHTML = '<p>' + ilcc.cookieConsentText + '<a class="close-cookie-block" href="javascript:void(0);" onclick="removeMe();">' + ilcc.acceptText + '</a></p>';
+			// Get body tag
+			const body = $('body');
 
-	// Append to body
-	bodytag.appendChild(div);
+			// Append to body
+			bodytag.appendChild(consentBlock);
 
-	// Get the height of the consent block
-	var consentBlockHeight = jQuery('#' + window.containerID).innerHeight();
+			// Get the height of the consent block
+			var consentBlockHeight = $('.js--ilcc-cookie-consent-notice').innerHeight();
 
-	// Add class to body
-	jQuery('body').addClass('has-cookie-banner');
-	jQuery('body').css('padding-top', consentBlockHeight + 'px');
+			// Add class to body
+			$('body').addClass('has-cookie-banner');
+			$('body').css('padding-top', consentBlockHeight + 'px');
 
-}
+		},
 
-function checkCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-}
+		/**
+		 * Get the value of a cookie by its name.
+		 * 
+		 * @param {string} name 
+		 */
+		getCookieValue: function(name) {
+			let nameEQ = name + "=";
+			let ca = document.cookie.split(';');
+			for(let i=0;i < ca.length;i++) {
+				let c = ca[i];
+				while (c.charAt(0)==' ') c = c.substring(1,c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			}
+			return null;
+		},
 
-window.onload = function(){
-    if(checkCookie(window.cookieName) != window.cookieActiveValue){
-        createConsentDiv();
-    }
-}
+		/**
+		 * Remove the cookie banner from the page.
+		 */
+		removeBanner: function() {
+			$('.js--ilcc-cookie-consent-notice').slideToggle(function() {
 
-function removeMe(){
+				// Remove cookie banner class
+				$('body').removeClass('has-cookie-banner');
+				$('body').css('padding-top', '0px');
+				
+				// Remove the cookie banner from the DOM.
+				$(this).remove();
 
-	// Hide the cookie banner
-	jQuery( '#' + window.containerID).slideToggle(function() {
+			});
+		}
 
-		// Remove cookie banner class
-		jQuery('body').removeClass('has-cookie-banner');
-		jQuery('body').css('padding-top', '0px');
+	};
 
+	/**
+	 * When the window loads and the user hasn't already accepted
+	 * the cookie terms (ie. we have no cookie), then we
+	 * create the banner.
+	 */
+	$(window).load(function() {
+		if(module.getCookieValue(module.settings.cookieName) != module.settings.cookieActiveValue ) {
+			module.createBanner();
+		}
 	});
 
-	// Set the cookie
-	setComplianceCookie();
-}
+	/**
+	 * If the user clicks on the accept button to close the banner,
+	 * we remove it and set the accepted cookie.
+	 */
+	$(document.body).on('click', '.js--ilcc-cookie-consent-close', function() {
+		module.removeBanner();
+		module.setCookie();
+	});
+
+	// Return the module.
+	return module;
+
+}(jQuery, ilcc);
