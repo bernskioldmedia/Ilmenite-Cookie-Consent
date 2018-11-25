@@ -50,7 +50,7 @@ let Ilmenite_Cookie_Consent = function($, ilcc) {
 		createBanner: function() {
 
 			// Set the contents.
-			const consentBlock = '<div class="ilcc-cookie-consent-notice js--ilcc-cookie-consent-notice" id="#cookie-consent-block"><p>' + ilcc.cookieConsentText + '<button class="ilcc-cookie-consent-close js--ilcc-cookie-consent-close close-cookie-block">' + ilcc.acceptText + '</button></p></div>';
+			const consentBlock = '<div class="ilcc-cookie-consent-notice js--ilcc-cookie-consent-notice" id="cookie-consent-block"><p>' + ilcc.cookieConsentText + '<button class="ilcc-cookie-consent-close js--ilcc-cookie-consent-close close-cookie-block">' + ilcc.acceptText + '</button></p></div>';
 
 			// Get body tag
 			const $body = $('body');
@@ -87,15 +87,23 @@ let Ilmenite_Cookie_Consent = function($, ilcc) {
 		 * Remove the cookie banner from the page.
 		 */
 		removeBanner: function() {
-			$('.js--ilcc-cookie-consent-notice').slideToggle(function() {
+			$('.js--ilcc-cookie-consent-notice').slideToggle({
+				start: function() {
 
-				// Remove cookie banner class
-				$('body').removeClass('has-cookie-banner');
-				$('body').css('padding-top', '0px');
-				
-				// Remove the cookie banner from the DOM.
-				$(this).remove();
+					$('body').animate({
+						'padding-top': '0px'
+					});
 
+				},
+				complete: function() {
+
+					// Remove cookie banner class
+					$('body').removeClass('has-cookie-banner');
+					
+					// Remove the cookie banner from the DOM.
+					$(this).remove();
+	
+				}
 			});
 		}
 

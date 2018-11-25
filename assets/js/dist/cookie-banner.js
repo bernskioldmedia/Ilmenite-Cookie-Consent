@@ -53,7 +53,7 @@ var Ilmenite_Cookie_Consent = (function($, ilcc) {
     createBanner: function createBanner() {
       // Set the contents.
       var consentBlock =
-        '<div class="ilcc-cookie-consent-notice js--ilcc-cookie-consent-notice" id="#cookie-consent-block"><p>' +
+        '<div class="ilcc-cookie-consent-notice js--ilcc-cookie-consent-notice" id="cookie-consent-block"><p>' +
         ilcc.cookieConsentText +
         '<button class="ilcc-cookie-consent-close js--ilcc-cookie-consent-close close-cookie-block">' +
         ilcc.acceptText +
@@ -97,13 +97,19 @@ var Ilmenite_Cookie_Consent = (function($, ilcc) {
      * Remove the cookie banner from the page.
      */
     removeBanner: function removeBanner() {
-      $(".js--ilcc-cookie-consent-notice").slideToggle(function() {
-        // Remove cookie banner class
-        $("body").removeClass("has-cookie-banner");
-        $("body").css("padding-top", "0px");
+      $(".js--ilcc-cookie-consent-notice").slideToggle({
+        start: function start() {
+          $("body").animate({
+            "padding-top": "0px"
+          });
+        },
+        complete: function complete() {
+          // Remove cookie banner class
+          $("body").removeClass("has-cookie-banner");
 
-        // Remove the cookie banner from the DOM.
-        $(this).remove();
+          // Remove the cookie banner from the DOM.
+          $(this).remove();
+        }
       });
     }
   };
@@ -134,3 +140,4 @@ var Ilmenite_Cookie_Consent = (function($, ilcc) {
   // Return the module.
   return module;
 })(jQuery, ilcc);
+
