@@ -91,7 +91,7 @@ class Ilmenite_Cookie_Consent {
 		$this->plugin_url = untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) );
 
 		// Hooks to run on plugin init.
-		$this->init_hooks()();
+		$this->init_hooks();
 
 		do_action( 'ilcc_loaded' );
 
@@ -164,7 +164,7 @@ class Ilmenite_Cookie_Consent {
 		 * for most of the work. For debug purposes, we
 		 * register a non-minified version if asked by WordPress.
 		 */
-		if ( SCRIPTS_DEBUG ) {
+		if ( SCRIPT_DEBUG ) {
 			$js_path = $this->plugin_url . '/assets/js/dist/cookie-banner.js';
 		} else {
 			$js_path = $this->plugin_url . '/assets/js/dist/cookie-banner.min.js';
@@ -304,7 +304,7 @@ class Ilmenite_Cookie_Consent {
 			$has_consented = true;
 		}
 
-		return apply_filters( 'ilcc_has_user_consented', $has_consented, $cookie_name, $cookie_value );
+		return apply_filters( 'ilcc_has_user_consented', $has_consented, $cookie_name, $active_value );
 
 	}
 
