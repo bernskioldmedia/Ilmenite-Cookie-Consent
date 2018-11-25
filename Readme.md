@@ -88,6 +88,7 @@ However, in some locales, the work with the Translate site is not up to speed. W
 ## Changelog
 
 **Version 1.2.0**
+
 In this release we've made some code improvements as well as improvements to class names
 and the JavaScript that powers most of the features. You will also have better and more
 access to filters and actions for customization.
@@ -108,64 +109,81 @@ access to filters and actions for customization.
 - Bug: Fixed a bug where the consent block could add to the DOM multiple times.
 
 **Version 1.1.4**
+
 Included Danish translation (Thanks Magnus)
 
 **Version 1.1.3**
+
 Included a Hungarian translation (Thanks Miklos)
 
 **Version 1.1.2**
+
 Updated a string in the Spanish translation (thanks ibertrix)
 
 **Version 1.1.1**
+
 We managed to change a string we shouldn't have changed in Version 1.1.0. Sorry about that!
 
 **Version 1.1.0**
+
 It's time we switch this plugin over to above 1.0 releases.
+
 - Changed the textdomain to conform with the plugin name = text domain. This means we will have full support for the WordPress.org Plugin translations.
 - Added Italian translation (Thanks Matteo)
 
 **Version 0.2.9**
+
 - Improved German translation (Thanks Frank!)
 - Added Lithuanian translation
 - Minor Code Tweaks & Improvements (just behind the scenes—Thanks Johan)
 
 **Version 0.2.8**
+
 - Added Spanish translation (Thanks Vigdis!)
 - Fixed a bug where the cookie banner height would be outputted in the JS console.
 
 **Version 0.2.7**
+
 - Added Slovak translation (Thanks Peter!)
 
 **Version 0.2.6**
+
 - Added Norwegian (Bokmål) translation (Thanks Kristofer!)
 - Updated German translation with missing string
 - Fixes dev mode constant
 - Remove the GitHub Updater. Plugin will be added to the WordPress respository.
 
 **Version 0.2.5**
+
 - Performance Increase: Don't load scripts and styles if the cookie has already been set.
 
 **Version 0.2.4**
+
 - Fixed a miss in the new CSS
 
 **Version 0.2.3**
+
 - Fixed a bug where the settings wouldn't save due to an incorrectly specified settings area. (Thanks to jnylin https://github.com/jnylin)
 - Added mobile friendly default styles
 
 **Version 0.2.2**
+
 - Fixed a bug where the localization function wasn't properly loaded.
 - Fixed a bug where some textdomains were not properly specified.
 
 **Version 0.2.1**
+
 - Fixed a bug where the language files weren't properly loaded.
 
 **Version 0.2.0**
+
 - Added GitHub updater
 - Added settings field for policy URL
 - Minify script and style
 - Added German translation
 
 **Version 0.1.0**
+
 - First plugin version.
 
 ## Authors
