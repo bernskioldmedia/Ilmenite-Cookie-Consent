@@ -42,7 +42,9 @@ Just set their value somewhere in your code, such as in the functions.php file o
 ### List of Actions
 
 `ilcc_loaded` - Runs on constructor.
+
 `before_ilcc_init` - Runs before we have run any init actions.
+
 `ilcc_init` - Runs when all init hooks have run.
 
 ### List of Filters
