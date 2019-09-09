@@ -4,7 +4,7 @@
  *	Plugin URI: 	https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent
  *	Description: 	A simple, developer-friendly WordPress plugin that lets visitors know that the site is using cookies.
  *	Author: 		Bernskiold Media
- *	Version: 		1.2.0
+ *	Version: 		2.0.0
  *	Author URI: 	http://www.bernskioldmedia.com/
  *	Text Domain: 	ilmenite-cookie-consent
  *	Domain Path: 	/languages
@@ -53,7 +53,7 @@ class Ilmenite_Cookie_Consent {
 	 *
 	 * @var string
 	 */
-	public $version = '1.2.0';
+	public $version = '2.0.0';
 
 	/**
 	 * The single instance of the class
@@ -216,13 +216,23 @@ class Ilmenite_Cookie_Consent {
 	/**
 	 * Add settings in the customer.
 	 *
+	 * @param WP_Customize_Manager $wp_customize
+	 *
 	 * @return void
 	 */
 	public function customizer_settings( $wp_customize ) {
 
+		/**
+		 * Set the filter to false to prevent the customizer
+		 * settings from showing up.
+		 */
+		if ( ! apply_filters( 'ilcc_enable_customizer', true ) ) {
+			return;
+		}
+
 		$wp_customize->add_section( 'ilmenite_cookie_banner', [
 			'title'       => __( 'Cookie Banner', 'ilmenite-cookie-consent' ),
-			'description' => '',
+			'description' => __( 'Customize the appearance and texts in the cookie banner, used for EU cookie compliance.', 'ilmenite-cookie-consent' ),
 			'priority'    => 120,
 		] );
 
@@ -353,18 +363,19 @@ class Ilmenite_Cookie_Consent {
 		$policy_url = $this->get_policy_url();
 
 		/* translators: 1. Policy URL */
-		$text = sprintf( __( '<span>This website uses cookies to enhance the browsing experience. </span>By continuing you give us permission to deploy cookies as per our <a href="%s" rel="nofollow">privacy and cookies policy</a>.', 'ilmenite-cookie-consent' ), $policy_url );
+		$text = sprintf( __( 'By continuing you give us permission to deploy cookies as per our <a href="%s" rel="nofollow">privacy and cookies policy</a>.', 'ilmenite-cookie-consent' ), $policy_url );
 
 		if ( get_option( 'ilcc_text' ) ) {
+
 			$text = get_option( 'ilcc_text' );
-			$url  = self::get_policy_url();
+
 			// check if we have linkstart and linkend, replace with link
 			if ( strpos( $text, '%linkstart%' ) !== false && strpos( $text, '%linkend%' ) !== false ) {
-				$text = str_replace( '%linkstart%', '<a href="' . $url . '">', $text );
+				$text = str_replace( '%linkstart%', '<a href="' . $policy_url . '" rel="nofollow">', $text );
 				$text = str_replace( '%linkend%', '</a>', $text );
 			} // if we only have linkstart but no linked, add linkend
 			elseif ( strpos( $text, '%linkstart%' ) !== false && strpos( $text, '%linkend%' ) === false ) {
-				$text = str_replace( '%linkstart%', '<a href="' . $url . '">', $text );
+				$text = str_replace( '%linkstart%', '<a href="' . $policy_url . '" rel="nofollow">', $text );
 				$text = $text . '</a>';
 			} // if we have linkend, but no linkstart, remove linkend
 			elseif ( strpos( $text, '%linkstart%' ) === false && strpos( $text, '%linkend%' ) !== false ) {
