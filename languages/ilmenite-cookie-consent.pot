@@ -1,38 +1,103 @@
-# Copyright (C) 2015 Bernskiold Media
+# Copyright (C) 2019 Bernskiold Media
 # This file is distributed under the same license as the Ilmenite Cookie Consent package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ilmenite Cookie Consent 0.2.6\n"
-"Report-Msgid-Bugs-To: "
-"https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/issues\n"
-"POT-Creation-Date: 2015-07-21 19:36:25+00:00\n"
+"Project-Id-Version: Ilmenite Cookie Consent 1.2.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ilcc\n"
+"POT-Creation-Date: 2019-09-09 15:05:03+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Bernskiold Media <info@bernskioldmedia.com>\n"
-"X-Generator: grunt-wp-i18n 0.5.1\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: node-wp-i18n 1.2.3\n"
 
-#: ilmenite-cookie-consent.php:118
-msgid ""
-"<span>This website uses cookies to enhance the browsing experience. "
-"</span>By continuing you give us permission to deploy cookies as per our <a "
-"href=\"%s\" rel=\"nofollow\">privacy and cookies policy</a>."
+#: ilmenite-cookie-consent.php:234
+msgid "Cookie Banner"
 msgstr ""
 
-#: ilmenite-cookie-consent.php:119
+#: ilmenite-cookie-consent.php:235
+msgid ""
+"Customize the appearance and texts in the cookie banner, used for EU cookie "
+"compliance."
+msgstr ""
+
+#: ilmenite-cookie-consent.php:243 ilmenite-cookie-consent.php:347
+msgid "This website uses cookies to enhance the browsing experience"
+msgstr ""
+
+#: ilmenite-cookie-consent.php:249
+msgid "Title"
+msgstr ""
+
+#: ilmenite-cookie-consent.php:250
+msgid "Keep the title short. It is styled prominently."
+msgstr ""
+
+#: ilmenite-cookie-consent.php:260
+msgid ""
+"By continuing you give us permission to deploy cookies as per our "
+"%linkstart%privacy and cookies policy%linkend%."
+msgstr ""
+
+#: ilmenite-cookie-consent.php:266
+msgid "Text"
+msgstr ""
+
+#: ilmenite-cookie-consent.php:267
+msgid ""
+"A secondary line of info about your cookie usage. Remember to link to the "
+"policy by using the %linkstart% and %linkend% placeholders."
+msgstr ""
+
+#: ilmenite-cookie-consent.php:283
+msgid "Cookie Policy Link"
+msgstr ""
+
+#: ilmenite-cookie-consent.php:284
+msgid ""
+"Enter a link to your privacy and cookie policy where you outline the use of "
+"cookies."
+msgstr ""
+
+#: ilmenite-cookie-consent.php:294 ilmenite-cookie-consent.php:402
 msgid "I Understand"
 msgstr ""
 
-#: ilmenite-cookie-consent.php:153
-msgid "Privacy and Cookie Policy URL"
+#: ilmenite-cookie-consent.php:300
+msgid "Button Text"
 msgstr ""
 
-#: ilmenite-cookie-consent.php:160
+#: ilmenite-cookie-consent.php:301
 msgid ""
-"Enter a link to your privacy and cookie policy where you outline the use of "
-"cookies. This link will be used in the cookie consent banner."
+"Displays the message on the action button that closes the consent banner "
+"and assumes consent."
+msgstr ""
+
+#: ilmenite-cookie-consent.php:317
+msgid "Style"
+msgstr ""
+
+#: ilmenite-cookie-consent.php:318
+msgid ""
+"The banner can appear both at the top, or overlaid at the bottom of the "
+"page."
+msgstr ""
+
+#: ilmenite-cookie-consent.php:324
+msgid "Top"
+msgstr ""
+
+#: ilmenite-cookie-consent.php:325
+msgid "Overlay"
+msgstr ""
+
+#: ilmenite-cookie-consent.php:366
+#. translators: 1. Policy URL
+msgid ""
+"By continuing you give us permission to deploy cookies as per our <a "
+"href=\"%s\" rel=\"nofollow\">privacy and cookies policy</a>."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
