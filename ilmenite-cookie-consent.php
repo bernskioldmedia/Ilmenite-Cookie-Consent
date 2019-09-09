@@ -174,6 +174,7 @@ class Ilmenite_Cookie_Consent {
 			'cookieConsentTitle' => $this->get_consent_title(),
 			'cookieConsentText'  => $this->get_consent_text(),
 			'acceptText'         => $this->get_accept_text(),
+			'style'              => $this->get_style(),
 		] );
 
 		// Finally, enqueue!
@@ -454,8 +455,12 @@ class Ilmenite_Cookie_Consent {
 	 */
 	public function banner_body_class( $classes ) {
 
-		$classes[] = 'has-ilcc-banner';
-		$classes[] = 'ilcc-style-' . $this->get_style();
+		if ( $this->has_user_consented() ) {
+			$classes[] = 'has-ilcc-consented';
+		} else {
+			$classes[] = 'has-ilcc-banner';
+			$classes[] = 'ilcc-style-' . $this->get_style();
+		}
 
 		return $classes;
 	}
