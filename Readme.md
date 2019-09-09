@@ -5,23 +5,44 @@ There are many WordPress plugins out there which does a lot of fancy things with
 
 It isn't meant for the masses who want tons of configurable options in the admin (although it will work and look fine out of the box). Many use this plugin with the default styling because it is so light-weight and good-looking.
 
-For the developer who wants the functionality and being able to convenietly override the styles in the theme without bloat—here's a plugin for you. You have filters and actions available to you at every step of the process.
+For the developer who wants the functionality and being able to conveniently override the styles in the theme without bloat—here's a plugin for you. You have filters and actions available to you at every step of the process.
 
 ## Configuration
 The plugin works out of the box with minimal settings. However here are a few things you will probably want to be aware about.
 
 ### Set the policy link
-You can set the URL to the cookie policy page in the customizer under the "Site Identity" section.
+You can set the URL to the cookie policy page in the customizer under the "Cookie Banner" section, or use the filter `ilcc_policy_url` to return your own link.
 
-### Custom Styling
-Out of the box, the plugin includes a lightweight stylesheet. If you don't want to use our default coloring, you can easily prevent us from including the styles.
+### Changing/disabling the styling
+Out of the box, the plugin includes a lightweight stylesheet with two placement options (top & overlay). If you don't want to use our default coloring, you can easily prevent us from including the styles.
 
 Just define the following filter somewhere in your code, such as the theme functions.php file:
 
     apply_filters( 'ilcc_load_stylesheet', '__return_false' );
 
+Additionally, for quick theming to your theme's custom colors, we support a series of CSS variables set on `body.has-ilcc-banner` like so:
+
+    body.has-ilcc-banner {
+        --ilcc-background-color: #282b2d;
+        --ilcc-text-color: #ccc;
+        --ilcc-link-color: #ccc;
+        --ilcc-link-color-hover: #fff;
+        --ilcc-banner-spacing: 1.4rem 0;
+        --ilcc-close-button: #474d50;
+        --ilcc-close-button-hover: #666;
+        --ilcc-close-button-text: white;
+        --ilcc-close-button-hover-text: white;
+        --ilcc-button-radius: 4px;
+    }
+
+If you would like to add your own style in addition to the two offered, you can override the style setting with the `ilcc_style` filter. This would let you style outside the two core positions.
+
 ### Changing the text and/or the button label.
-To change the text in the consent banner and/or the button label, there are two filters: ilcc_consent_text and ilcc_accept_text.
+You can change the the two lines of text and the button label from the customizer under the "Cookie Banner" section. Alternatively you can use a set of filters to return values before rendering.
+
+Modiyfing the title: `ilcc_consent_title`
+Modiyfing the text info: `ilcc_consent_text`
+Modiyfing the accept button label: `ilcc_accept_text`
 
 Just set their value somewhere in your code, such as in the functions.php file of your theme:
 
@@ -61,10 +82,21 @@ Just set their value somewhere in your code, such as in the functions.php file o
 
 `ilcc_policy_url` - Allows you to modify the Policy URL. Has the url from the options as argument.
 
+`ilcc_style` - Allows you to set your own style name.
+
+`ilcc_edit_text_capability` - Allows you to modify which capability is required for editing the cookie banner text (below the title) in the customizer. Defaults to `edit_theme_options`.
+
+`ilcc_edit_title_capability` - Allows you to modify which capability is required for editing the cookie banner title in the customizer. Defaults to `edit_theme_options`.
+
+`ilcc_edit_button_capability` - Allows you to modify which capability is required for editing the cookie banner button label in the customizer. Defaults to `edit_theme_options`.
+
 `ilcc_edit_policy_url_capability` - Allows you to modify which capability is required for editing the policy URL in the customizer. Defaults to `edit_theme_options`.
+
+`ilcc_edit_style_capability` - Allows you to modify which capability is required for editing the cookie banner style in the customizer. Defaults to `edit_theme_options`.
 
 `ilcc_load_stylesheets` - (bool) Set if you want the stylesheets to be loaded or not. Defaults to true.
 
+`ilcc_enable_customizer` - Return false to disable all the customizer settings, if you'd like to prevent any user from changing any of the settings.
 
 ## Translations
 Included in the package are translations for the following languages:
@@ -89,12 +121,15 @@ However, in some locales, the work with the Translate site is not up to speed. W
 
 **Version 1.2.0**
 
-In this release we've made some code improvements as well as improvements to class names
+In this major release we've made many code improvements as well as improvements to class names
 and the JavaScript that powers most of the features. You will also have better and more
-access to filters and actions for customization.
+access to filters and actions for customization. Also, new customizer settings and a new core style
+gives you quicker access to control the appearance of the banner.
 
-- Improvement: Better class names for the consent box.
 - Improvement: Switched to setting the policy URL in the customizer instead of under Settings > Reading.
+- Improvement: Added customizer settings for all texts as well.
+- Improvement: Added a second core style "Overlay", offering the option of showing the banner overlaid at the bottom instead of at the top.
+- Improvement: Better class names for the consent box.
 - Improvement: Re-structured the JavaScript code.
 - Improvement: Ensure we get languages from all possible storage folders in WordPress.
 - Improvement: Added filter to disable stylesheet loading.
@@ -105,7 +140,7 @@ access to filters and actions for customization.
 - Improvement: Modified consent text filter to include the policy URL as a variable.
 - Improvement: Added filter for when getting the policy URL.
 - Improvement: Switched from an `<a>` tag for the acceptance button, to a more proper `button`.
-- Improvement: Added filter to edit the capbility required for editing the Policy URL in the customizer. Defaults to `edit_theme_options`.
+- Improvement: Added filters for controlling who may edit the settings in the customizer.
 - Bug: Fixed a bug where the consent block could add to the DOM multiple times.
 
 **Version 1.1.4**
@@ -187,7 +222,7 @@ It's time we switch this plugin over to above 1.0 releases.
 - First plugin version.
 
 ## Authors
-This plugin was created by Erik Bernskiold at Bernskiold Media [http://www.bernskioldmedia.com].
+This plugin was created by Bernskiold Media [http://www.bernskioldmedia.com].
 
 ## License
 This plugin is licensed under GPL. Feel free to use it in personal and commercial projects as you wish.
