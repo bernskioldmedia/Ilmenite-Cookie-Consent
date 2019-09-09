@@ -414,7 +414,7 @@ class Ilmenite_Cookie_Consent {
 	/**
 	 * Get the name of the cookie.
 	 *
-	 * @return void
+	 * @return string
 	 */
 	public function get_cookie_name() {
 		return apply_filters( 'ilcc_cookie_name', 'EUConsentCookie' );
