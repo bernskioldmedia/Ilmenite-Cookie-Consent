@@ -145,6 +145,11 @@ Just set their value somewhere in your code, such as in the functions.php file o
 
 == Changelog ==
 
+= Version 2.0.1 =
+Svn is svn. Contains nothing new apart from fixing the release archive.
+If you managed to update to 2.0.0 in the few minute window before this was
+addressed, 2.0.1 takes care of things for you. If not, enjoy the 2.0.0 update.
+
 = Version 2.0.0 =
 
 In this major release we've made many code improvements as well as improvements to class names

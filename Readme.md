@@ -119,7 +119,12 @@ However, in some locales, the work with the Translate site is not up to speed. W
 
 ## Changelog
 
-**Version 1.2.0**
+**Version 2.0.1**
+Svn is svn. Contains nothing new apart from fixing the release archive.
+If you managed to update to 2.0.0 in the few minute window before this was
+addressed, 2.0.1 takes care of things for you. If not, enjoy the 2.0.0 update.
+
+**Version 2.0.0**
 
 In this major release we've made many code improvements as well as improvements to class names
 and the JavaScript that powers most of the features. You will also have better and more
