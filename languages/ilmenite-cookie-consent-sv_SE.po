@@ -3,44 +3,116 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Ilmenite Cookie Consent 0.0.1\n"
-"Report-Msgid-Bugs-To: https://github.com/bernskioldmedia/Ilmenite-Cookie-"
-"Consent/issues\n"
-"POT-Creation-Date: 2015-07-21 19:36:25+00:00\n"
-"PO-Revision-Date: 2015-06-02 16:09+0100\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ilcc\n"
+"POT-Creation-Date: 2019-09-09 15:05:03+00:00\n"
+"PO-Revision-Date: 2019-09-09 17:16+0200\n"
 "Last-Translator: Erik Bernskiold <erik@bernskioldmedia.com>\n"
 "Language-Team: Bernskiold Media <info@bernskioldmedia.com>\n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 2.2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ilmenite-cookie-consent.php:118
-msgid ""
-"<span>This website uses cookies to enhance the browsing experience. </"
-"span>By continuing you give us permission to deploy cookies as per our <a "
-"href=\"%s\" rel=\"nofollow\">privacy and cookies policy</a>."
-msgstr ""
-"<span>Denna webbplats använder cookies för att förbättra surfupplevelsen. </"
-"span>Genom att fortsätta ger du oss tillåtelse att lagra cookies enligt vår "
-"<a href=\"%s\" rel=\"nofollow\">policy</a>."
+#: ilmenite-cookie-consent.php:234
+msgid "Cookie Banner"
+msgstr "Cookiebanner"
 
-#: ilmenite-cookie-consent.php:119
+#: ilmenite-cookie-consent.php:235
+msgid ""
+"Customize the appearance and texts in the cookie banner, used for EU cookie "
+"compliance."
+msgstr ""
+"Anpassa utseendet och texterna i cookie-bannern, som används för att möta "
+"lagkraven på information om cookies."
+
+#: ilmenite-cookie-consent.php:243 ilmenite-cookie-consent.php:347
+msgid "This website uses cookies to enhance the browsing experience"
+msgstr "Denna webbplats använder cookies för att förbättra surfupplevelsen."
+
+#: ilmenite-cookie-consent.php:249
+msgid "Title"
+msgstr "Titel"
+
+#: ilmenite-cookie-consent.php:250
+msgid "Keep the title short. It is styled prominently."
+msgstr "Håll titeln kort. Den visas tydligt."
+
+#: ilmenite-cookie-consent.php:260
+msgid ""
+"By continuing you give us permission to deploy cookies as per our %linkstart"
+"%privacy and cookies policy%linkend%."
+msgstr ""
+"Genom att fortsätta ger du oss tillåtelse att lagra cookies enligt vår "
+"%linkstart%policy%linkend%."
+
+#: ilmenite-cookie-consent.php:266
+msgid "Text"
+msgstr "Text"
+
+#: ilmenite-cookie-consent.php:267
+msgid ""
+"A secondary line of info about your cookie usage. Remember to link to the "
+"policy by using the %linkstart% and %linkend% placeholders."
+msgstr ""
+"En sekundär rad med information om hur webbplatsen använder cookies. Kom "
+"ihåg att länka till cookie-policyn med hjälp av platshållarna %linkstart% "
+"och %linkend%."
+
+#: ilmenite-cookie-consent.php:283
+msgid "Cookie Policy Link"
+msgstr "Länk till Cookie-policy"
+
+#: ilmenite-cookie-consent.php:284
+msgid ""
+"Enter a link to your privacy and cookie policy where you outline the use of "
+"cookies."
+msgstr ""
+"Ange en länk till din cookie-policy där du beskriver hur cookies används på "
+"webbplatsen."
+
+#: ilmenite-cookie-consent.php:294 ilmenite-cookie-consent.php:402
 msgid "I Understand"
 msgstr "Jag förstår"
 
-#: ilmenite-cookie-consent.php:153
-msgid "Privacy and Cookie Policy URL"
-msgstr "Länk till Cookie-policy"
+#: ilmenite-cookie-consent.php:300
+msgid "Button Text"
+msgstr "Knapptext"
 
-#: ilmenite-cookie-consent.php:160
+#: ilmenite-cookie-consent.php:301
 msgid ""
-"Enter a link to your privacy and cookie policy where you outline the use of "
-"cookies. This link will be used in the cookie consent banner."
+"Displays the message on the action button that closes the consent banner and "
+"assumes consent."
 msgstr ""
-"Ange en länk till din cookie-policy där du beskriver hur cookies används på "
-"webbplatsen. Länken används i cookie-bannern."
+"Visar meddelandet på knappen som stänger bannern och antar ett medgivande "
+"från besökaren."
+
+#: ilmenite-cookie-consent.php:317
+msgid "Style"
+msgstr "Utseende"
+
+#: ilmenite-cookie-consent.php:318
+msgid ""
+"The banner can appear both at the top, or overlaid at the bottom of the page."
+msgstr "Bannern kan visas både längst upp, eller överlagd längst ner på sidan."
+
+#: ilmenite-cookie-consent.php:324
+msgid "Top"
+msgstr "Topp"
+
+#: ilmenite-cookie-consent.php:325
+msgid "Overlay"
+msgstr "Överlagd"
+
+#. translators: 1. Policy URL
+#: ilmenite-cookie-consent.php:366
+msgid ""
+"By continuing you give us permission to deploy cookies as per our <a href="
+"\"%s\" rel=\"nofollow\">privacy and cookies policy</a>."
+msgstr ""
+"Genom att fortsätta ger du oss tillåtelse att lagra cookies enligt vår <a "
+"href=\"%s\" rel=\"nofollow\">integritets- och cookiepolicy</a>."
 
 #. Plugin Name of the plugin/theme
 msgid "Ilmenite Cookie Consent"
