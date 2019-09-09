@@ -467,9 +467,9 @@ class Ilmenite_Cookie_Consent {
  *
  * @return Ilmenite_Cookie_Consent
  */
-function IlmeniteCookieConsent() {
+function ilmenite_cookie_consent() {
 	return Ilmenite_Cookie_Consent::instance();
 }
 
 // Initialize the class instance only once
-IlmeniteCookieConsent();
+ilmenite_cookie_consent();
