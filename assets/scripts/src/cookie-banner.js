@@ -50,7 +50,7 @@ let Ilmenite_Cookie_Consent = function($, ilcc) {
 		createBanner: function() {
 
 			// Set the contents.
-			const consentBlock = '<div class="ilcc-cookie-consent-notice js--ilcc-cookie-consent-notice" id="cookie-consent-block"><p>' + ilcc.cookieConsentText + '<button class="ilcc-cookie-consent-close js--ilcc-cookie-consent-close close-cookie-block">' + ilcc.acceptText + '</button></p></div>';
+			const consentBlock = '<div class="ilcc-cookie-consent-notice js--ilcc-cookie-consent-notice" id="cookie-consent-block"><p><span>' + ilcc.cookieConsentTitle + '</span>' + ilcc.cookieConsentText + '<button class="ilcc-cookie-consent-close js--ilcc-cookie-consent-close close-cookie-block">' + ilcc.acceptText + '</button></p></div>';
 
 			// Get body tag
 			const $body = $('body');
