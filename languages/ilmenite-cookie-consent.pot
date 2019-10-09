@@ -2,9 +2,10 @@
 # This file is distributed under the same license as the Ilmenite Cookie Consent package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ilmenite Cookie Consent 1.2.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ilcc\n"
-"POT-Creation-Date: 2019-09-09 15:05:03+00:00\n"
+"Project-Id-Version: Ilmenite Cookie Consent 2.0.1\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/Ilmenite-Cookie-Consent\n"
+"POT-Creation-Date: 2019-10-09 07:16:53+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"

@@ -1,20 +1,22 @@
 /**
  * Cookie Banner Stylesheet
  */
+:root {
+	--ilcc-background-color: #282b2d;
+	--ilcc-text-color: #ccc;
+	--ilcc-link-color: #ccc;
+	--ilcc-link-color-hover: #fff;
+	--ilcc-banner-spacing: 1.4rem 0;
+	--ilcc-close-button: #474d50;
+	--ilcc-close-button-hover: #666;
+	--ilcc-close-button-text: white;
+	--ilcc-close-button-hover-text: white;
+	--ilcc-button-radius: 4px;
+}
+
 body {
 
-	&.has-ilcc-banner {
-		--ilcc-background-color: #282b2d;
-		--ilcc-text-color: #ccc;
-		--ilcc-link-color: #ccc;
-		--ilcc-link-color-hover: #fff;
-		--ilcc-banner-spacing: 1.4rem 0;
-		--ilcc-close-button: #474d50;
-		--ilcc-close-button-hover: #666;
-		--ilcc-close-button-text: white;
-		--ilcc-close-button-hover-text: white;
-		--ilcc-button-radius: 4px;
-	}
+	&.has-ilcc-banner {}
 
 	&.has-ilcc-consented {
 	}
@@ -46,6 +48,8 @@ body {
 	line-height: 1;
 	font-size: 0.75rem;
 	text-transform: uppercase;
+	border: 0;
+	outline: none;
 
 	&:hover,
 	&:focus {
@@ -183,7 +187,7 @@ body.ilcc-style-overlay {
 		margin-top: 1rem;
 
 		@media screen and (min-width: 768px) {
-			margin-top: 1rem;
+			margin-top: 0;
 			margin-left: 1rem;
 		}
 	}
