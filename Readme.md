@@ -119,6 +119,13 @@ However, in some locales, the work with the Translate site is not up to speed. W
 
 ## Changelog
 
+**Version 2.0.2**
+Fixed a small issue where our build script wasn't processing fallbacks for the new CSS variables correctly.
+This could lead to the default style not loading properly in older browsers (such as IE 11). This update fixes
+this behavior.
+
+As a result, the variables are now defined on :root {}.
+
 **Version 2.0.1**
 Svn is svn. Contains nothing new apart from fixing the release archive.
 If you managed to update to 2.0.0 in the few minute window before this was
