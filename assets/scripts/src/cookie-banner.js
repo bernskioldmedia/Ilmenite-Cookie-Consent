@@ -127,7 +127,7 @@ const Ilmenite_Cookie_Consent = function( $, ilcc ) {
 	 * the cookie terms (ie. we have no cookie), then we
 	 * create the banner.
 	 */
-	$( window ).load( function() {
+	$( window ).on("load", function() {
 		if ( module.getCookieValue( module.settings.cookieName ) != module.settings.cookieActiveValue ) {
 			module.createBanner();
 		}
