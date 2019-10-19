@@ -145,6 +145,9 @@ Just set their value somewhere in your code, such as in the functions.php file o
 
 == Changelog ==
 
+= Version 2.0.3 =
+Fixed compatibility issues with jQuery 3. Thanks Viktor.
+
 = Version 2.0.2 =
 Fixed a small issue where our build script wasn't processing fallbacks for the new CSS variables correctly.
 
