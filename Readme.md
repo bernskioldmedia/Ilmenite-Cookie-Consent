@@ -51,14 +51,14 @@ Just set their value somewhere in your code, such as in the functions.php file o
         return $text;
     }
 
-    apply_filters( 'ilcc_consent_text', 'ilcc_modify_consent_text' );
+    add_filter( 'ilcc_consent_text', 'ilcc_modify_consent_text' );
 
     function ilcc_modify_accept_text( $text ) {
         $text = __( 'I Accept', 'YOURTEXTDOMAIN' );
         return $text;
     }
 
-    apply_filters( 'ilcc_accept_text', 'ilcc_modify_accept_text' );
+    add_filter( 'ilcc_accept_text', 'ilcc_modify_accept_text' );
 
 ### List of Actions
 
