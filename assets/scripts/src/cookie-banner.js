@@ -34,7 +34,7 @@ const Ilmenite_Cookie_Consent = function( $, ilcc ) {
 
 				// Set the consent duration into a cookie date string
 				var date = new Date();
-				date.setTime( date.getTime() + ( module.settings.consentDuration * 24 * 60 * 60 * 1000 ) );
+				date.setTime( date.getTime() + ( module.settings.consentRememberDuration * 24 * 60 * 60 * 1000 ) );
 
 				// Set the actual cookie
 				document.cookie = module.settings.cookieName + "=" + module.settings.cookieActiveValue + "; expires=" + date.toGMTString() + "; path=/";
