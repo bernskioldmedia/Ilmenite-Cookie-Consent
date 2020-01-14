@@ -119,6 +119,12 @@ However, in some locales, the work with the Translate site is not up to speed. W
 
 ## Changelog
 
+**Version 2.0.5**
+
+When no policy URL is set in the customer, the default integrity policy URL from the WordPress settings will be loaded.
+
+For those translating via WPML and Polylang, we have added a configuration file that makes the strings you add in the customizer translatable.
+
 **Version 2.0.4**
 
 Fixed a bug where the consent duration wasn't set properly, resulting in us asking the user to consent way more often. The plugin will now (correctly) remember the consent for 30 days, unless the user clears their cookies.
