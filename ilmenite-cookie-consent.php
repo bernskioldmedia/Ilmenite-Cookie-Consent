@@ -334,7 +334,12 @@ class Ilmenite_Cookie_Consent {
 	 * @return string
 	 */
 	public function get_policy_url() {
-		return apply_filters( 'ilcc_policy_url', get_option( 'ilcc_policy_url', '#' ) );
+		$wp_policy_url_page_id = get_option( 'wp_page_for_privacy_policy');
+		$default_url = '#';
+		if( $wp_policy_url_page_id ){
+			$default_url = get_permalink( $wp_policy_url_page_id );
+		}
+		return apply_filters( 'ilcc_policy_url', get_option( 'ilcc_policy_url', $default_url ) );
 	}
 
 	/**
