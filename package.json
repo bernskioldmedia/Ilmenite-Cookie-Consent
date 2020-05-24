@@ -2,7 +2,7 @@
   "name": "ilmenite-cookie-consent",
   "version": "2.0.5",
   "description": "A simple developer-friendly WordPress plugin to let your visitors know that your site uses cookies.",
-  "main": "assets/scripts/src/cookie-banner.js",
+  "main": "assets/scripts/src/index.js",
   "scripts": {
     "test": "phpunit",
     "release": "npm install && composer install --no-dev -o && npm run build",
@@ -15,7 +15,7 @@
     "lint:styles": "cross-env stylelint './assets/styles/src/**/*.scss' --syntax scss",
     "lint:scripts": "cross-env eslint './assets/scripts/src/**/*.js'",
     "lint:php": "composer run lint",
-    "format": "npm run format-js",
+    "format": "npm run format:js",
     "format:js": "eslint --fix assets/scripts/src",
     "i18n": "npm run i18n:textdomain && npm run i18n:pot",
     "i18n:textdomain": "npx wpi18n addtextdomain --exclude=vendor,node_modules --type theme",
@@ -88,6 +88,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "postcss-css-variables": "^0.13.0"
+    "postcss-css-variables": "^0.13.0",
+    "yett": "^0.1.11"
   }
 }

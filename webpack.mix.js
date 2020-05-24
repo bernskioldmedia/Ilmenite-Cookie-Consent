@@ -62,9 +62,14 @@ if ( ! mix.inProduction() ) {
  * Internal JavaScript
  */
 mix.js(
-	`${assetPaths.scripts}/src/cookie-banner.js`,
+	`${assetPaths.scripts}/src/index.js`,
 	`${assetPaths.scripts}/dist/cookie-banner.js`
    );
+
+mix.copy(
+	`node_modules/yett/dist/yett.min.js`,
+	`${assetPaths.scripts}/dist/cookie-banner-vendor.js`
+);
 
 /*
  * Process the SCSS
