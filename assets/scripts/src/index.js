@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import { removeBanner, showBanner } from './banner';
+import { removeBanner, showBanner, toggleCategory, toggleSettings } from './banner';
 import { hasUserSetPreferences, setConsentedCategories, setHasSetPreferences } from './consent';
 import { getJsonCookieValue } from './cookies';
 import { log, logDebug, logInfo } from './log';
@@ -48,4 +48,20 @@ document.querySelector( '.js--ilcc-cookie-consent-necessary' ).addEventListener(
 	setConsentedCategories( [
 		'necessary',
 	] );
+} );
+
+document.querySelector( '.js--ilcc-cookie-consent-settings-toggle' ).addEventListener( 'click', function( e ) {
+	e.preventDefault();
+	toggleSettings();
+} );
+
+document.querySelector( '.js--ilcc-cookie-consent-settings-save-button' ).addEventListener( 'click', function( e ) {
+	e.preventDefault();
+	setHasSetPreferences();
+	removeBanner();
+} );
+
+jQuery( document.body ).on( 'click', '.js--ilcc-cookie-consent-toggle', function( e ) {
+	e.preventDefault();
+	toggleCategory( this );
 } );

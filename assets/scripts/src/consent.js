@@ -31,10 +31,26 @@ export function setConsentedCategories( categories = [] ) {
 /**
  * Get the consented categories as object.
  *
- * @return {Object} Object of categories.
+ * @return {Array} Object of categories.
  */
 export function getConsentedCategories() {
 	return getJsonCookieValue( settings.consentedCategories );
+}
+
+/**
+ * Check if a user has consented to a category.
+ *
+ * @param {string} category
+ * @return {boolean} True if consented.
+ */
+export function hasConsentedTo( category ) {
+	const categories = getConsentedCategories();
+
+	if ( ! categories || categories.length <= 0 ) {
+		return false;
+	}
+
+	return categories.includes( category );
 }
 
 /**
@@ -45,3 +61,36 @@ export function getConsentedCategories() {
 export function hasUserSetPreferences() {
 	return '1' === getCookieValue( settings.setPreferencesCookieName );
 }
+
+export function addConsentedCategory( category ) {
+	let categories = getConsentedCategories();
+
+	if ( categories && categories.length > 0 ) {
+		if ( ! categories.includes( category ) ) {
+			categories.push( category );
+		}
+	} else {
+		categories = [ category ];
+	}
+
+	setConsentedCategories( categories );
+}
+
+export function removeConsentedCategory( category ) {
+	let categories = getConsentedCategories();
+
+	if ( ! categories || categories.length <= 0 ) {
+		return;
+	}
+
+	if ( ! categories.includes( category ) ) {
+		return;
+	}
+
+	categories = categories.filter( function( e ) {
+		return e !== category;
+	} );
+
+	setConsentedCategories( categories );
+}
+
