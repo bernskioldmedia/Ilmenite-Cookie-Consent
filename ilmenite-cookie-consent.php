@@ -367,8 +367,9 @@ class Ilmenite_Cookie_Consent {
 			'priority'    => 80,
 			'type'        => 'radio',
 			'choices'     => [
-				'top'     => __( 'Top', 'ilmenite-cookie-consent' ),
-				'overlay' => __( 'Overlay', 'ilmenite-cookie-consent' ),
+				'top'      => __( 'Top', 'ilmenite-cookie-consent' ),
+				'overlay'  => __( 'Overlay', 'ilmenite-cookie-consent' ),
+				'takeover' => __( 'Take Over', 'ilmenite-cookie-consent' ),
 			],
 		] ) );
 
