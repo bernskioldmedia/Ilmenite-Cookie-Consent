@@ -8,7 +8,7 @@
   "require-dev": {
     "phpunit/phpunit": "^8.2",
     "10up/wp_mock": "dev-master",
-    "bernskioldmedia/phpcs-wordpress": "*"
+    "bernskioldmedia/phpcs-wordpress": "dev-master"
   },
   "license": "GPL-3.0+",
   "authors": [
