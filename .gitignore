@@ -6,6 +6,13 @@
 # repos, however here it is just bloat in such a small project.
 node_modules/**/*
 
+# Ignore Vendor
+vendor/**/*
+
+# Ignore Dist Directories for Scripts and Styles
+assets/scripts/dist
+assets/styles/dist
+
 # Ignore .svn directories
 .svn*
 
