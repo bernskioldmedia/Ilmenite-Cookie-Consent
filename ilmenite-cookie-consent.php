@@ -91,6 +91,9 @@ class Ilmenite_Cookie_Consent {
 		// Set the plugin URL.
 		$this->plugin_url = untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) );
 
+		// Load classes.
+		$this->classes();
+
 		// Hooks to run on plugin init.
 		$this->init_hooks();
 
@@ -128,6 +131,14 @@ class Ilmenite_Cookie_Consent {
 	}
 
 	/**
+	 * Load Classes
+	 */
+	public function classes() {
+		require_once 'classes/class-consent.php';
+		require_once 'classes/class-trackers.php';
+	}
+
+	/**
 	 * Load translations in the right order.
 	 */
 	public function load_languages() {
@@ -154,7 +165,7 @@ class Ilmenite_Cookie_Consent {
 		 * Don't load anything if the user has
 		 * already consented to cookies.
 		 */
-		if ( $this->has_user_consented() ) {
+		if ( ILCC_Consent::has_full_consent() ) {
 			return;
 		}
 
@@ -163,7 +174,9 @@ class Ilmenite_Cookie_Consent {
 		 */
 		wp_enqueue_script( 'jquery' );
 
-		wp_register_script( 'ilmenite-cookie-consent', $this->plugin_url . '/assets/scripts/dist/cookie-banner.js', [ 'jquery' ], $this->version, true );
+		wp_register_script( 'ilmenite-cookie-consent', $this->plugin_url . '/assets/scripts/dist/cookie-banner.js', [ 'jquery', 'ilcc-vendor' ], $this->version, true );
+
+		wp_register_script( 'ilcc-vendor', $this->plugin_url . '/assets/scripts/dist/cookie-banner-vendor.js', [], $this->version, false );
 
 		/**
 		 * We localize the script to add our texts.
@@ -171,15 +184,47 @@ class Ilmenite_Cookie_Consent {
 		 * that get the texts below.
 		 */
 		wp_localize_script( 'ilmenite-cookie-consent', 'ilcc', [
-			'cookieConsentTitle' => $this->get_consent_title(),
-			'cookieConsentText'  => $this->get_consent_text(),
-			'acceptText'         => $this->get_accept_text(),
-			'style'              => $this->get_style(),
+			'cookieConsentTitle'            => $this->get_consent_title(),
+			'cookieConsentText'             => $this->get_consent_text(),
+			'acceptText'                    => $this->get_accept_text(),
+			'style'                         => $this->get_style(),
+			'necessaryText'                 => $this->get_only_necessary_text(),
+			'rememberDuration'              => self::get_remember_me_duration(),
+			'preferencesCookieName'         => self::get_preferences_cookie_name(),
+			'consentedCategoriesCookieName' => self::get_categories_cookie_name(),
 		] );
 
-		// Finally, enqueue!
-		wp_enqueue_script( 'ilmenite-cookie-consent' );
+		/**
+		 * Add the whitelist and blacklist.
+		 */
+		wp_add_inline_script( 'ilcc-vendor', $this->get_black_and_whitelist(), 'before' );
 
+		// Finally, enqueue!
+		wp_enqueue_script( 'ilcc-vendor' );
+
+		// Show banner only if no consent has been set.
+		if ( ! ILCC_Consent::has_set_preferences() ) {
+			wp_enqueue_script( 'ilmenite-cookie-consent' );
+		}
+
+	}
+
+	/**
+	 * Get the black- and whitelist HTML.
+	 *
+	 * @return string
+	 */
+	public function get_black_and_whitelist() {
+		$output = "<script>";
+		$output .= "window.YETT_BLACKLIST = [" . esc_js( ILCC_Trackers::get_blacklist_for_js() ) . "];\n";
+
+		if ( ! empty( ILCC_Trackers::get_whitelist_for_js() ) ) {
+			$output .= 'window.YETT_WHITELIST = [' . esc_js( ILCC_Trackers::get_whitelist_for_js() ) . '];';
+		}
+
+		$output .= '</script>';
+
+		return $output;
 	}
 
 	/**
@@ -191,7 +236,7 @@ class Ilmenite_Cookie_Consent {
 		 * Don't load anything if the user has
 		 * already consented to cookies.
 		 */
-		if ( $this->has_user_consented() ) {
+		if ( ILCC_Consent::has_set_preferences() ) {
 			return;
 		}
 
@@ -216,7 +261,7 @@ class Ilmenite_Cookie_Consent {
 	/**
 	 * Add settings in the customer.
 	 *
-	 * @param WP_Customize_Manager $wp_customize
+	 * @param  WP_Customize_Manager  $wp_customize
 	 *
 	 * @return void
 	 */
@@ -264,7 +309,8 @@ class Ilmenite_Cookie_Consent {
 
 		$wp_customize->add_control( new \WP_Customize_Control( $wp_customize, 'ilcc_text', [
 			'label'       => __( 'Text', 'ilmenite-cookie-consent' ),
-			'description' => __( 'A secondary line of info about your cookie usage. Remember to link to the policy by using the %linkstart% and %linkend% placeholders.', 'ilmenite-cookie-consent' ),
+			'description' => __( 'A secondary line of info about your cookie usage. Remember to link to the policy by using the %linkstart% and %linkend% placeholders.',
+				'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_text',
 			'section'     => 'ilmenite_cookie_banner',
 			'priority'    => 80,
@@ -334,11 +380,12 @@ class Ilmenite_Cookie_Consent {
 	 * @return string
 	 */
 	public function get_policy_url() {
-		$wp_policy_url_page_id = get_option( 'wp_page_for_privacy_policy');
-		$default_url = '#';
-		if( $wp_policy_url_page_id ){
+		$wp_policy_url_page_id = get_option( 'wp_page_for_privacy_policy' );
+		$default_url           = '#';
+		if ( $wp_policy_url_page_id ) {
 			$default_url = get_permalink( $wp_policy_url_page_id );
 		}
+
 		return apply_filters( 'ilcc_policy_url', get_option( 'ilcc_policy_url', $default_url ) );
 	}
 
@@ -368,7 +415,8 @@ class Ilmenite_Cookie_Consent {
 		$policy_url = $this->get_policy_url();
 
 		/* translators: 1. Policy URL */
-		$text = sprintf( __( 'By continuing you give us permission to deploy cookies as per our <a href="%s" rel="nofollow">privacy and cookies policy</a>.', 'ilmenite-cookie-consent' ), $policy_url );
+		$text = sprintf( __( 'By continuing you give us permission to deploy cookies as per our <a href="%s" rel="nofollow">privacy and cookies policy</a>.',
+			'ilmenite-cookie-consent' ), $policy_url );
 
 		if ( get_option( 'ilcc_text' ) ) {
 
@@ -404,13 +452,28 @@ class Ilmenite_Cookie_Consent {
 	 * @return string
 	 */
 	public function get_accept_text() {
-		$accept = __( 'I Understand', 'ilmenite-cookie-consent' );
+		$accept = __( 'Accept All', 'ilmenite-cookie-consent' );
 
 		if ( get_option( 'ilcc_button' ) ) {
 			$accept = get_option( 'ilcc_button' );
 		}
 
 		return apply_filters( 'ilcc_accept_text', $accept );
+	}
+
+	/**
+	 * Get the text for the accept button.
+	 *
+	 * @return string
+	 */
+	public function get_only_necessary_text() {
+		$accept = __( 'Only Necessary', 'ilmenite-cookie-consent' );
+
+		if ( get_option( 'ilcc_only_necessary_text' ) ) {
+			$accept = get_option( 'ilcc_only_necessary_text' );
+		}
+
+		return apply_filters( 'ilcc_only_necessary_text', $accept );
 	}
 
 	/**
@@ -433,52 +496,68 @@ class Ilmenite_Cookie_Consent {
 	 *
 	 * @return string
 	 */
-	public function get_cookie_name() {
-		return apply_filters( 'ilcc_cookie_name', 'EUConsentCookie' );
+	public static function get_preferences_cookie_name() {
+		return apply_filters( 'ilcc_preferences_cookie_name', 'ilcc_has_preferences' );
 	}
 
 	/**
-	 * Check if the user has consented
-	 * to cookies or not.
+	 * Get Categories Cookie Name
 	 *
-	 * @return boolean
+	 * @return string
 	 */
-	public function has_user_consented() {
+	public static function get_categories_cookie_name() {
+		return apply_filters( 'ilcc_categories_cookie_name', 'ilcc_consent_categories' );
+	}
 
-		// Default to false.
-		$has_consented = false;
-
-		// Get the cookie name.
-		$cookie_name = $this->get_cookie_name();
-
-		// Get which value is considered consented.
-		$active_value = apply_filters( 'ilcc_cookie_active_value', '1' );
-
-		if ( isset( $_COOKIE[ $cookie_name ] ) && $active_value === $_COOKIE[ $cookie_name ] ) {
-			$has_consented = true;
-		}
-
-		return apply_filters( 'ilcc_has_user_consented', $has_consented, $cookie_name, $active_value );
-
+	/**
+	 * Get how many days the user should be remembered.
+	 *
+	 * @return int
+	 */
+	public static function get_remember_me_duration() {
+		return apply_filters( 'ilcc_remember_duration', 90 );
 	}
 
 	/**
 	 * Add body classes
 	 *
-	 * @param array $classes
+	 * @param  array  $classes
 	 *
 	 * @return array
 	 */
 	public function banner_body_class( $classes ) {
 
-		if ( $this->has_user_consented() ) {
+		if ( ILCC_Consent::has_set_preferences() ) {
 			$classes[] = 'has-ilcc-consented';
 		} else {
 			$classes[] = 'has-ilcc-banner';
 			$classes[] = 'ilcc-style-' . $this->get_style();
 		}
 
+		if ( $this->is_debugging() ) {
+			$classes[] = 'ilcc-is-debugging';
+		}
+
 		return $classes;
+	}
+
+	/**
+	 * Check if we are debugging or not.
+	 *
+	 * @return bool
+	 */
+	public function is_debugging() {
+
+		if ( defined( 'ILCC_DEBUG' ) ) {
+			return ILCC_DEBUG;
+		}
+
+		if ( defined( 'WP_DEBUG' ) ) {
+			return WP_DEBUG;
+		}
+
+		return false;
+
 	}
 
 }
