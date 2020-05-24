@@ -53,13 +53,13 @@ export function toggleSettings() {
 function renderSettings() {
 	return `
 		<div class="ilcc-cookie-consent-settings js--ilcc-cookie-consent-settings">
-		<p class="ilcc-cookie-consent-settings-title">Select Cookies</p>
-		<p class="ilcc-cookie-consent-settings-intro">Cookies are s small text files that the web server stores on your computer when you visit the website.</p>
+		<p class="ilcc-cookie-consent-settings-title">${ ilcc.settingsTitle }</p>
+		<p class="ilcc-cookie-consent-settings-intro">${ ilcc.settingsDescription }</p>
 		<div class="ilcc-cookie-consent-categories">
 			<a href="#" class="ilcc-cookie-consent-category ilcc-toggle-disabled" data-category="necessary">
 				<span class="ilcc-cookie-consent-category-info">
-					<strong>Necessary</strong>
-					<p>These cookies cannot be disabled. They are requires for the website to work.</p>
+					<strong>${ ilcc.necessaryHeading }</strong>
+					<p>${ ilcc.necessaryDescription }</p>
 				</span>
 				<span class="ilcc-cookie-consent-category-toggle">
 				${ renderToggle() }
@@ -67,8 +67,8 @@ function renderSettings() {
 			</a>
 			<a href="#" class="ilcc-cookie-consent-category js--ilcc-cookie-consent-toggle ${ renderActiveSelector( 'analytics' ) }" data-category="analytics">
 				<span class="ilcc-cookie-consent-category-info">
-					<strong>Analytics</strong>
-					<p>To be able to improve the website including information and functionality we want to gather analytics. We are not able to identify you personally using this data.</p>
+					<strong>${ ilcc.analyticsHeading }</strong>
+					<p>${ ilcc.analyticsDescription }</p>
 				</span>
 				<span class="ilcc-cookie-consent-category-toggle">
 				${ renderToggle() }
@@ -76,8 +76,8 @@ function renderSettings() {
 			</a>
 			<a href="#" class="ilcc-cookie-consent-category js--ilcc-cookie-consent-toggle ${ renderActiveSelector( 'marketing' ) }" data-category="marketing">
 				<span class="ilcc-cookie-consent-category-info">
-					<strong>Marketing</strong>
-					<p>By sharing your browsing behavior on our website we are able to serve you with personalized content and offers.</p>
+					<strong>${ ilcc.marketingHeading }</strong>
+					<p>${ ilcc.marketingDescription }</p>
 				</span>
 				<span class="ilcc-cookie-consent-category-toggle">
 				${ renderToggle() }
@@ -85,7 +85,7 @@ function renderSettings() {
 			</a>
 		</div>
 		<div class="ilcc-cookie-consent-settings-save">
-			<button class="ilcc-cookie-consent-button js--ilcc-cookie-consent-settings-save-button">Save Settings</button>
+			<button class="ilcc-cookie-consent-button js--ilcc-cookie-consent-settings-save-button">${ ilcc.saveSettingsText }</button>
 		</div>
 </div>
 	`;
