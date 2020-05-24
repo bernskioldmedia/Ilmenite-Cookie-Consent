@@ -129,7 +129,7 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_style() {
-		$style = 'top';
+		$style = 'overlay';
 
 		if ( get_option( 'ilcc_style' ) ) {
 			$style = get_option( 'ilcc_style' );
@@ -295,7 +295,7 @@ class ILCC_Settings {
 		 * Style
 		 */
 		$wp_customize->add_setting( 'ilcc_style', [
-			'default'    => 'top',
+			'default'    => 'overlay',
 			'type'       => 'option',
 			'capability' => apply_filters( 'ilcc_edit_style_capability', 'edit_theme_options' ),
 		] );
