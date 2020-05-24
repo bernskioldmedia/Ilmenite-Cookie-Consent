@@ -1,0 +1,24 @@
+{
+  "name": "bernskioldmedia/ilmenite-cookie-consent",
+  "description": "A simple developer-friendly WordPress plugin to let your visitors know that your site uses cookies.",
+  "type": "wordpress-plugin",
+  "require": {
+    "php": ">=7.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.2",
+    "10up/wp_mock": "dev-master",
+    "bernskioldmedia/phpcs-wordpress": "*"
+  },
+  "license": "GPL-3.0+",
+  "authors": [
+    {
+      "name": "Bernskiold Media",
+      "email": "info@bernskioldmedia.com"
+    }
+  ],
+  "scripts": {
+    "lint": "phpcs .",
+    "lint-fix": "phpcbf ."
+  }
+}

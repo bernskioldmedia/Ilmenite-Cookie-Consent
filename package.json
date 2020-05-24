@@ -4,17 +4,27 @@
   "description": "A simple developer-friendly WordPress plugin to let your visitors know that your site uses cookies.",
   "main": "assets/scripts/src/cookie-banner.js",
   "scripts": {
+    "test": "phpunit",
+    "release": "npm install && composer install --no-dev -o && npm run build",
+    "setup": "composer install && npm install && npm run build",
     "build": "npm run prod && npm run i18n",
     "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "lint": "npm run lint:scripts && npm run lint:php",
-    "lint:scripts": "cross-env eslint './assets/scripts/src/**/*.js'",
+    "watch": "npm run dev -- --watch",
+    "prod": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "lint": "npm run lint:styles && npm run lint:scripts && npm run lint:php",
     "lint:styles": "cross-env stylelint './assets/styles/src/**/*.scss' --syntax scss",
-    "lint:php": "cross-env ./vendor/bin/phpcs .",
+    "lint:scripts": "cross-env eslint './assets/scripts/src/**/*.js'",
+    "lint:php": "composer run lint",
+    "format": "npm run format-js",
+    "format:js": "eslint --fix assets/scripts/src",
     "i18n": "npm run i18n:textdomain && npm run i18n:pot",
     "i18n:textdomain": "npx wpi18n addtextdomain --exclude=vendor,node_modules --type theme",
-    "i18n:pot": "npx wpi18n makepot --domain-path ./languages/"
+    "i18n:pot": "npx wpi18n makepot  --domain-path ./languages/"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "repository": {
     "type": "git",
@@ -27,22 +37,54 @@
     "cookie compliance",
     "wordpress plugin"
   ],
-  "author": "Bernskiold Media",
+  "author": {
+    "name": "Bernskiold Media",
+    "email": "info@bernskioldmedia.com",
+    "url": "https://bernskioldmedia.com",
+    "role": "developer"
+  },
   "license": "GPL-2.0+",
   "bugs": {
     "url": "https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/issues"
   },
   "homepage": "https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent#Readme",
+  "lint-staged": {
+    "*.css": [
+      "stylelint"
+    ],
+    "*.js": [
+      "eslint"
+    ]
+  },
   "devDependencies": {
-    "cross-env": "^5.2.0",
-    "eslint": "^6.0.1",
-    "eslint-config-wordpress": "^2.0.0",
-    "laravel-mix": "^2.1.0",
-    "node-wp-i18n": "^1.2.0",
-    "postcss-preset-env": "^6.6.0",
-    "rimraf": "^2.7.1",
-    "stylelint": "^10.1.0",
-    "stylelint-config-wordpress": "^14.0.0"
+    "@wordpress/eslint-plugin": "^2.4",
+    "cross-env": "^6.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1",
+    "eslint-config-airbnb-base": "^14.1",
+    "eslint-config-prettier": "^6.10",
+    "eslint-loader": "^3.0",
+    "eslint-plugin-import": "^2.20",
+    "eslint-plugin-jsdoc": "^22.1",
+    "eslint-plugin-jsx-a11y": "^6.2",
+    "eslint-plugin-prettier": "^3.1",
+    "eslint-plugin-react": "^7.19",
+    "eslint-plugin-react-hooks": "^2.5",
+    "husky": "^3.1",
+    "lint-staged": "^9.5.0",
+    "laravel-mix": "^5.0",
+    "node-wp-i18n": "^1.2",
+    "postcss-custom-properties": "^9.1",
+    "postcss-preset-env": "^6.7",
+    "sass": "^1.26",
+    "sass-loader": "^8.0",
+    "prettier": "^2.0",
+    "stylelint": "^9.10",
+    "stylelint-config-wordpress": "^14.0",
+    "stylelint-declaration-use-variable": "^1.7",
+    "stylelint-order": "^2.2",
+    "stylelint-webpack-plugin": "^1.1",
+    "vue-template-compiler": "^2.6"
   },
   "dependencies": {
     "classnames": "^2.2.6",

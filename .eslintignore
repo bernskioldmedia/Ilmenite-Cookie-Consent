@@ -1,1 +1,2 @@
-assets/scripts/dist/**/*.js
+assets/scripts/dist
+webpack.mix.js

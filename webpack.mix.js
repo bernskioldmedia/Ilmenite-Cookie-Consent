@@ -10,7 +10,8 @@
  * @author  Bernskiold Media <info@bernskioldmedia.com>
  **/
 
-const { mix }           = require( 'laravel-mix' );
+const mix = require( "laravel-mix" );
+
 
 /**************************************************************
  * Build Process
@@ -20,65 +21,87 @@ const { mix }           = require( 'laravel-mix' );
  *************************************************************/
 
 /*
- * Set Laravel Mix options.
+ * Asset Directory Path
+ */
+const assetPaths = {
+	scripts: "assets/scripts",
+	styles: "assets/styles",
+	images: "assets/images",
+	fonts: "assets/fonts"
+};
+
+/*
+ * Default Options for CSS Processing
  *
- * @link https://laravel.com/docs/5.6/mix#postcss
- * @link https://laravel.com/docs/5.6/mix#url-processing
+ * @link https://laravel-mix.com/docs/5.0/css-preprocessors
  */
 mix.options( {
+	processCssUrls: false,
 	postCss: [
-		require( 'postcss-preset-env' )()
-	],
-	processCssUrls: false
+		require( "postcss-preset-env" )( {
+			stage: 3,
+			browsers: [
+				"> 1%",
+				"last 2 versions"
+			]
+		} )
+	]
 } );
 
 /*
  * Builds sources maps for assets.
+ * if we are not in production.
  *
  * @link https://laravel.com/docs/5.6/mix#css-source-maps
  */
-mix.sourceMaps();
+if ( ! mix.inProduction() ) {
+	mix.sourceMaps();
+}
 
-/*
- * Process JavaScript
+/**
+ * Internal JavaScript
  */
-mix.js( `assets/scripts/src/cookie-banner.js`, `assets/scripts/dist` );
+mix.js(
+	`${assetPaths.scripts}/src/cookie-banner.js`,
+	`${assetPaths.scripts}/dist/cookie-banner.js`
+   );
 
 /*
  * Process the SCSS
  *
- * @link https://laravel.com/docs/5.6/mix#working-with-stylesheets
- * @link https://laravel.com/docs/5.6/mix#sass
- * @link https://github.com/sass/node-sass#options
+ * @link https://laravel-mix.com/docs/5.0/css-preprocessors
+ * @link https://github.com/sass/dart-sass#javascript-api
  */
 const sassConfig = {
-	outputStyle: 'compressed',
-	indentType: 'tab',
-	indentWidth: 1
+	sassOptions: {
+		outputStyle: "compressed"
+	}
 };
 
 // Process the scss files.
-mix.sass( 'assets/styles/src/cookie-banner.scss', `assets/styles/dist`, sassConfig );
-
-
-/**
- * Process SCSS
- */
+mix.sass(
+	`${assetPaths.styles}/src/cookie-banner.scss`,
+	`${assetPaths.styles}/dist`,
+	sassConfig
+   );
 
 /*
  * Custom Webpack Config
  *
- * @link https://laravel.com/docs/5.8/mix#custom-webpack-configuration
+ * @link https://laravel.com/docs/6.x/mix#custom-webpack-configuration
  * @link https://webpack.js.org/configuration/
  */
 mix.webpackConfig( {
+	mode: mix.inProduction() ? "production":"development",
+	devtool: mix.inProduction() ? "":"cheap-source-map",
 	stats: "minimal",
-	devtool: mix.inProduction() ? false : "source-map",
 	performance: {
 		hints: false
 	},
 	externals: {
-		"jquery": "jQuery",
+		jquery: "jQuery"
 	},
-	plugins: []
+	watchOptions: {
+		ignored: /node_modules/
+	}
 } );
