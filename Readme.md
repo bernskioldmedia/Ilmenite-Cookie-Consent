@@ -23,16 +23,19 @@ Just define the following filter somewhere in your code, such as the theme funct
 Additionally, for quick theming to your theme's custom colors, we support a series of CSS variables set on `body.has-ilcc-banner` like so:
 
     body.has-ilcc-banner {
-        --ilcc-background-color: #282b2d;
-        --ilcc-text-color: #ccc;
-        --ilcc-link-color: #ccc;
-        --ilcc-link-color-hover: #fff;
-        --ilcc-banner-spacing: 1.4rem 0;
-        --ilcc-close-button: #474d50;
-        --ilcc-close-button-hover: #666;
-        --ilcc-close-button-text: white;
-        --ilcc-close-button-hover-text: white;
-        --ilcc-button-radius: 4px;
+        --ilcc-background-color: #ffffff;
+		--ilcc-text-color: #1e1e1e;
+		--ilcc-link-color: #1e1e1e;
+		--ilcc-link-color-hover: #555555;
+		--ilcc-close-button: black;
+		--ilcc-close-button-hover: #444444;
+		--ilcc-close-button-text: white;
+		--ilcc-close-button-hover-text: white;
+		--ilcc-settings-background-color: #f9f9f9;
+		--ilcc-settings-border: #eeeeee;
+		--ilcc-toggle-background-color: #e6e6e6;
+		--ilcc-toggle-handle-background-color: #b3b3b3;
+		--ilcc-radius: 4px;
     }
 
 If you would like to add your own style in addition to the two offered, you can override the style setting with the `ilcc_style` filter. This would let you style outside the two core positions.
@@ -118,6 +121,15 @@ A complete *.pot* file is available in the *translations/* directory. If you use
 However, in some locales, the work with the Translate site is not up to speed. We will continue to support bundled translations because of this.
 
 ## Changelog
+
+**Version 3.0.0**
+Major update with potentially breaking changes.
+
+We are now finally respecting not to set any tracking cookies unless the user has actually accepted all cookies. We keep a running list of trackers that we disable automatically. From analytics to marketing. You can modify the list of trackers via filters in the code.
+
+To support this, the plugin has been extended quite a bit. There are numerous new strings, filters and options.
+
+We have also added a new style, "take over", if you'd prefer to force the user to make a choice before allowing them into your website. The "overlay" style has now been made the default one for new installs.
 
 **Version 2.0.5**
 
