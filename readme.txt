@@ -2,7 +2,7 @@
 Contributors: Erik Bernskiold, annlickander, bernskioldmedia
 Tags: cookies, cookie notice, eu cookie law, cookie compliance, cookie banner, cookie consent
 Requires at least: 4.0
-Tested up to: 5.3
+Tested up to: 5.4
 Requires PHP: 7.0
 Stable tag: trunk
 License: GPLv2 or later
