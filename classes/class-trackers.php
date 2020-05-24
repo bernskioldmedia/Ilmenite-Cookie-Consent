@@ -5,6 +5,12 @@
  */
 class ILCC_Trackers {
 
+	/**
+	 * Any external URLs that load scripts may be whitelisted
+	 * when put in the necessary section.
+	 *
+	 * @var array
+	 */
 	protected static $necessary = [];
 
 	/**
@@ -13,9 +19,14 @@ class ILCC_Trackers {
 	 * @var array
 	 */
 	protected static $marketing = [
-		// Facebook Pixel
-		// Google Ads
-		// LinkedIn Pixel
+		'facebook.com',
+		'connect.facebook.net',
+		'doubleclick.net',
+		'hs-scripts.com',
+		'linkedin.com',
+		'licdn.com',
+		'bing.com',
+		'googleadservices.com',
 	];
 
 	/**
@@ -26,7 +37,7 @@ class ILCC_Trackers {
 	protected static $analytics = [
 		'google-analytics.com',
 		'googletagmanager.com',
-		// Hotjar
+		'hotjar.com',
 	];
 
 	public static function get_necessary() {
