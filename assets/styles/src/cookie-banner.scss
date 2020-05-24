@@ -10,7 +10,10 @@
 	--ilcc-close-button-hover: #444444;
 	--ilcc-close-button-text: white;
 	--ilcc-close-button-hover-text: white;
-
+	--ilcc-settings-background-color: #f9f9f9;
+	--ilcc-settings-border: #eeeeee;
+	--ilcc-toggle-background-color: #e6e6e6;
+	--ilcc-toggle-handle-background-color: #b3b3b3;
 }
 
 body {
@@ -24,6 +27,8 @@ body {
 
 .ilcc-cookie-consent-notice {
 	z-index: 99999;
+	overflow-y: scroll;
+	max-height: 85vh;
 	padding: 1.4rem 0;
 	color: var(--ilcc-text-color);
 	background: var(--ilcc-background-color);
@@ -40,7 +45,7 @@ body {
 
 .ilcc-cookie-consent-notice-content {
 	display: flex;
-	align-items: stretch;
+	align-items: center;
 	flex-flow: column;
 	justify-content: space-between;
 	max-width: 68.5rem;
@@ -164,8 +169,8 @@ body {
 	margin-top: 2rem;
 	padding-top: 1.5rem;
 	padding-bottom: 1.5rem;
-	border-top: 1px solid #eeeeee;
-	background-color: #f9f9f9;
+	border-top: 1px solid var(--ilcc-settings-border);
+	background-color: var(--ilcc-settings-background-color);
 }
 
 .ilcc-cookie-consent-settings-title {
@@ -174,11 +179,13 @@ body {
 	margin: 0 0 0.5rem 0;
 	padding-right: 2rem;
 	padding-left: 2rem;
+	color: var(--ilcc-text-color);
 }
 
 .ilcc-cookie-consent-settings-intro {
 	padding-right: 2rem;
 	padding-left: 2rem;
+	color: var(--ilcc-text-color);
 }
 
 .ilcc-cookie-consent-categories {
@@ -193,7 +200,7 @@ body {
 	padding: 1rem 2rem;
 	text-decoration: none !important;
 	color: var(--ilcc-text-color);
-	border-top: 1px solid #e9e9e9;
+	border-top: 1px solid var(--ilcc-settings-border);
 
 	&:hover,
 	&:focus {
@@ -211,12 +218,14 @@ body {
 
 	strong {
 		margin-bottom: 0.25rem;
+		color: var(--ilcc-text-color);
 	}
 
 	p {
 		font-size: 0.9rem;
 		margin: 0;
 		opacity: 0.85;
+		color: var(--ilcc-text-color);
 	}
 }
 
@@ -230,7 +239,7 @@ body {
 	width: 3.5rem;
 	height: 1.7rem;
 	border-radius: 1.5rem;
-	background-color: #e6e6e6;
+	background-color: var(--ilcc-toggle-background-color);
 
 	.ilcc-toggle-active & {
 		background-color: rgba(106, 183, 133, .2);
@@ -250,7 +259,7 @@ body {
 	height: 1.5rem;
 	transition: left .25s ease-in-out 0s;
 	border-radius: 1.5rem;
-	background-color: #b3b3b3;
+	background-color: var(--ilcc-toggle-handle-background-color);
 	backface-visibility: hidden;
 
 	.ilcc-toggle-active & {
@@ -283,6 +292,10 @@ body.ilcc-style-top {
 	--ilcc-close-button-hover: #ffffff;
 	--ilcc-close-button-text: #222222;
 	--ilcc-close-button-hover-text: #000000;
+	--ilcc-settings-background-color: #1d1f21;
+	--ilcc-settings-border: #2e3234;
+	--ilcc-toggle-background-color: #e6e6e6;
+	--ilcc-toggle-handle-background-color: #b3b3b3;
 
 	.ilcc-cookie-consent-notice {
 		position: absolute;
@@ -302,8 +315,14 @@ body.ilcc-style-top {
 	}
 
 	.ilcc-cookie-consent-notice-content {
+		max-width: none;
 		padding-right: 1rem;
 		padding-left: 1rem;
+
+		@media screen and (min-width: 1024px) {
+			padding-right: 2rem;
+			padding-left: 2rem;
+		}
 	}
 
 	&.admin-bar .ilcc-cookie-consent-notice {
@@ -312,6 +331,10 @@ body.ilcc-style-top {
 		@media screen and (max-width: 782px) {
 			top: 46px;
 		}
+	}
+
+	.ilcc-cookie-consent-settings {
+		margin-bottom: -1.5rem;
 	}
 
 
@@ -326,10 +349,8 @@ body.ilcc-style-overlay {
 		position: fixed;
 		bottom: 2rem;
 		left: 50%;
-		overflow: scroll;
 		width: 90%;
 		max-width: 62.5rem;
-		max-height: 85vh;
 		padding: 1rem 1.5rem;
 		transform: translateX(-50%);
 		border-radius: 4px;
@@ -370,10 +391,8 @@ body.ilcc-style-takeover {
 		position: fixed;
 		top: 50%;
 		left: 50%;
-		overflow: scroll;
 		width: 90%;
 		max-width: 45rem;
-		max-height: 85vh;
 		padding: 2rem;
 		transform: translate(-50%, -50%);
 		border-radius: 4px;
