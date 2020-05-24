@@ -1,11 +1,11 @@
-# Ilmenite Cookie Consent
-A simple, developer-friendly WordPress plugin that lets visitors know that the site is using cookies.
+# 🍪 Ilmenite Cookie Consent
+A simple, developer-friendly WordPress plugin that informs users about cookie usage on the site, and lets them both opt in and select their preferences.
 
-There are many WordPress plugins out there which does a lot of fancy things with the cookie consent. We didn't find one we really liked that was really lightweight and developer friendly and so we created our own.
+There are many WordPress plugins and services out there that do fancy things with cookie consents. We didn't find one we really liked that was both really lightweight and developer friendly. So we created our own.
 
-It isn't meant for the masses who want tons of configurable options in the admin (although it will work and look fine out of the box). Many use this plugin with the default styling because it is so light-weight and good-looking.
+This plugin isn't meant for the masses who want tons of configurable options in the admin (although it will work and look fine out of the box). Many use this plugin with the default styling because it is light-weight and good-looking. While you can modify texts and choose between three positions in the admin, any more advanced styling requires CSS.
 
-For the developer who wants the functionality and being able to conveniently override the styles in the theme without bloat—here's a plugin for you. You have filters and actions available to you at every step of the process.
+For the developer who wants the functionality and being able to conveniently override the styles and features without bloat—here's a plugin for you. You have filters and actions available to you at every step of the process. From locking down the editing of texts, to changing every option.
 
 ## Configuration
 The plugin works out of the box with minimal settings. However here are a few things you will probably want to be aware about.
@@ -13,8 +13,10 @@ The plugin works out of the box with minimal settings. However here are a few th
 ### Set the policy link
 You can set the URL to the cookie policy page in the customizer under the "Cookie Banner" section, or use the filter `ilcc_policy_url` to return your own link.
 
+By default we will get the privacy policy page from `Settings > Privacy`.
+
 ### Changing/disabling the styling
-Out of the box, the plugin includes a lightweight stylesheet with two placement options (top & overlay). If you don't want to use our default coloring, you can easily prevent us from including the styles.
+Out of the box, the plugin includes a lightweight stylesheet with three placement options (overlay, top and takeover). If you don't want to use our default style, you can easily prevent us from including the styles and style it yourself.
 
 Just define the following filter somewhere in your code, such as the theme functions.php file:
 
@@ -38,14 +40,10 @@ Additionally, for quick theming to your theme's custom colors, we support a seri
 		--ilcc-radius: 4px;
     }
 
-If you would like to add your own style in addition to the two offered, you can override the style setting with the `ilcc_style` filter. This would let you style outside the two core positions.
+If you would like to add your own style in addition to the three offered, you can override the style setting with the `ilcc_style` filter. This would let you style outside the three core positions.
 
-### Changing the text and/or the button label.
-You can change the the two lines of text and the button label from the customizer under the "Cookie Banner" section. Alternatively you can use a set of filters to return values before rendering.
-
-Modiyfing the title: `ilcc_consent_title`
-Modiyfing the text info: `ilcc_consent_text`
-Modiyfing the accept button label: `ilcc_accept_text`
+### Changing the texts
+You can change all texts from the Customizer under the "Cookie Banner" section. Alternatively, you can use our extensive set of filters to return values before rendering. See the list of filters below.
 
 Just set their value somewhere in your code, such as in the functions.php file of your theme:
 
@@ -73,12 +71,6 @@ Just set their value somewhere in your code, such as in the functions.php file o
 
 ### List of Filters
 
-`ilcc_has_user_consented` - Specifiy if the user has accepted or not. True or false value. Has arguments $cookie_name and $cookie_value.
-
-`ilcc_cookie_active_value` - Set which value is "active" for the cookie, ie. consented. Defaults to 1.
-
-`ilcc_cookie_name` - Set the name of the cookie. Defaults to 'EUConsentCookie'.
-
 `ilcc_accept_text` - Set the accept button text.
 
 `ilcc_consent_text` - Set the consent text. Has $policy_url as argument.
@@ -87,19 +79,19 @@ Just set their value somewhere in your code, such as in the functions.php file o
 
 `ilcc_style` - Allows you to set your own style name.
 
-`ilcc_edit_text_capability` - Allows you to modify which capability is required for editing the cookie banner text (below the title) in the customizer. Defaults to `edit_theme_options`.
-
-`ilcc_edit_title_capability` - Allows you to modify which capability is required for editing the cookie banner title in the customizer. Defaults to `edit_theme_options`.
-
-`ilcc_edit_button_capability` - Allows you to modify which capability is required for editing the cookie banner button label in the customizer. Defaults to `edit_theme_options`.
-
-`ilcc_edit_policy_url_capability` - Allows you to modify which capability is required for editing the policy URL in the customizer. Defaults to `edit_theme_options`.
+`ilcc_edit_texts_capability` - Allows you to modify which capability is required for editing the texts in the cookie banner customizer option. Takes the current setting as the first argument.
 
 `ilcc_edit_style_capability` - Allows you to modify which capability is required for editing the cookie banner style in the customizer. Defaults to `edit_theme_options`.
 
 `ilcc_load_stylesheets` - (bool) Set if you want the stylesheets to be loaded or not. Defaults to true.
 
 `ilcc_enable_customizer` - Return false to disable all the customizer settings, if you'd like to prevent any user from changing any of the settings.
+
+`ilcc_preferences_cookie_name` - The name of the cookie that stores if a visitor has set their cookie preferences.
+
+`ilcc_categories_cookie_name` - The name of the cookie that stores the categories the visitor has opted in to.
+
+`ilcc_remember_duration` - How many days to remember the consent for. Defaults to 90.
 
 ## Translations
 Included in the package are translations for the following languages:
@@ -130,6 +122,13 @@ We are now finally respecting not to set any tracking cookies unless the user ha
 To support this, the plugin has been extended quite a bit. There are numerous new strings, filters and options.
 
 We have also added a new style, "take over", if you'd prefer to force the user to make a choice before allowing them into your website. The "overlay" style has now been made the default one for new installs.
+
+- Added the `ilcc_preferences_cookie_name` filter to replace the now removed `ilcc_cookie_name` filter.
+- Addded the `ilcc_categories_cookie_name` filter.
+- Addded the `ilcc_remember_duration` filter.
+- Removed the `ilcc_has_user_consented` filter.
+- Removed the `ilcc_cookie_active_value` filter.
+- Replaced `ilcc_edit_text_capability`, `ilcc_edit_title_capability`, `ilcc_edit_button_capability` and `ilcc_edit_policy_url_capability` with a simpler `ilcc_edit_texts_capability` that takes the setting as an argument.
 
 **Version 2.0.5**
 
