@@ -40,18 +40,38 @@ class ILCC_Trackers {
 		'hotjar.com',
 	];
 
+	/**
+	 * Get Necessary trackers.
+	 *
+	 * @return array
+	 */
 	public static function get_necessary() {
-		return self::$necessary;
+		return apply_filters( 'ilcc_necessary_trackers', self::$necessary );
 	}
 
+	/**
+	 * Get Marketing Trackers
+	 *
+	 * @return array
+	 */
 	public static function get_marketing() {
-		return self::$marketing;
+		return apply_filters( 'ilcc_marketing_trackers', self::$marketing );
 	}
 
+	/**
+	 * Get analytics trackers.
+	 *
+	 * @return array
+	 */
 	public static function get_analytics() {
-		return self::$analytics;
+		return apply_filters( 'ilcc_analytics_trackers', self::$analytics );
 	}
 
+	/**
+	 * Get all trackers.
+	 *
+	 * @return array
+	 */
 	public static function get_all() {
 		return array_merge( self::get_marketing(), self::get_analytics() );
 	}
