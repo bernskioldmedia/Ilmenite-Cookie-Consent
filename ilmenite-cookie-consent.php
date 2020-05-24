@@ -416,7 +416,7 @@ class Ilmenite_Cookie_Consent {
 		$policy_url = $this->get_policy_url();
 
 		/* translators: 1. Policy URL */
-		$text = sprintf( __( 'By continuing you give us permission to deploy cookies as per our <a href="%s" rel="nofollow">privacy and cookies policy</a>.',
+		$text = sprintf( __( 'We use cookies to personalize content and ads, provide social media features and analyze our traffic.  <a href="%s" rel="nofollow">Privacy and cookies policy ›</a>.',
 			'ilmenite-cookie-consent' ), $policy_url );
 
 		if ( get_option( 'ilcc_text' ) ) {
@@ -453,7 +453,7 @@ class Ilmenite_Cookie_Consent {
 	 * @return string
 	 */
 	public function get_accept_text() {
-		$accept = __( 'Accept All', 'ilmenite-cookie-consent' );
+		$accept = __( 'Allow All Cookies', 'ilmenite-cookie-consent' );
 
 		if ( get_option( 'ilcc_button' ) ) {
 			$accept = get_option( 'ilcc_button' );
