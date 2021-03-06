@@ -397,7 +397,7 @@ class ILCC_Settings {
 		 * Settings Description
 		 */
 		$wp_customize->add_setting( 'ilcc_settings_description', [
-			'default'    => __( 'Cookies are s small text files that the web server stores on your computer when you visit the website.', 'ilmenite-cookie-consent' ),
+			'default'    => __( 'Cookies are small text files that the web server stores on your computer when you visit the website.', 'ilmenite-cookie-consent' ),
 			'type'       => 'option',
 			'capability' => apply_filters( 'ilcc_edit_button_capability', 'edit_theme_options' ),
 		] );
