@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Ilmenite Cookie Consent 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ilmenite-cookie-"
 "consent\n"
-"POT-Creation-Date: 2021-03-06 14:25:56+00:00\n"
-"PO-Revision-Date: 2021-03-06 15:30+0100\n"
+"POT-Creation-Date: 2021-03-06 14:35:51+00:00\n"
+"PO-Revision-Date: 2021-03-06 15:37+0100\n"
 "Last-Translator: Erik Bernskiold <erik@bernskioldmedia.com>\n"
 "Language-Team: Bernskiold Media <info@bernskioldmedia.com>\n"
 "Language: sv_SE\n"
@@ -16,20 +16,20 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: classes/class-settings.php:35 classes/class-settings.php:277
-msgid "This website uses cookies to enhance the browsing experience"
-msgstr "Denna webbplats använder cookies för att förbättra surfupplevelsen."
+#: classes/class-settings.php:35
+msgid "This website uses cookies"
+msgstr "Denna webbplats använder cookies"
 
 #. translators: 1. Policy URL
 #: classes/class-settings.php:50
 msgid ""
-"We use cookies to personalize content and ads, provide social media features "
-"and analyze our traffic.  <a href=\"%s\" rel=\"nofollow\">Privacy and "
-"cookies policy ›</a>."
+"We use cookies to analyze our traffic, personalize marketing and to provide "
+"social media features. <a href=\"%s\" rel=\"nofollow\">Privacy and cookies "
+"policy ›</a>."
 msgstr ""
-"Vi använder cookies för att anpassa innehåll och annonser, tillhandahålla "
-"sociala mediefunktioner och analysera vår trafik. <a href=\"%s\" rel="
-"\"nofollow\">Integritets- och cookiespolicy ›</a>."
+"Vi använder cookies för att analysera trafik, anpassa marknadsföring och för "
+"sociala mediefunktioner. <a href=\"%s\" rel=\"nofollow\">Integritets- och "
+"cookiepolicy ›</a>."
 
 #: classes/class-settings.php:84 classes/class-settings.php:331
 msgid "Allow All Cookies"
@@ -130,6 +130,10 @@ msgid ""
 msgstr ""
 "Anpassa utseendet och texterna i cookie-bannern, som används för att möta "
 "lagkraven på information om cookies."
+
+#: classes/class-settings.php:277
+msgid "This website uses cookies to enhance the browsing experience"
+msgstr "Denna webbplats använder cookies för att förbättra surfupplevelsen."
 
 #: classes/class-settings.php:283
 msgid "Title"
