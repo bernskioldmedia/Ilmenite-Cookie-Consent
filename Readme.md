@@ -119,15 +119,18 @@ However, in some locales, the work with the Translate site is not up to speed. W
 **Version 3.0.0**
 Major update with potentially breaking changes.
 
-We are now finally respecting not to set any tracking cookies unless the user has actually accepted all cookies. We keep a running list of trackers that we disable automatically. From analytics to marketing. You can modify the list of trackers via filters in the code.
+We are now finally respecting not to set any tracking cookies unless the user has actually accepted all cookies. We keep a running list of trackers that we disable automatically. From analytics to marketing. You can modify the list of trackers via filters in the code or the settings screen.
+
+As a developer, you can disable the settings screens via filters.
 
 To support this, the plugin has been extended quite a bit. There are numerous new strings, filters and options.
 
 We have also added a new style, "take over", if you'd prefer to force the user to make a choice before allowing them into your website. The "overlay" style has now been made the default one for new installs.
 
 - Added the `ilcc_preferences_cookie_name` filter to replace the now removed `ilcc_cookie_name` filter.
-- Addded the `ilcc_categories_cookie_name` filter.
-- Addded the `ilcc_remember_duration` filter.
+- Added the `ilcc_categories_cookie_name` filter.
+- Added the `ilcc_remember_duration` filter.
+- Added the `ilcc_tracker_settings_enabled` filter.
 - Removed the `ilcc_has_user_consented` filter.
 - Removed the `ilcc_cookie_active_value` filter.
 - Replaced `ilcc_edit_text_capability`, `ilcc_edit_title_capability`, `ilcc_edit_button_capability` and `ilcc_edit_policy_url_capability` with a simpler `ilcc_edit_texts_capability` that takes the setting as an argument.
