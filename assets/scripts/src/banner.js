@@ -38,6 +38,7 @@ export function removeBanner() {
 				.removeClass( 'has-ilcc-banner' )
 				.removeClass( 'ilcc-style-top' )
 				.removeClass( 'ilcc-style-overlay' )
+				.removeClass( 'ilcc-style-takeover' )
 				.addClass( 'has-ilcc-consented' );
 
 			// Remove the cookie banner from the DOM.
