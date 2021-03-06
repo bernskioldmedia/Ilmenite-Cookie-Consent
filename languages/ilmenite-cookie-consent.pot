@@ -1,104 +1,270 @@
-# Copyright (C) 2019 Bernskiold Media
+# Copyright (C) 2021 Bernskiold Media
 # This file is distributed under the same license as the Ilmenite Cookie Consent package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ilmenite Cookie Consent 2.0.1\n"
+"Project-Id-Version: Ilmenite Cookie Consent 2.0.5\n"
 "Report-Msgid-Bugs-To: "
-"https://wordpress.org/support/plugin/Ilmenite-Cookie-Consent\n"
-"POT-Creation-Date: 2019-10-09 07:16:53+00:00\n"
+"https://wordpress.org/support/plugin/ilmenite-cookie-consent\n"
+"POT-Creation-Date: 2021-03-06 10:38:42+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"X-Generator: node-wp-i18n 1.2.3\n"
+"X-Generator: node-wp-i18n 1.2.5\n"
 
-#: ilmenite-cookie-consent.php:234
-msgid "Cookie Banner"
-msgstr ""
-
-#: ilmenite-cookie-consent.php:235
-msgid ""
-"Customize the appearance and texts in the cookie banner, used for EU cookie "
-"compliance."
-msgstr ""
-
-#: ilmenite-cookie-consent.php:243 ilmenite-cookie-consent.php:347
+#: classes/class-settings.php:30 classes/class-settings.php:272
 msgid "This website uses cookies to enhance the browsing experience"
 msgstr ""
 
-#: ilmenite-cookie-consent.php:249
-msgid "Title"
-msgstr ""
-
-#: ilmenite-cookie-consent.php:250
-msgid "Keep the title short. It is styled prominently."
-msgstr ""
-
-#: ilmenite-cookie-consent.php:260
+#: classes/class-settings.php:45
+#. translators: 1. Policy URL
 msgid ""
-"By continuing you give us permission to deploy cookies as per our "
-"%linkstart%privacy and cookies policy%linkend%."
+"We use cookies to personalize content and ads, provide social media "
+"features and analyze our traffic.  <a href=\"%s\" rel=\"nofollow\">Privacy "
+"and cookies policy ›</a>."
 msgstr ""
 
-#: ilmenite-cookie-consent.php:266
-msgid "Text"
+#: classes/class-settings.php:79 classes/class-settings.php:325
+msgid "Allow All Cookies"
 msgstr ""
 
-#: ilmenite-cookie-consent.php:267
+#: classes/class-settings.php:90 classes/class-settings.php:342
+msgid "Only Necessary"
+msgstr ""
+
+#: classes/class-settings.php:101 classes/class-settings.php:360
+msgid "Configure Settings"
+msgstr ""
+
+#: classes/class-settings.php:123 classes/class-settings.php:411
+msgid "Necessary"
+msgstr ""
+
+#: classes/class-settings.php:135 classes/class-settings.php:428
+msgid "These cookies cannot be disabled. They are requires for the website to work."
+msgstr ""
+
+#: classes/class-settings.php:146 classes/class-settings.php:482
+msgid "Marketing"
+msgstr ""
+
+#: classes/class-settings.php:158 classes/class-settings.php:499
 msgid ""
-"A secondary line of info about your cookie usage. Remember to link to the "
-"policy by using the %linkstart% and %linkend% placeholders."
+"By sharing your browsing behavior on our website we are able to serve you "
+"with personalized content and offers."
 msgstr ""
 
-#: ilmenite-cookie-consent.php:283
-msgid "Cookie Policy Link"
+#: classes/class-settings.php:169 classes/class-settings.php:446
+msgid "Analytics"
 msgstr ""
 
-#: ilmenite-cookie-consent.php:284
+#: classes/class-settings.php:180 classes/class-settings.php:463
 msgid ""
-"Enter a link to your privacy and cookie policy where you outline the use of "
-"cookies."
+"To be able to improve the website including information and functionality "
+"we want to gather analytics. We are not able to identify you personally "
+"using this data."
 msgstr ""
 
-#: ilmenite-cookie-consent.php:294 ilmenite-cookie-consent.php:402
-msgid "I Understand"
+#: classes/class-settings.php:194 classes/class-settings.php:517
+msgid "Save Settings"
 msgstr ""
 
-#: ilmenite-cookie-consent.php:300
-msgid "Button Text"
+#: classes/class-settings.php:205 classes/class-settings.php:377
+msgid "Select Cookies"
 msgstr ""
 
-#: ilmenite-cookie-consent.php:301
+#: classes/class-settings.php:216
 msgid ""
-"Displays the message on the action button that closes the consent banner "
-"and assumes consent."
+"Cookies are small text files that the web server stores on your computer "
+"when you visit the website."
 msgstr ""
 
-#: ilmenite-cookie-consent.php:317
+#: classes/class-settings.php:249
 msgid "Style"
 msgstr ""
 
-#: ilmenite-cookie-consent.php:318
+#: classes/class-settings.php:250
 msgid ""
 "The banner can appear both at the top, or overlaid at the bottom of the "
 "page."
 msgstr ""
 
-#: ilmenite-cookie-consent.php:324
+#: classes/class-settings.php:256
 msgid "Top"
 msgstr ""
 
-#: ilmenite-cookie-consent.php:325
+#: classes/class-settings.php:257
 msgid "Overlay"
 msgstr ""
 
-#: ilmenite-cookie-consent.php:366
-#. translators: 1. Policy URL
+#: classes/class-settings.php:258
+msgid "Take Over"
+msgstr ""
+
+#: classes/class-settings.php:263
+msgid "Cookie Banner"
+msgstr ""
+
+#: classes/class-settings.php:264
 msgid ""
-"By continuing you give us permission to deploy cookies as per our <a "
-"href=\"%s\" rel=\"nofollow\">privacy and cookies policy</a>."
+"Customize the appearance and texts in the cookie banner, used for EU cookie "
+"compliance."
+msgstr ""
+
+#: classes/class-settings.php:278
+msgid "Title"
+msgstr ""
+
+#: classes/class-settings.php:279
+msgid "Keep the title short. It is styled prominently."
+msgstr ""
+
+#: classes/class-settings.php:289
+msgid ""
+"By continuing you give us permission to deploy cookies as per our "
+"%linkstart%privacy and cookies policy%linkend%."
+msgstr ""
+
+#: classes/class-settings.php:295
+msgid "Description"
+msgstr ""
+
+#: classes/class-settings.php:296
+msgid ""
+"A secondary line of info about your cookie usage. Remember to link to the "
+"policy by using the %linkstart% and %linkend% placeholders."
+msgstr ""
+
+#: classes/class-settings.php:314
+msgid "Cookie Policy Link"
+msgstr ""
+
+#: classes/class-settings.php:315
+msgid ""
+"Enter a link to your privacy and cookie policy where you outline the use of "
+"cookies."
+msgstr ""
+
+#: classes/class-settings.php:331
+msgid "Accept All Button Text"
+msgstr ""
+
+#: classes/class-settings.php:332
+msgid ""
+"Displays the message on the call to action button that adds consent for "
+"everything."
+msgstr ""
+
+#: classes/class-settings.php:348
+msgid "Only Necessary Cookies Button Text"
+msgstr ""
+
+#: classes/class-settings.php:349
+msgid ""
+"A secondary button that displays a call to action where the user can accept "
+"only the necessary cookies on the page. This essentially just closes the "
+"banner."
+msgstr ""
+
+#: classes/class-settings.php:366
+msgid "Configure Settings Button Text"
+msgstr ""
+
+#: classes/class-settings.php:367
+msgid ""
+"A small button/link that the user can click on to open more fine-grained "
+"settings."
+msgstr ""
+
+#: classes/class-settings.php:383
+msgid "Settings Title"
+msgstr ""
+
+#: classes/class-settings.php:384
+msgid "The title for the settings selection area."
+msgstr ""
+
+#: classes/class-settings.php:394
+msgid ""
+"Cookies are s small text files that the web server stores on your computer "
+"when you visit the website."
+msgstr ""
+
+#: classes/class-settings.php:400
+msgid "Settings Description"
+msgstr ""
+
+#: classes/class-settings.php:401
+msgid ""
+"A description to further let people know what cookies are for and why they "
+"can select different options."
+msgstr ""
+
+#: classes/class-settings.php:417
+msgid "Necessary Heading"
+msgstr ""
+
+#: classes/class-settings.php:418
+msgid "A title for the necessary cookie group."
+msgstr ""
+
+#: classes/class-settings.php:434
+msgid "Necessary Description"
+msgstr ""
+
+#: classes/class-settings.php:435
+msgid "Describes what the necessary cookies are used for."
+msgstr ""
+
+#: classes/class-settings.php:452
+msgid "Analytics Heading"
+msgstr ""
+
+#: classes/class-settings.php:453
+msgid "A title for the analytics cookie group."
+msgstr ""
+
+#: classes/class-settings.php:470
+msgid "Analytics Description"
+msgstr ""
+
+#: classes/class-settings.php:471
+msgid "Describes what the analytics cookies are used for."
+msgstr ""
+
+#: classes/class-settings.php:488
+msgid "Marketing Heading"
+msgstr ""
+
+#: classes/class-settings.php:489
+msgid "A title for the marketing cookie group."
+msgstr ""
+
+#: classes/class-settings.php:505
+msgid "Marketing Description"
+msgstr ""
+
+#: classes/class-settings.php:506
+msgid "Describes what the marketing cookies are used for."
+msgstr ""
+
+#: classes/class-settings.php:523
+msgid "Save Settings Button Text"
+msgstr ""
+
+#: classes/class-settings.php:524
+msgid "The label of the button that lets users save their settings."
+msgstr ""
+
+#: vendor/10up/wp_mock/tests/FunctionMocksTest.php:65
+msgid "Test"
+msgstr ""
+
+#: vendor/10up/wp_mock/tests/FunctionMocksTest.php:75
+#: vendor/10up/wp_mock/tests/FunctionMocksTest.php:77
+msgid "Input"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
