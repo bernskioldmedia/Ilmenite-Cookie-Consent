@@ -46,7 +46,13 @@ class ILCC_Trackers {
 	 * @return array
 	 */
 	public static function get_necessary() {
-		return apply_filters( 'ilcc_necessary_trackers', self::$necessary );
+		$option = get_option( 'ilcc_domains_necessary', self::$necessary );
+
+		if ( is_string( $option ) ) {
+			$option = explode( "\n", $option );
+		}
+
+		return apply_filters( 'ilcc_necessary_trackers', $option );
 	}
 
 	/**
@@ -55,7 +61,13 @@ class ILCC_Trackers {
 	 * @return array
 	 */
 	public static function get_marketing() {
-		return apply_filters( 'ilcc_marketing_trackers', self::$marketing );
+		$option = get_option( 'ilcc_domains_marketing', self::$marketing );
+
+		if ( is_string( $option ) ) {
+			$option = explode( "\n", $option );
+		}
+
+		return apply_filters( 'ilcc_marketing_trackers', $option );
 	}
 
 	/**
@@ -64,7 +76,13 @@ class ILCC_Trackers {
 	 * @return array
 	 */
 	public static function get_analytics() {
-		return apply_filters( 'ilcc_analytics_trackers', self::$analytics );
+		$option = get_option( 'ilcc_domains_analytics', self::$analytics );
+
+		if ( is_string( $option ) ) {
+			$option = explode( "\n", $option );
+		}
+
+		return apply_filters( 'ilcc_analytics_trackers', $option );
 	}
 
 	/**

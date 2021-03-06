@@ -4,6 +4,11 @@ class ILCC_Settings {
 
 	public static function hooks() {
 		add_action( 'customize_register', [ self::class, 'customizer' ] );
+
+		if ( true === apply_filters( 'ilcc_tracker_settings_enabled', true ) ) {
+			add_action( 'admin_init', [ self::class, 'integrity_settings' ] );
+			add_action( 'admin_menu', [ self::class, 'integrity_settings_page' ] );
+		}
 	}
 
 	/**
@@ -312,7 +317,8 @@ class ILCC_Settings {
 
 		$wp_customize->add_control( new \WP_Customize_Control( $wp_customize, 'ilcc_policy_url', [
 			'label'       => __( 'Cookie Policy Link', 'ilmenite-cookie-consent' ),
-			'description' => __( 'Enter a link to your privacy and cookie policy where you outline the use of cookies.', 'ilmenite-cookie-consent' ),
+			'description' => __( 'Enter a link to your privacy and cookie policy where you outline the use of cookies. If left blank, the privacy policy page from Settings > Privacy will be used.',
+				'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_policy_url',
 			'section'     => 'ilmenite_cookie_banner',
 			'priority'    => 80,
@@ -528,5 +534,104 @@ class ILCC_Settings {
 		] ) );
 
 	}
+
+	public static function integrity_settings() {
+
+		add_settings_section( 'ilcc_trackers_necessary', __( 'Necessary', 'ilmenite-cookie-consent' ), function () {
+			?>
+			<p class="section-lead"><?php esc_html_e( 'A user cannot opt out of allowing necessary cookies. These should be cookies that are crucial to the functionality of the site.',
+					'ilmenite-cookie-consent' ); ?></p>
+			<?php
+		}, 'ilcc-trackers' );
+
+		add_settings_field( 'ilcc_domains_necessary', __( 'Domains', 'ilmenite-cookie-consent' ), function () {
+			?>
+			<textarea name="ilcc_domains_necessary" id="ilcc_domains_necessary" style="width: 100%; max-width: 35rem;" rows="10"><?php echo esc_html( implode( "\n",
+					ILCC_Trackers::get_necessary() ) ); ?></textarea>
+			<p class="form-description"><?php esc_html_e( 'Enter one domain per line.', 'ilmenite-cookie-consent' ); ?></p>
+			<?php
+		}, 'ilcc-trackers', 'ilcc_trackers_necessary' );
+
+		add_settings_section( 'ilcc_trackers_analytics', __( 'Analytics', 'ilmenite-cookie-consent' ), function () {
+			?>
+			<p class="section-lead"><?php esc_html_e( 'Marketing cookies normally track the user behavior either to log in a CRM system or to serve personalized advertising. It is essential for privacy regulation compliance to separate these out and give users an informed choice.',
+					'ilmenite-cookie-consent' ); ?></p>
+			<?php
+		}, 'ilcc-trackers' );
+
+		add_settings_field( 'ilcc_domains_analytics', __( 'Domains', 'ilmenite-cookie-consent' ), function () {
+			?>
+			<textarea name="ilcc_domains_analytics" id="ilcc_domains_analytics" style="width: 100%; max-width: 35rem;" rows="10"><?php echo esc_html( implode( "\n",
+					ILCC_Trackers::get_analytics() ) ); ?></textarea>
+			<p class="form-description"><?php esc_html_e( 'Enter one domain per line.', 'ilmenite-cookie-consent' ); ?></p>
+			<?php
+		}, 'ilcc-trackers', 'ilcc_trackers_analytics' );
+
+		add_settings_section( 'ilcc_trackers_marketing', __( 'Marketing', 'ilmenite-cookie-consent' ), function () {
+			?>
+			<p class="section-lead"><?php esc_html_e( 'Marketing cookies normally track the user behavior either to log in a CRM system or to serve personalized advertising. It is essential for privacy regulation compliance to separate these out and give users an informed choice.',
+					'ilmenite-cookie-consent' ); ?></p>
+			<?php
+		}, 'ilcc-trackers' );
+
+		add_settings_field( 'ilcc_domains_marketing', __( 'Domains', 'ilmenite-cookie-consent' ), function () {
+			?>
+			<textarea name="ilcc_domains_marketing" id="ilcc_domains_marketing" style="width: 100%; max-width: 35rem;" rows="10"><?php echo esc_html( implode( "\n",
+					ILCC_Trackers::get_marketing() ) ); ?></textarea>
+			<p class="form-description">Enter one domain per line.</p>
+			<?php
+		}, 'ilcc-trackers', 'ilcc_trackers_marketing' );
+
+		register_setting( 'ilcc-trackers', 'ilcc_domains_necessary' );
+		register_setting( 'ilcc-trackers', 'ilcc_domains_analytics' );
+		register_setting( 'ilcc-trackers', 'ilcc_domains_marketing' );
+	}
+
+	public static function integrity_settings_page() {
+		add_options_page( __( 'Tracker Control', 'ilmenite-cookie-consent' ), __( 'Tracker Control', 'ilmenite-cookie-consent' ), 'manage_options', 'ilcc-trackers', function () {
+			?>
+			<div class="wrap">
+				<h1><?php esc_html_e( 'Tracker Control', 'ilmenite-cookie-consent' ); ?></h1>
+				<p class="lead"><?php esc_html_e( 'For privacy regulation compliance it is important to give the user an informed decision to be tracked and profiled. We do this by dividing any cookie setting domains into three categories.',
+						'ilmenite-cookie-consent' ); ?></p>
+				<p><?php esc_html_e( 'Adding domains to these disallow-lists will ensure that scripts aren\'t loading and sending data through before the user has consented.',
+						'ilmenite-cookie-consent' ); ?></p>
+				<form action='options.php' method='post'>
+					<?php
+					settings_fields( 'ilcc-trackers' );
+					do_settings_sections( 'ilcc-trackers' );
+					submit_button();
+					?>
+				</form>
+			</div>
+			<style>
+
+				p {
+					max-width: 45rem;
+				}
+
+				p.lead {
+					font-size: 1.1rem;
+					opacity: 0.8;
+					margin-top: 0;
+				}
+
+				h2 {
+					margin-bottom: 0.5em;
+				}
+
+				.section-lead {
+					margin-top: 0;
+				}
+
+				p.form-description {
+					font-style: italic;
+					font-size: 85%;
+				}
+			</style>
+			<?php
+		} );
+	}
+
 
 }

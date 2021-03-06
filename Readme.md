@@ -93,6 +93,8 @@ Just set their value somewhere in your code, such as in the functions.php file o
 
 `ilcc_remember_duration` - How many days to remember the consent for. Defaults to 90.
 
+`ilcc_tracker_settings_enabled` - Return false to disable the tracker customization settings screen.
+
 ## Translations
 Included in the package are translations for the following languages:
 
