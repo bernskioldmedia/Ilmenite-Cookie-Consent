@@ -103,7 +103,9 @@ class ILCC_Trackers {
 		$whitelist = [];
 
 		foreach ( self::get_necessary() as $domain ) {
-			$whitelist[] = '/' . addslashes( $domain ) . '/';
+			if ( ! empty( $domain ) ) {
+				$whitelist[] = '/' . addslashes( $domain ) . '/';
+			}
 		}
 
 		return implode( ',', $whitelist );
@@ -119,7 +121,9 @@ class ILCC_Trackers {
 		$blacklist = [];
 
 		foreach ( self::get_all() as $domain ) {
-			$blacklist[] = '/' . addslashes( $domain ) . '/';
+			if ( ! empty( $domain ) ) {
+				$blacklist[] = '/' . addslashes( $domain ) . '/';
+			}
 		}
 
 		return implode( ',', $blacklist );
