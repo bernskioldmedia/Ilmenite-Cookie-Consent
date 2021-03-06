@@ -18,7 +18,8 @@
 /package-lock.json    export-ignore
 /mix-manifest.json    export-ignore
 /webpack.mix.js       export-ignore
-/Readme.md            export-ignore
+/README.md            export-ignore
+/CHANGELOG.md		  export-ignore
 /.wordpress-org 	  export-ignore
 /.github 			  export-ignore
 
