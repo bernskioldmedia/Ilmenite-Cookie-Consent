@@ -32,7 +32,7 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_consent_title() {
-		$title = get_option( 'ilcc_title', __( 'This website uses cookies to enhance the browsing experience', 'ilmenite-cookie-consent' ) );
+		$title = get_option( 'ilcc_title', __( 'This website uses cookies', 'ilmenite-cookie-consent' ) );
 
 		return apply_filters( 'ilcc_consent_title', $title );
 	}
@@ -47,7 +47,7 @@ class ILCC_Settings {
 		$policy_url = self::get_policy_url();
 
 		/* translators: 1. Policy URL */
-		$default_text = sprintf( __( 'We use cookies to personalize content and ads, provide social media features and analyze our traffic.  <a href="%s" rel="nofollow">Privacy and cookies policy ›</a>.',
+		$default_text = sprintf( __( 'We use cookies to analyze our traffic, personalize marketing and to provide social media features. <a href="%s" rel="nofollow">Privacy and cookies policy ›</a>.',
 			'ilmenite-cookie-consent' ), $policy_url );
 
 		$text = get_option( 'ilcc_text', $default_text );
