@@ -1,9 +1,9 @@
 === Ilmenite Cookie Consent ===
 Contributors: Erik Bernskiold, annlickander, bernskioldmedia
-Tags: cookies, cookie notice, eu cookie law, cookie compliance, cookie banner, cookie consent
-Requires at least: 4.0
-Tested up to: 5.4
-Requires PHP: 7.0
+Tags: cookies, cookie notice, eu cookie law, cookie compliance, cookie banner, cookie consent, gdpr, privacy, tracker prevention, tracker
+Requires at least: 5.0
+Tested up to: 5.7
+Requires PHP: 7.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -137,6 +137,12 @@ Just set their value somewhere in your code, such as in the functions.php file o
 
 `ilcc_enable_customizer` - Return false to disable all the customizer settings, if you'd like to prevent any user from changing any of the settings.
 
+`ilcc_preferences_cookie_name` - The name of the cookie that stores if a visitor has set their cookie preferences.
+
+`ilcc_categories_cookie_name` - The name of the cookie that stores the categories the visitor has opted in to.
+
+`ilcc_tracker_settings_enabled` - Return false to disable the tracker customization settings screen.
+
 == Screenshots ==
 
 1. The "top" style design of the cookie consent box out of the box.
@@ -144,6 +150,25 @@ Just set their value somewhere in your code, such as in the functions.php file o
 3. Customizer controls are available for all texts and URL.
 
 == Changelog ==
+
+= Version 3.0.0 =
+Major update with potentially breaking changes.
+
+We are now finally respecting not to set any tracking cookies unless the user has actually accepted all cookies. We keep a running list of trackers that we disable automatically. From analytics to marketing. You can modify the list of trackers via filters in the code or the settings screen.
+
+As a developer, you can disable the settings screens via filters.
+
+To support this, the plugin has been extended quite a bit. There are numerous new strings, filters and options.
+
+We have also added a new style, "take over", if you'd prefer to force the user to make a choice before allowing them into your website. The "overlay" style has now been made the default one for new installs.
+
+- Added the `ilcc_preferences_cookie_name` filter to replace the now removed `ilcc_cookie_name` filter.
+- Added the `ilcc_categories_cookie_name` filter.
+- Added the `ilcc_remember_duration` filter.
+- Added the `ilcc_tracker_settings_enabled` filter.
+- Removed the `ilcc_has_user_consented` filter.
+- Removed the `ilcc_cookie_active_value` filter.
+- Replaced `ilcc_edit_text_capability`, `ilcc_edit_title_capability`, `ilcc_edit_button_capability` and `ilcc_edit_policy_url_capability` with a simpler `ilcc_edit_texts_capability` that takes the setting as an argument.
 
 = Version 2.0.5 =
 When no policy URL is set in the customer, the default integrity policy URL from the WordPress settings will be loaded.
