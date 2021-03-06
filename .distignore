@@ -2,9 +2,13 @@
 /.git
 /.github
 /node_modules
+/vendor
+/assets/scripts/src
+/assets/styles/src
 
 .distignore
 .gitignore
+.gitattributes
 .editorconfig
 .eslintignore
 .eslintrc
@@ -16,3 +20,7 @@ phpcs.xml
 phpunit.xml.dist
 webpack.mix.js
 README.md
+composer.json
+composer.lock
+package.json
+package-lock.json
