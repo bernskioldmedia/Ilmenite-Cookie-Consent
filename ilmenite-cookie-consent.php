@@ -189,6 +189,7 @@ class Ilmenite_Cookie_Consent {
 			'cookieConsentText'             => ILCC_Settings::get_consent_text(),
 			'acceptText'                    => ILCC_Settings::get_accept_text(),
 			'style'                         => ILCC_Settings::get_style(),
+			'configureSettingsText' => ILCC_Settings::get_configure_settings_text(),
 			'necessaryText'                 => ILCC_Settings::get_only_necessary_text(),
 			'rememberDuration'              => self::get_remember_me_duration(),
 			'preferencesCookieName'         => self::get_preferences_cookie_name(),

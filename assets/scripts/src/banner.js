@@ -4,7 +4,7 @@
 import { addConsentedCategory, hasConsentedTo, removeConsentedCategory } from './consent';
 
 export function showBanner() {
-	const consentBlock = '<div class="ilcc-cookie-consent-notice js--ilcc-cookie-consent-notice" id="cookie-consent-block"><div class="ilcc-cookie-consent-notice-content"><p><span>' + ilcc.cookieConsentTitle + '</span>' + ilcc.cookieConsentText + '</p><div class="ilcc-cookie-consent-actions"><button class="ilcc-cookie-consent-necessary js--ilcc-cookie-consent-necessary ilcc-cookie-consent-button">' + ilcc.necessaryText + '</button><button class="ilcc-cookie-consent-close js--ilcc-cookie-consent-close close-cookie-block ilcc-cookie-consent-button">' + ilcc.acceptText + '</button><button class="ilcc-cookie-consent-settings-toggle js--ilcc-cookie-consent-settings-toggle">Configure Settings</button></div></div>' + renderSettings() + '</div>';
+	const consentBlock = '<div class="ilcc-cookie-consent-notice js--ilcc-cookie-consent-notice" id="cookie-consent-block"><div class="ilcc-cookie-consent-notice-content"><p><span>' + ilcc.cookieConsentTitle + '</span>' + ilcc.cookieConsentText + '</p><div class="ilcc-cookie-consent-actions"><button class="ilcc-cookie-consent-necessary js--ilcc-cookie-consent-necessary ilcc-cookie-consent-button">' + ilcc.necessaryText + '</button><button class="ilcc-cookie-consent-close js--ilcc-cookie-consent-close close-cookie-block ilcc-cookie-consent-button">' + ilcc.acceptText + '</button><button class="ilcc-cookie-consent-settings-toggle js--ilcc-cookie-consent-settings-toggle">' + ilcc.configureSettingsText + '</button></div></div>' + renderSettings() + '</div>';
 
 	// Get body tag
 	const $body = jQuery( 'body.has-ilcc-banner' );
