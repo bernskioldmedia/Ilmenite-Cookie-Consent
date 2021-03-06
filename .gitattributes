@@ -19,6 +19,8 @@
 /mix-manifest.json    export-ignore
 /webpack.mix.js       export-ignore
 /Readme.md            export-ignore
+/.wordpress-org 	  export-ignore
+/.github 			  export-ignore
 
 ##
 # Handle line endings.
