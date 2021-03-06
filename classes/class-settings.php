@@ -27,12 +27,7 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_consent_title() {
-
-		$title = __( 'This website uses cookies to enhance the browsing experience', 'ilmenite-cookie-consent' );
-
-		if ( get_option( 'ilcc_title' ) ) {
-			$title = get_option( 'ilcc_title' );
-		}
+		$title = get_option( 'ilcc_title', __( 'This website uses cookies to enhance the browsing experience', 'ilmenite-cookie-consent' ) );
 
 		return apply_filters( 'ilcc_consent_title', $title );
 	}
@@ -47,31 +42,28 @@ class ILCC_Settings {
 		$policy_url = self::get_policy_url();
 
 		/* translators: 1. Policy URL */
-		$text = sprintf( __( 'We use cookies to personalize content and ads, provide social media features and analyze our traffic.  <a href="%s" rel="nofollow">Privacy and cookies policy ›</a>.',
+		$default_text = sprintf( __( 'We use cookies to personalize content and ads, provide social media features and analyze our traffic.  <a href="%s" rel="nofollow">Privacy and cookies policy ›</a>.',
 			'ilmenite-cookie-consent' ), $policy_url );
 
-		if ( get_option( 'ilcc_text' ) ) {
+		$text = get_option( 'ilcc_text', $default_text );
 
-			$text = get_option( 'ilcc_text' );
-
-			// check if we have linkstart and linkend, replace with link
-			if ( strpos( $text, '%linkstart%' ) !== false && strpos( $text, '%linkend%' ) !== false ) {
-				$text = str_replace( '%linkstart%', '<a href="' . $policy_url . '" rel="nofollow">', $text );
-				$text = str_replace( '%linkend%', '</a>', $text );
-			} // if we only have linkstart but no linked, add linkend
-			elseif ( strpos( $text, '%linkstart%' ) !== false && strpos( $text, '%linkend%' ) === false ) {
-				$text = str_replace( '%linkstart%', '<a href="' . $policy_url . '" rel="nofollow">', $text );
-				$text = $text . '</a>';
-			} // if we have linkend, but no linkstart, remove linkend
-			elseif ( strpos( $text, '%linkstart%' ) === false && strpos( $text, '%linkend%' ) !== false ) {
-				$text = str_replace( '%linkend%', '', $text );
-			} // if we have a start a-tag but no end, add the end
-			elseif ( strpos( $text, '<a' ) !== false && strpos( $text, '</a' ) === false ) {
-				$text = $text . '</a>';
-			} // if we only have an end a-tag, remove the endtag.
-			elseif ( strpos( $text, '<a' ) === false && strpos( $text, '</a' ) !== false ) {
-				$text = str_replace( '</a>', '', $text );
-			}
+		// check if we have linkstart and linkend, replace with link
+		if ( strpos( $text, '%linkstart%' ) !== false && strpos( $text, '%linkend%' ) !== false ) {
+			$text = str_replace( '%linkstart%', '<a href="' . $policy_url . '" rel="nofollow">', $text );
+			$text = str_replace( '%linkend%', '</a>', $text );
+		} // if we only have linkstart but no linked, add linkend
+		elseif ( strpos( $text, '%linkstart%' ) !== false && strpos( $text, '%linkend%' ) === false ) {
+			$text = str_replace( '%linkstart%', '<a href="' . $policy_url . '" rel="nofollow">', $text );
+			$text = $text . '</a>';
+		} // if we have linkend, but no linkstart, remove linkend
+		elseif ( strpos( $text, '%linkstart%' ) === false && strpos( $text, '%linkend%' ) !== false ) {
+			$text = str_replace( '%linkend%', '', $text );
+		} // if we have a start a-tag but no end, add the end
+		elseif ( strpos( $text, '<a' ) !== false && strpos( $text, '</a' ) === false ) {
+			$text = $text . '</a>';
+		} // if we only have an end a-tag, remove the endtag.
+		elseif ( strpos( $text, '<a' ) === false && strpos( $text, '</a' ) !== false ) {
+			$text = str_replace( '</a>', '', $text );
 		}
 
 
@@ -84,13 +76,9 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_accept_text() {
-		$accept = __( 'Allow All Cookies', 'ilmenite-cookie-consent' );
+		$text = get_option( 'ilcc_button', __( 'Allow All Cookies', 'ilmenite-cookie-consent' ) );
 
-		if ( get_option( 'ilcc_button' ) ) {
-			$accept = get_option( 'ilcc_button' );
-		}
-
-		return apply_filters( 'ilcc_accept_text', $accept );
+		return apply_filters( 'ilcc_accept_text', $text );
 	}
 
 	/**
@@ -99,13 +87,9 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_only_necessary_text() {
-		$accept = __( 'Only Necessary', 'ilmenite-cookie-consent' );
+		$text = get_option( 'ilcc_only_necessary_text', __( 'Only Necessary', 'ilmenite-cookie-consent' ) );
 
-		if ( get_option( 'ilcc_only_necessary_text' ) ) {
-			$accept = get_option( 'ilcc_only_necessary_text' );
-		}
-
-		return apply_filters( 'ilcc_only_necessary_text', $accept );
+		return apply_filters( 'ilcc_only_necessary_text', $text );
 	}
 
 	/**
@@ -114,13 +98,9 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_configure_settings_text() {
-		$accept = __( 'Configure Settings', 'ilmenite-cookie-consent' );
+		$text = get_option( 'ilcc_configure_settings_text', __( 'Configure Settings', 'ilmenite-cookie-consent' ) );
 
-		if ( get_option( 'ilcc_configure_settings_text' ) ) {
-			$accept = get_option( 'ilcc_configure_settings_text' );
-		}
-
-		return apply_filters( 'ilcc_configure_settings_text', $accept );
+		return apply_filters( 'ilcc_configure_settings_text', $text );
 	}
 
 	/**
@@ -129,11 +109,7 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_style() {
-		$style = 'overlay';
-
-		if ( get_option( 'ilcc_style' ) ) {
-			$style = get_option( 'ilcc_style' );
-		}
+		$style = get_option( 'ilcc_style', 'overlay' );
 
 		return apply_filters( 'ilcc_style', $style );
 	}
@@ -144,13 +120,9 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_settings_necessary_heading() {
-		$accept = __( 'Necessary', 'ilmenite-cookie-consent' );
+		$text = get_option( 'ilcc_settings_necessary_heading', __( 'Necessary', 'ilmenite-cookie-consent' ) );
 
-		if ( get_option( 'ilcc_settings_necessary_heading' ) ) {
-			$accept = get_option( 'ilcc_settings_necessary_heading' );
-		}
-
-		return apply_filters( 'ilcc_settings_necessary_heading', $accept );
+		return apply_filters( 'ilcc_settings_necessary_heading', $text );
 	}
 
 	/**
@@ -159,13 +131,10 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_settings_necessary_description() {
-		$accept = __( 'These cookies cannot be disabled. They are requires for the website to work.', 'ilmenite-cookie-consent' );
+		$text = get_option( 'ilcc_settings_necessary_description',
+			__( 'These cookies cannot be disabled. They are requires for the website to work.', 'ilmenite-cookie-consent' ) );
 
-		if ( get_option( 'ilcc_settings_necessary_description' ) ) {
-			$accept = get_option( 'ilcc_settings_necessary_description' );
-		}
-
-		return apply_filters( 'ilcc_settings_necessary_description', $accept );
+		return apply_filters( 'ilcc_settings_necessary_description', $text );
 	}
 
 	/**
@@ -174,13 +143,9 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_settings_marketing_heading() {
-		$accept = __( 'Marketing', 'ilmenite-cookie-consent' );
+		$text = get_option( 'ilcc_settings_marketing_heading', __( 'Marketing', 'ilmenite-cookie-consent' ) );
 
-		if ( get_option( 'ilcc_settings_marketing_heading' ) ) {
-			$accept = get_option( 'ilcc_settings_marketing_heading' );
-		}
-
-		return apply_filters( 'ilcc_settings_marketing_heading', $accept );
+		return apply_filters( 'ilcc_settings_marketing_heading', $text );
 	}
 
 	/**
@@ -189,13 +154,10 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_settings_marketing_description() {
-		$accept = __( 'By sharing your browsing behavior on our website we are able to serve you with personalized content and offers.', 'ilmenite-cookie-consent' );
+		$text = get_option( 'ilcc_settings_marketing_description',
+			__( 'By sharing your browsing behavior on our website we are able to serve you with personalized content and offers.', 'ilmenite-cookie-consent' ) );
 
-		if ( get_option( 'ilcc_settings_marketing_description' ) ) {
-			$accept = get_option( 'ilcc_settings_marketing_description' );
-		}
-
-		return apply_filters( 'ilcc_settings_marketing_description', $accept );
+		return apply_filters( 'ilcc_settings_marketing_description', $text );
 	}
 
 	/**
@@ -204,13 +166,9 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_settings_analytics_heading() {
-		$accept = __( 'Analytics', 'ilmenite-cookie-consent' );
+		$text = get_option( 'ilcc_settings_analytics_heading', __( 'Analytics', 'ilmenite-cookie-consent' ) );
 
-		if ( get_option( 'ilcc_settings_analytics_heading' ) ) {
-			$accept = get_option( 'ilcc_settings_analytics_heading' );
-		}
-
-		return apply_filters( 'ilcc_settings_analytics_heading', $accept );
+		return apply_filters( 'ilcc_settings_analytics_heading', $text );
 	}
 
 	/**
@@ -219,14 +177,12 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_settings_analytics_description() {
-		$accept = __( 'To be able to improve the website including information and functionality we want to gather analytics. We are not able to identify you personally using this data.',
+		$default = __( 'To be able to improve the website including information and functionality we want to gather analytics. We are not able to identify you personally using this data.',
 			'ilmenite-cookie-consent' );
 
-		if ( get_option( 'ilcc_settings_analytics_description' ) ) {
-			$accept = get_option( 'ilcc_settings_analytics_description' );
-		}
+		$text = get_option( 'ilcc_settings_analytics_description', $default );
 
-		return apply_filters( 'ilcc_settings_analytics_description', $accept );
+		return apply_filters( 'ilcc_settings_analytics_description', $text );
 	}
 
 	/**
@@ -235,13 +191,9 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_save_settings_button_title() {
-		$accept = __( 'Save Settings', 'ilmenite-cookie-consent' );
+		$text = get_option( 'ilcc_save_settings_text', __( 'Save Settings', 'ilmenite-cookie-consent' ) );
 
-		if ( get_option( 'ilcc_save_settings_text' ) ) {
-			$accept = get_option( 'ilcc_save_settings_text' );
-		}
-
-		return apply_filters( 'ilcc_save_settings_text', $accept );
+		return apply_filters( 'ilcc_save_settings_text', $text );
 	}
 
 	/**
@@ -250,11 +202,7 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_settings_title() {
-		$accept = __( 'Select Cookies', 'ilmenite-cookie-consent' );
-
-		if ( get_option( 'ilcc_settings_title' ) ) {
-			$accept = get_option( 'ilcc_settings_title' );
-		}
+		$accept = get_option( 'ilcc_settings_title', __( 'Select Cookies', 'ilmenite-cookie-consent' ) );
 
 		return apply_filters( 'ilcc_settings_title', $accept );
 	}
@@ -265,13 +213,10 @@ class ILCC_Settings {
 	 * @return string
 	 */
 	public static function get_settings_description() {
-		$accept = __( 'Cookies are small text files that the web server stores on your computer when you visit the website.', 'ilmenite-cookie-consent' );
+		$default = __( 'Cookies are small text files that the web server stores on your computer when you visit the website.', 'ilmenite-cookie-consent' );
+		$text    = get_option( 'ilcc_settings_description', $default );
 
-		if ( get_option( 'ilcc_settings_description' ) ) {
-			$accept = get_option( 'ilcc_settings_description' );
-		}
-
-		return apply_filters( 'ilcc_settings_description', $accept );
+		return apply_filters( 'ilcc_settings_description', $text );
 	}
 
 	/**
