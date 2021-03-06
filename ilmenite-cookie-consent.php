@@ -226,10 +226,10 @@ class Ilmenite_Cookie_Consent {
 	 */
 	public function get_black_and_whitelist() {
 		$output = "<script>";
-		$output .= "window.YETT_BLACKLIST = [" . esc_js( ILCC_Trackers::get_blacklist_for_js() ) . "];\n";
+		$output .= "window.YETT_BLACKLIST = [" . esc_js( ILCC_Trackers::get_disallow_for_js() ) . "];\n";
 
-		if ( ! empty( ILCC_Trackers::get_whitelist_for_js() ) ) {
-			$output .= 'window.YETT_WHITELIST = [' . esc_js( ILCC_Trackers::get_whitelist_for_js() ) . '];';
+		if ( ! empty( ILCC_Trackers::get_allowlist_for_js() ) ) {
+			$output .= 'window.YETT_WHITELIST = [' . esc_js( ILCC_Trackers::get_allowlist_for_js() ) . '];';
 		}
 
 		$output .= '</script>';

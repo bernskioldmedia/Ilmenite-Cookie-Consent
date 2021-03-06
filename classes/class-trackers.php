@@ -6,7 +6,7 @@
 class ILCC_Trackers {
 
 	/**
-	 * Any external URLs that load scripts may be whitelisted
+	 * Any external URLs that load scripts may be allowlisted
 	 * when put in the necessary section.
 	 *
 	 * @var array
@@ -99,33 +99,33 @@ class ILCC_Trackers {
 	 *
 	 * @return string
 	 */
-	public static function get_whitelist_for_js() {
-		$whitelist = [];
+	public static function get_allowlist_for_js() {
+		$allowlist = [];
 
 		foreach ( self::get_necessary() as $domain ) {
 			if ( ! empty( $domain ) ) {
-				$whitelist[] = '/' . addslashes( $domain ) . '/';
+				$allowlist[] = '/' . addslashes( $domain ) . '/';
 			}
 		}
 
-		return implode( ',', $whitelist );
+		return implode( ',', $allowlist );
 	}
 
 	/**
-	 * Get Backlist for use in JavaScript
+	 * Get Disallow List for use in JavaScript
 	 *
 	 * @return string
 	 */
-	public static function get_blacklist_for_js() {
+	public static function get_disallow_for_js() {
 
-		$blacklist = [];
+		$disallow = [];
 
 		foreach ( self::get_all() as $domain ) {
 			if ( ! empty( $domain ) ) {
-				$blacklist[] = '/' . addslashes( $domain ) . '/';
+				$disallow[] = '/' . addslashes( $domain ) . '/';
 			}
 		}
 
-		return implode( ',', $blacklist );
+		return implode( ',', $disallow );
 	}
 }
