@@ -10,7 +10,7 @@
  * @author  Bernskiold Media <info@bernskioldmedia.com>
  **/
 
-const mix = require( "laravel-mix" );
+const mix = require( 'laravel-mix' );
 
 
 /**************************************************************
@@ -24,10 +24,10 @@ const mix = require( "laravel-mix" );
  * Asset Directory Path
  */
 const assetPaths = {
-	scripts: "assets/scripts",
-	styles: "assets/styles",
-	images: "assets/images",
-	fonts: "assets/fonts"
+	scripts: 'assets/scripts',
+	styles: 'assets/styles',
+	images: 'assets/images',
+	fonts: 'assets/fonts'
 };
 
 /*
@@ -38,11 +38,11 @@ const assetPaths = {
 mix.options( {
 	processCssUrls: false,
 	postCss: [
-		require( "postcss-preset-env" )( {
+		require( 'postcss-preset-env' )( {
 			stage: 3,
 			browsers: [
-				"> 1%",
-				"last 2 versions"
+				'> 1%',
+				'last 2 versions'
 			]
 		} )
 	]
@@ -62,14 +62,20 @@ if ( ! mix.inProduction() ) {
  * Internal JavaScript
  */
 mix.js(
-	`${assetPaths.scripts}/src/index.js`,
-	`${assetPaths.scripts}/dist/cookie-banner.js`
-   );
+	`${ assetPaths.scripts }/src/index.js`,
+	`${ assetPaths.scripts }/dist/cookie-banner.js`
+);
 
 mix.copy(
 	`node_modules/yett/dist/yett.min.js`,
-	`${assetPaths.scripts}/dist/cookie-banner-vendor.js`
+	`${ assetPaths.scripts }/dist/cookie-banner-vendor.js`
 );
+
+mix.copy(
+	`node_modules/yett/dist/yett.min.js.map`,
+	`${ assetPaths.scripts }/dist/yett.min.js.map`
+);
+
 
 /*
  * Process the SCSS
@@ -79,16 +85,16 @@ mix.copy(
  */
 const sassConfig = {
 	sassOptions: {
-		outputStyle: "compressed"
+		outputStyle: 'compressed'
 	}
 };
 
 // Process the scss files.
 mix.sass(
-	`${assetPaths.styles}/src/cookie-banner.scss`,
-	`${assetPaths.styles}/dist`,
+	`${ assetPaths.styles }/src/cookie-banner.scss`,
+	`${ assetPaths.styles }/dist`,
 	sassConfig
-   );
+);
 
 /*
  * Custom Webpack Config
@@ -97,14 +103,14 @@ mix.sass(
  * @link https://webpack.js.org/configuration/
  */
 mix.webpackConfig( {
-	mode: mix.inProduction() ? "production":"development",
-	devtool: mix.inProduction() ? "":"cheap-source-map",
-	stats: "minimal",
+	mode: mix.inProduction() ? 'production' : 'development',
+	devtool: mix.inProduction() ? '' : 'cheap-source-map',
+	stats: 'minimal',
 	performance: {
 		hints: false
 	},
 	externals: {
-		jquery: "jQuery"
+		jquery: 'jQuery'
 	},
 	watchOptions: {
 		ignored: /node_modules/
