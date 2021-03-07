@@ -4,7 +4,7 @@
  *	Plugin URI: 	https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent
  *	Description: 	A simple, developer-friendly WordPress plugin that lets visitors know that the site is using cookies.
  *	Author: 		Bernskiold Media
- *	Version: 		3.0.0
+ *	Version: 		3.0.1
  *	Author URI: 	http://www.bernskioldmedia.com/
  *	Text Domain: 	ilmenite-cookie-consent
  *	Domain Path: 	/languages
@@ -53,7 +53,7 @@ class Ilmenite_Cookie_Consent {
 	 *
 	 * @var string
 	 */
-	public $version = '3.0.0';
+	public $version = '3.0.1';
 
 	/**
 	 * The single instance of the class
@@ -189,7 +189,7 @@ class Ilmenite_Cookie_Consent {
 			'cookieConsentText'             => ILCC_Settings::get_consent_text(),
 			'acceptText'                    => ILCC_Settings::get_accept_text(),
 			'style'                         => ILCC_Settings::get_style(),
-			'configureSettingsText' => ILCC_Settings::get_configure_settings_text(),
+			'configureSettingsText'         => ILCC_Settings::get_configure_settings_text(),
 			'necessaryText'                 => ILCC_Settings::get_only_necessary_text(),
 			'rememberDuration'              => self::get_remember_me_duration(),
 			'preferencesCookieName'         => self::get_preferences_cookie_name(),
@@ -208,7 +208,7 @@ class Ilmenite_Cookie_Consent {
 		/**
 		 * Add the whitelist and blacklist.
 		 */
-		wp_add_inline_script( 'ilcc-vendor', $this->get_black_and_whitelist(), 'before' );
+		wp_add_inline_script( 'ilcc-vendor', $this->get_allow_and_disallowlists(), 'before' );
 
 		// Finally, enqueue!
 		wp_enqueue_script( 'ilcc-vendor' );
@@ -225,15 +225,12 @@ class Ilmenite_Cookie_Consent {
 	 *
 	 * @return string
 	 */
-	public function get_black_and_whitelist() {
-		$output = "<script>";
-		$output .= "window.YETT_BLACKLIST = [" . esc_js( ILCC_Trackers::get_disallow_for_js() ) . "];\n";
+	public function get_allow_and_disallowlists() {
+		$output = "window.YETT_BLACKLIST = [" . esc_js( ILCC_Trackers::get_disallow_for_js() ) . "];\n";
 
 		if ( ! empty( ILCC_Trackers::get_allowlist_for_js() ) ) {
 			$output .= 'window.YETT_WHITELIST = [' . esc_js( ILCC_Trackers::get_allowlist_for_js() ) . '];';
 		}
-
-		$output .= '</script>';
 
 		return $output;
 	}

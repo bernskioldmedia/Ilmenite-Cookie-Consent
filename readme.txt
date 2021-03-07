@@ -151,6 +151,9 @@ Just set their value somewhere in your code, such as in the functions.php file o
 
 == Changelog ==
 
+= Version 3.0.1 =
+Fixed an issue where we passed script tags to an wp_add_inline_script function callback, causing a doing_it_wrong notice.
+
 = Version 3.0.0 =
 Major update with potentially breaking changes.
 
