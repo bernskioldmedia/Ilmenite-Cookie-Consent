@@ -96,16 +96,9 @@ Just set their value somewhere in your code, such as in the functions.php file o
 `ilcc_tracker_settings_enabled` - Return false to disable the tracker customization settings screen.
 
 ## Translations
-Included in the package are translations for the following languages:
+Included in the package are complete translations for the following languages:
 
-- Danish (Thanks Magnus)
-- German (Thanks Frank)
-- Hungarian (Thanks Miklos)
-- Italian (Thanks Matteo)
-- Lithuanian
-- Norwegian (Thanks Kristofer)
-- Slovak (Thanks Peter)
-- Spanish (Thanks Vigdis & Ibertrix)
+- Lithuanian (Thanks @batiufa)
 - Swedish
 
 A complete *.pot* file is available in the *translations/* directory. If you use and translate this little plugin, please send us the translation so it can be included!

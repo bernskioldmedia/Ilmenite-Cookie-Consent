@@ -22,16 +22,9 @@ See the installation section for more information on how to install. The FAQ sec
 
 = Translations =
 
-Included in the package are translations for the following languages:
+Included in the package are complete translations for the following languages:
 
-- Danish (Thanks Magnus)
-- German (Thanks Frank)
-- Hungarian (Thanks Miklos)
-- Italian (Thanks Matteo)
-- Lithuanian
-- Norwegian (Thanks Kristofer)
-- Slovak (Thanks Peter)
-- Spanish (Thanks Vigdis & Ibertrix)
+- Lithuanian (Thanks @batiufa)
 - Swedish
 
 A complete *.pot* file is available in the *translations/* directory. If you use and translate this little plugin, please send us the translation so it can be included!
@@ -150,6 +143,10 @@ Just set their value somewhere in your code, such as in the functions.php file o
 3. Customizer controls are available for all texts and URL.
 
 == Changelog ==
+
+= Version 3.0.2 =
+- Updated Lithuanian translation (thanks @batiufa)
+- Fixed an array offset warning (#14)
 
 = Version 3.0.1 =
 Fixed an issue where we passed script tags to an wp_add_inline_script function callback, causing a doing_it_wrong notice.

@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.0.2] - 2021-03-12
+- Updated Lithuanian translation (thanks @batiufa)
+- Fixed an array offset warning (#14)
+
 ## [3.0.1] - 2021-03-07
 Fixed an issue where we passed script tags to an wp_add_inline_script function callback, causing a doing_it_wrong notice.
 
