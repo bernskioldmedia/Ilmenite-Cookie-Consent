@@ -8,6 +8,11 @@ class ILCC_Consent {
 	 * @return bool
 	 */
 	public static function has_set_preferences() {
+
+		if ( ! isset( $_COOKIE[ Ilmenite_Cookie_Consent::get_preferences_cookie_name() ] ) ) {
+			return false;
+		}
+
 		return $_COOKIE[ Ilmenite_Cookie_Consent::get_preferences_cookie_name() ] ? true : false;
 	}
 
