@@ -1,5 +1,8 @@
 # Changelog
 
+## [3.0.3] - 2021-03-19
+- Fixed a bug where domains were included in the disallow list even when they were supposed to be allowed. (#16)
+
 ## [3.0.2] - 2021-03-12
 - Updated Lithuanian translation (thanks @batiufa)
 - Fixed an array offset warning (#14)

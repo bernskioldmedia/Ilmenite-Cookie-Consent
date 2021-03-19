@@ -144,6 +144,9 @@ Just set their value somewhere in your code, such as in the functions.php file o
 
 == Changelog ==
 
+= Version 3.0.3 =
+- Fixed a bug where domains were included in the disallow list even when they were supposed to be allowed. (#16)
+
 = Version 3.0.2 =
 - Updated Lithuanian translation (thanks @batiufa)
 - Fixed an array offset warning (#14)

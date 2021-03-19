@@ -22,7 +22,7 @@ class ILCC_Consent {
 	 * @return bool
 	 */
 	public static function has_full_consent() {
-		return in_array( [ 'analytics', 'marketing' ], self::get_consented_list(), true );
+		return self::has_consented_to( 'analytics' ) && self::has_consented_to( 'marketing' );
 	}
 
 	/**

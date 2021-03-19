@@ -108,6 +108,22 @@ class ILCC_Trackers {
 			}
 		}
 
+		if( ILCC_Consent::has_consented_to( 'marketing') ){
+			foreach ( self::get_marketing() as $domain ) {
+				if ( ! empty( $domain ) ) {
+					$allowlist[] = '/' . addslashes( $domain ) . '/';
+				}
+			}
+		}
+
+		if( ILCC_Consent::has_consented_to( 'analytics') ){
+			foreach ( self::get_analytics() as $domain ) {
+				if ( ! empty( $domain ) ) {
+					$allowlist[] = '/' . addslashes( $domain ) . '/';
+				}
+			}
+		}
+
 		return implode( ',', $allowlist );
 	}
 
@@ -120,9 +136,19 @@ class ILCC_Trackers {
 
 		$disallow = [];
 
-		foreach ( self::get_all() as $domain ) {
-			if ( ! empty( $domain ) ) {
-				$disallow[] = '/' . addslashes( $domain ) . '/';
+		if( ! ILCC_Consent::has_consented_to( 'marketing') ){
+			foreach ( self::get_marketing() as $domain ) {
+				if ( ! empty( $domain ) ) {
+					$disallow[] = '/' . addslashes( $domain ) . '/';
+				}
+			}
+		}
+
+		if( ! ILCC_Consent::has_consented_to( 'analytics') ){
+			foreach ( self::get_analytics() as $domain ) {
+				if ( ! empty( $domain ) ) {
+					$disallow[] = '/' . addslashes( $domain ) . '/';
+				}
 			}
 		}
 

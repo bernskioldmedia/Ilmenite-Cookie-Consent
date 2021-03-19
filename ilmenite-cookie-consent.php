@@ -4,7 +4,7 @@
  *	Plugin URI: 	https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent
  *	Description: 	A simple, developer-friendly WordPress plugin that lets visitors know that the site is using cookies.
  *	Author: 		Bernskiold Media
- *	Version: 		3.0.2
+ *	Version: 		3.0.3
  *	Author URI: 	http://www.bernskioldmedia.com/
  *	Text Domain: 	ilmenite-cookie-consent
  *	Domain Path: 	/languages
@@ -53,7 +53,7 @@ class Ilmenite_Cookie_Consent {
 	 *
 	 * @var string
 	 */
-	public $version = '3.0.2';
+	public $version = '3.0.3';
 
 	/**
 	 * The single instance of the class
