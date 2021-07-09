@@ -2,8 +2,8 @@
 
 ## [3.1.0] - 2021-07-09
 
-- Added a filter to prevent the banner from loading on specific pages or templates.
-- Declare support for PHP 8 when loading via composer.
+- Added a filter to prevent the banner from loading on specific pages or templates. (#25)
+- Declare support for PHP 8 when loading via composer. (#26)
 
 ## [3.0.3] - 2021-03-19
 
