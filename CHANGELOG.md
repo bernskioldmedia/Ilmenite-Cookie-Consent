@@ -1,25 +1,35 @@
 # Changelog
 
+## [3.1.0] - 2021-07-09
+
+- Added a filter to prevent the banner from loading on specific pages or templates.
+- Declare support for PHP 8 when loading via composer.
+
 ## [3.0.3] - 2021-03-19
+
 - Fixed a bug where domains were included in the disallow list even when they were supposed to be allowed. (#16)
 
 ## [3.0.2] - 2021-03-12
+
 - Updated Lithuanian translation (thanks @batiufa)
 - Fixed an array offset warning (#14)
 
 ## [3.0.1] - 2021-03-07
+
 Fixed an issue where we passed script tags to an wp_add_inline_script function callback, causing a doing_it_wrong notice.
 
 **Version 3.0.0**
 Major update with potentially breaking changes.
 
-We are now finally respecting not to set any tracking cookies unless the user has actually accepted all cookies. We keep a running list of trackers that we disable automatically. From analytics to marketing. You can modify the list of trackers via filters in the code or the settings screen.
+We are now finally respecting not to set any tracking cookies unless the user has actually accepted all cookies. We keep a running list of trackers that we disable automatically.
+From analytics to marketing. You can modify the list of trackers via filters in the code or the settings screen.
 
 As a developer, you can disable the settings screens via filters.
 
 To support this, the plugin has been extended quite a bit. There are numerous new strings, filters and options.
 
-We have also added a new style, "take over", if you'd prefer to force the user to make a choice before allowing them into your website. The "overlay" style has now been made the default one for new installs.
+We have also added a new style, "take over", if you'd prefer to force the user to make a choice before allowing them into your website. The "overlay" style has now been made the
+default one for new installs.
 
 - Added the `ilcc_preferences_cookie_name` filter to replace the now removed `ilcc_cookie_name` filter.
 - Added the `ilcc_categories_cookie_name` filter.
@@ -27,7 +37,8 @@ We have also added a new style, "take over", if you'd prefer to force the user t
 - Added the `ilcc_tracker_settings_enabled` filter.
 - Removed the `ilcc_has_user_consented` filter.
 - Removed the `ilcc_cookie_active_value` filter.
-- Replaced `ilcc_edit_text_capability`, `ilcc_edit_title_capability`, `ilcc_edit_button_capability` and `ilcc_edit_policy_url_capability` with a simpler `ilcc_edit_texts_capability` that takes the setting as an argument.
+- Replaced `ilcc_edit_text_capability`, `ilcc_edit_title_capability`, `ilcc_edit_button_capability` and `ilcc_edit_policy_url_capability` with a
+  simpler `ilcc_edit_texts_capability` that takes the setting as an argument.
 
 **Version 2.0.5**
 
@@ -37,34 +48,29 @@ For those translating via WPML and Polylang, we have added a configuration file 
 
 **Version 2.0.4**
 
-Fixed a bug where the consent duration wasn't set properly, resulting in us asking the user to consent way more often. The plugin will now (correctly) remember the consent for 30 days, unless the user clears their cookies.
+Fixed a bug where the consent duration wasn't set properly, resulting in us asking the user to consent way more often. The plugin will now (correctly) remember the consent for 30
+days, unless the user clears their cookies.
 
 **Version 2.0.3**
 
-Fixed compatibility issues with jQuery 3.
-Instead of `$.load(function()` the plugin is now initializing on `.on("load", function()`.
-Thanks Viktor.
+Fixed compatibility issues with jQuery 3. Instead of `$.load(function()` the plugin is now initializing on `.on("load", function()`. Thanks Viktor.
 
 **Version 2.0.2**
 
-Fixed a small issue where our build script wasn't processing fallbacks for the new CSS variables correctly.
-This could lead to the default style not loading properly in older browsers (such as IE 11). This update fixes
-this behavior.
+Fixed a small issue where our build script wasn't processing fallbacks for the new CSS variables correctly. This could lead to the default style not loading properly in older
+browsers (such as IE 11). This update fixes this behavior.
 
 As a result, the variables are now defined on :root {}.
 
 **Version 2.0.1**
 
-Svn is svn. Contains nothing new apart from fixing the release archive.
-If you managed to update to 2.0.0 in the few minute window before this was
-addressed, 2.0.1 takes care of things for you. If not, enjoy the 2.0.0 update.
+Svn is svn. Contains nothing new apart from fixing the release archive. If you managed to update to 2.0.0 in the few minute window before this was addressed, 2.0.1 takes care of
+things for you. If not, enjoy the 2.0.0 update.
 
 **Version 2.0.0**
 
-In this major release we've made many code improvements as well as improvements to class names
-and the JavaScript that powers most of the features. You will also have better and more
-access to filters and actions for customization. Also, new customizer settings and a new core style
-gives you quicker access to control the appearance of the banner.
+In this major release we've made many code improvements as well as improvements to class names and the JavaScript that powers most of the features. You will also have better and
+more access to filters and actions for customization. Also, new customizer settings and a new core style gives you quicker access to control the appearance of the banner.
 
 - Improvement: Switched to setting the policy URL in the customizer instead of under Settings > Reading.
 - Improvement: Added customizer settings for all texts as well.
