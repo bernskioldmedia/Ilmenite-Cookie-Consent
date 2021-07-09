@@ -95,6 +95,8 @@ Just set their value somewhere in your code, such as in the functions.php file o
 
 `ilcc_tracker_settings_enabled` - Return false to disable the tracker customization settings screen.
 
+`ilcc_is_active_on_page` - Return false to hide the banner from loading. Can be used to prevent the banner from loading on certain pages or templates.
+
 ## Translations
 Included in the package are complete translations for the following languages:
 

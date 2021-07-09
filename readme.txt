@@ -136,6 +136,8 @@ Just set their value somewhere in your code, such as in the functions.php file o
 
 `ilcc_tracker_settings_enabled` - Return false to disable the tracker customization settings screen.
 
+`ilcc_is_active_on_page` - Return false to hide the banner from loading. Can be used to prevent the banner from loading on certain pages or templates.
+
 == Screenshots ==
 
 1. The "top" style design of the cookie consent box out of the box.

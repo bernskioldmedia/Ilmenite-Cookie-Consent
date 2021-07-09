@@ -79,7 +79,6 @@ class Ilmenite_Cookie_Consent {
 	 * Constructor.
 	 */
 	public function __construct() {
-
 		// Set Developer Mode Constant.
 		if ( ! defined( 'ILCC_DEV_MODE' ) ) {
 			define( 'ILCC_DEV_MODE', apply_filters( 'ilcc_dev_mode', false ) );
@@ -98,7 +97,6 @@ class Ilmenite_Cookie_Consent {
 		$this->init_hooks();
 
 		do_action( 'ilcc_loaded' );
-
 	}
 
 	/**
@@ -108,7 +106,6 @@ class Ilmenite_Cookie_Consent {
 	 * @return void
 	 */
 	public function init_hooks() {
-
 		do_action( 'before_ilcc_init' );
 
 		// Add Scripts.
@@ -127,7 +124,6 @@ class Ilmenite_Cookie_Consent {
 		ILCC_Settings::hooks();
 
 		do_action( 'ilcc_init' );
-
 	}
 
 	/**
@@ -143,7 +139,6 @@ class Ilmenite_Cookie_Consent {
 	 * Load translations in the right order.
 	 */
 	public function load_languages() {
-
 		$locale = is_admin() && function_exists( 'get_user_locale' ) ? get_user_locale() : get_locale();
 		$locale = apply_filters( 'plugin_locale', $locale, 'ilmenite-cookie-consent' );
 
@@ -154,13 +149,18 @@ class Ilmenite_Cookie_Consent {
 
 		// Otherwise, load from the plugin.
 		load_plugin_textdomain( 'ilmenite-cookie-consent', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
 	}
 
 	/**
 	 * Load necessary scripts for the plugin.
 	 */
 	public function scripts() {
+		/**
+		 * If the banner shouldn't load on this page, bail early.
+		 */
+		if ( ! self::should_load_banner() ) {
+			return;
+		}
 
 		/**
 		 * Don't load anything if the user has
@@ -217,7 +217,6 @@ class Ilmenite_Cookie_Consent {
 		if ( ! ILCC_Consent::has_set_preferences() ) {
 			wp_enqueue_script( 'ilmenite-cookie-consent' );
 		}
-
 	}
 
 	/**
@@ -239,6 +238,12 @@ class Ilmenite_Cookie_Consent {
 	 * Load the built-in styles for the plugin.
 	 */
 	public function styles() {
+		/**
+		 * If the banner shouldn't load on this page, bail early.
+		 */
+		if ( ! self::should_load_banner() ) {
+			return;
+		}
 
 		/**
 		 * Don't load anything if the user has
@@ -263,7 +268,16 @@ class Ilmenite_Cookie_Consent {
 
 		// Finally, enqueue!
 		wp_enqueue_style( 'ilmenite-cookie-consent' );
+	}
 
+	/**
+	 * Check if we should  be loading the banner on this page.
+	 * This hook allows overriding to hide the banner on certain pages or templates.
+	 *
+	 * @return bool
+	 */
+	public static function should_load_banner() {
+		return apply_filters( 'ilcc_is_active_on_page', true );
 	}
 
 	/**
@@ -301,6 +315,12 @@ class Ilmenite_Cookie_Consent {
 	 * @return array
 	 */
 	public function banner_body_class( $classes ) {
+		/**
+		 * If the banner shouldn't load on this page, bail early.
+		 */
+		if ( ! self::should_load_banner() ) {
+			return $classes;
+		}
 
 		if ( ILCC_Consent::has_set_preferences() ) {
 			$classes[] = 'has-ilcc-consented';
@@ -322,7 +342,6 @@ class Ilmenite_Cookie_Consent {
 	 * @return bool
 	 */
 	public function is_debugging() {
-
 		if ( defined( 'ILCC_DEBUG' ) ) {
 			return ILCC_DEBUG;
 		}
@@ -332,7 +351,6 @@ class Ilmenite_Cookie_Consent {
 		}
 
 		return false;
-
 	}
 
 }
