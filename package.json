@@ -1,6 +1,6 @@
 {
   "name": "ilmenite-cookie-consent",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "description": "A simple developer-friendly WordPress plugin to let your visitors know that your site uses cookies.",
   "main": "assets/scripts/src/index.js",
   "scripts": {
