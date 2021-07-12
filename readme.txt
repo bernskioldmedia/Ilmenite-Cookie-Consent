@@ -2,7 +2,7 @@
 Contributors: Erik Bernskiold, annlickander, bernskioldmedia
 Tags: cookies, cookie notice, eu cookie law, cookie compliance, cookie banner, cookie consent, gdpr, privacy, tracker prevention, tracker
 Requires at least: 5.0
-Tested up to: 5.7
+Tested up to: 5.8
 Requires PHP: 7.2
 Stable tag: trunk
 License: GPLv2 or later
