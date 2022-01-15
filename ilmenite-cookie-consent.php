@@ -310,7 +310,7 @@ class Ilmenite_Cookie_Consent {
 	/**
 	 * Add body classes
 	 *
-	 * @param  array  $classes
+	 * @param array $classes
 	 *
 	 * @return array
 	 */
@@ -344,10 +344,6 @@ class Ilmenite_Cookie_Consent {
 	public function is_debugging() {
 		if ( defined( 'ILCC_DEBUG' ) ) {
 			return ILCC_DEBUG;
-		}
-
-		if ( defined( 'WP_DEBUG' ) ) {
-			return WP_DEBUG;
 		}
 
 		return false;
