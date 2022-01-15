@@ -283,13 +283,15 @@ body {
 	background-color: var(--ilcc-toggle-handle-background-color);
 	backface-visibility: hidden;
 
-	.ilcc-toggle-active & {
+	.ilcc-toggle-active &, {
 		right: 0.1rem;
 		left: auto;
 		background-color: #6ab785;
 	}
 
 	.ilcc-toggle-disabled & {
+		right: 0.1rem;
+		left: auto;
 		background-color: #d9534f;
 	}
 }

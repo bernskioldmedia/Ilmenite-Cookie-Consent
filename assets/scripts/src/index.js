@@ -5,7 +5,7 @@ import { removeBanner, showBanner, toggleCategory, toggleSettings } from "./bann
 import { hasUserSetPreferences, setConsentedCategories, setHasSetPreferences } from "./consent";
 import { getJsonCookieValue } from "./cookies";
 import { log, logDebug, logInfo } from "./log";
-import { settings } from "./settings";
+import { isConfigurable, settings } from "./settings";
 
 log( "=========== COOKIE CONSENT DEBUGGING ===========" );
 
@@ -51,21 +51,23 @@ if ( document.querySelector( ".js--ilcc-cookie-consent-notice" ) ) {
 		] );
 	} );
 
-	document.querySelector( ".js--ilcc-cookie-consent-settings-toggle" ).addEventListener( "click", function( e ) {
-		e.preventDefault();
-		toggleSettings();
-	} );
-
-	document.querySelector( ".js--ilcc-cookie-consent-settings-save-button" ).addEventListener( "click", function( e ) {
-		e.preventDefault();
-		setHasSetPreferences();
-		removeBanner();
-	} );
-
-	document.querySelectorAll( ".js--ilcc-cookie-consent-toggle" ).forEach( ( toggle ) => {
-		toggle.addEventListener( "click", function( e ) {
+	if ( isConfigurable() ) {
+		document.querySelector( ".js--ilcc-cookie-consent-settings-toggle" ).addEventListener( "click", function( e ) {
 			e.preventDefault();
-			toggleCategory( this );
+			toggleSettings();
 		} );
-	} );
+
+		document.querySelector( ".js--ilcc-cookie-consent-settings-save-button" ).addEventListener( "click", function( e ) {
+			e.preventDefault();
+			setHasSetPreferences();
+			removeBanner();
+		} );
+
+		document.querySelectorAll( ".js--ilcc-cookie-consent-toggle" ).forEach( ( toggle ) => {
+			toggle.addEventListener( "click", function( e ) {
+				e.preventDefault();
+				toggleCategory( this );
+			} );
+		} );
+	}
 }
