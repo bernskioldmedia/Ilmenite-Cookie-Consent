@@ -259,6 +259,38 @@ class ILCC_Settings {
 			return;
 		}
 
+		$wp_customize->add_panel( 'ilmenite_cookie_banner', [
+			'priority'    => 120,
+			'capability'  => apply_filters( 'ilcc_edit_style_capability', 'edit_theme_options' ),
+			'title'       => __( 'Cookie Banner', 'ilmenite-cookie-consent' ),
+			'description' => __( 'Customize the appearance and texts in the cookie banner, used for EU cookie compliance.', 'ilmenite-cookie-consent' ),
+		] );
+
+		$wp_customize->add_section( 'ilmenite_cookie_banner_style', [
+			'title'    => __( 'Style', 'ilmenite-cookie-consent' ),
+			'panel'    => 'ilmenite_cookie_banner',
+		] );
+
+		$wp_customize->add_section( 'ilmenite_cookie_banner_general', [
+			'title'    => __( 'General', 'ilmenite-cookie-consent' ),
+			'panel'    => 'ilmenite_cookie_banner',
+		] );
+
+		$wp_customize->add_section( 'ilmenite_cookie_banner_necessary', [
+			'title'    => __( 'Section: Necessary', 'ilmenite-cookie-consent' ),
+			'panel'    => 'ilmenite_cookie_banner',
+		] );
+
+		$wp_customize->add_section( 'ilmenite_cookie_banner_analytics', [
+			'title' => __( 'Section: Analytics', 'ilmenite-cookie-consent' ),
+			'panel' => 'ilmenite_cookie_banner',
+		] );
+
+		$wp_customize->add_section( 'ilmenite_cookie_banner_marketing', [
+			'title'    => __( 'Section: Marketing', 'ilmenite-cookie-consent' ),
+			'panel'    => 'ilmenite_cookie_banner',
+		] );
+
 		/**
 		 * Style
 		 */
@@ -272,7 +304,7 @@ class ILCC_Settings {
 			'label'       => __( 'Style', 'ilmenite-cookie-consent' ),
 			'description' => __( 'The banner can appear both at the top, or overlaid at the bottom of the page.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_style',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_style',
 			'priority'    => 80,
 			'type'        => 'radio',
 			'choices'     => [
@@ -281,12 +313,6 @@ class ILCC_Settings {
 				'takeover' => __( 'Take Over', 'ilmenite-cookie-consent' ),
 			],
 		] ) );
-
-		$wp_customize->add_section( 'ilmenite_cookie_banner', [
-			'title'       => __( 'Cookie Banner', 'ilmenite-cookie-consent' ),
-			'description' => __( 'Customize the appearance and texts in the cookie banner, used for EU cookie compliance.', 'ilmenite-cookie-consent' ),
-			'priority'    => 120,
-		] );
 
 		/**
 		 * Title
@@ -301,7 +327,7 @@ class ILCC_Settings {
 			'label'       => __( 'Title', 'ilmenite-cookie-consent' ),
 			'description' => __( 'Keep the title short. It is styled prominently.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_title',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_general',
 			'priority'    => 80,
 		] ) );
 
@@ -318,7 +344,7 @@ class ILCC_Settings {
 			'label'       => __( 'Description', 'ilmenite-cookie-consent' ),
 			'description' => __( 'A secondary line of info about your cookie usage. Remember to link to the policy by using the %linkstart% and %linkend% placeholders.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_text',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_general',
 			'priority'    => 80,
 			'type'        => 'textarea',
 		] ) );
@@ -336,7 +362,7 @@ class ILCC_Settings {
 			'label'       => __( 'Cookie Policy Link', 'ilmenite-cookie-consent' ),
 			'description' => __( 'Enter a link to your privacy and cookie policy where you outline the use of cookies. If left blank, the privacy policy page from Settings > Privacy will be used.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_policy_url',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_general',
 			'priority'    => 80,
 		] ) );
 
@@ -353,7 +379,7 @@ class ILCC_Settings {
 			'label'       => __( 'Accept All Button Text', 'ilmenite-cookie-consent' ),
 			'description' => __( 'Displays the message on the call to action button that adds consent for everything.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_button',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_general',
 			'priority'    => 80,
 		] ) );
 
@@ -370,7 +396,7 @@ class ILCC_Settings {
 			'label'       => __( 'Only Necessary Cookies Button Text', 'ilmenite-cookie-consent' ),
 			'description' => __( 'A secondary button that displays a call to action where the user can accept only the necessary cookies on the page. This essentially just closes the banner.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_only_necessary_text',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_general',
 			'priority'    => 80,
 		] ) );
 
@@ -404,7 +430,7 @@ class ILCC_Settings {
 			'label'       => __( 'Settings Title', 'ilmenite-cookie-consent' ),
 			'description' => __( 'The title for the settings selection area.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_settings_title',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_general',
 			'priority'    => 80,
 		] ) );
 
@@ -421,7 +447,7 @@ class ILCC_Settings {
 			'label'       => __( 'Settings Description', 'ilmenite-cookie-consent' ),
 			'description' => __( 'A description to further let people know what cookies are for and why they can select different options.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_settings_description',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_general',
 			'priority'    => 80,
 		] ) );
 
@@ -438,7 +464,7 @@ class ILCC_Settings {
 			'label'       => __( 'Necessary Heading', 'ilmenite-cookie-consent' ),
 			'description' => __( 'A title for the necessary cookie group.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_settings_necessary_heading',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_necessary',
 			'priority'    => 80,
 		] ) );
 
@@ -455,7 +481,7 @@ class ILCC_Settings {
 			'label'       => __( 'Necessary Description', 'ilmenite-cookie-consent' ),
 			'description' => __( 'Describes what the necessary cookies are used for.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_settings_necessary_description',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_necessary',
 			'priority'    => 80,
 			'type'        => 'textarea',
 		] ) );
@@ -473,7 +499,7 @@ class ILCC_Settings {
 			'label'       => __( 'Show Analytics Section', 'ilmenite-cookie-consent' ),
 			'description' => __( 'When checked the analytics configuration section is shown. If you have no analytics trackers you can disable this section.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_settings_analytics_is_shown',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_analytics',
 			'priority'    => 80,
 		] ) );
 
@@ -490,7 +516,7 @@ class ILCC_Settings {
 			'label'       => __( 'Analytics Heading', 'ilmenite-cookie-consent' ),
 			'description' => __( 'A title for the analytics cookie group.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_settings_analytics_heading',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_analytics',
 			'priority'    => 80,
 		] ) );
 
@@ -507,7 +533,7 @@ class ILCC_Settings {
 			'label'       => __( 'Analytics Description', 'ilmenite-cookie-consent' ),
 			'description' => __( 'Describes what the analytics cookies are used for.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_settings_analytics_description',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_analytics',
 			'priority'    => 80,
 			'type'        => 'textarea',
 		] ) );
@@ -525,7 +551,7 @@ class ILCC_Settings {
 			'label'       => __( 'Show Marketing Section', 'ilmenite-cookie-consent' ),
 			'description' => __( 'When checked the marketing configuration section is shown. If you have no marketing trackers you can disable this section.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_settings_marketing_is_shown',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_marketing',
 			'priority'    => 80,
 		] ) );
 
@@ -542,7 +568,7 @@ class ILCC_Settings {
 			'label'       => __( 'Marketing Heading', 'ilmenite-cookie-consent' ),
 			'description' => __( 'A title for the marketing cookie group.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_settings_marketing_heading',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_marketing',
 			'priority'    => 80,
 		] ) );
 
@@ -559,7 +585,7 @@ class ILCC_Settings {
 			'label'       => __( 'Marketing Description', 'ilmenite-cookie-consent' ),
 			'description' => __( 'Describes what the marketing cookies are used for.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_settings_marketing_description',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_marketing',
 			'priority'    => 80,
 			'type'        => 'textarea',
 		] ) );
@@ -577,7 +603,7 @@ class ILCC_Settings {
 			'label'       => __( 'Save Settings Button Text', 'ilmenite-cookie-consent' ),
 			'description' => __( 'The label of the button that lets users save their settings.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_save_settings_text',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_general',
 			'priority'    => 80,
 		] ) );
 
