@@ -4,27 +4,13 @@
   "description": "A simple developer-friendly WordPress plugin to let your visitors know that your site uses cookies.",
   "main": "assets/scripts/src/index.js",
   "scripts": {
-    "test": "phpunit",
-    "release": "npm install && composer install --no-dev -o && npm run build",
-    "setup": "composer install && npm install && npm run build",
-    "build": "npm run prod",
-    "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "npm run dev -- --watch",
-    "prod": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "lint": "npm run lint:styles && npm run lint:scripts && npm run lint:php",
-    "lint:styles": "cross-env stylelint './assets/styles/src/**/*.scss' --syntax scss",
-    "lint:scripts": "cross-env eslint './assets/scripts/src/**/*.js'",
-    "lint:php": "composer run lint",
-    "format": "npm run format:js",
-    "format:js": "eslint --fix assets/scripts/src",
-    "i18n": "npm run i18n:textdomain && npm run i18n:pot",
-    "i18n:textdomain": "npx wpi18n addtextdomain --exclude=vendor,node_modules --type theme",
-    "i18n:pot": "npx wpi18n makepot  --domain-path ./languages/"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "release": "npm install && composer install --no-dev -o && npm run production",
+    "setup": "composer install && npm install && npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "production": "mix --production",
+    "i18n": "npm run i18n:pot",
+    "i18n:pot": "npm run build && wp i18n make-pot . ./languages/ilmenite-cookie-consent.pot --include=\"dist/,src/,blocks/*.json,\""
   },
   "repository": {
     "type": "git",
@@ -48,47 +34,15 @@
     "url": "https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/issues"
   },
   "homepage": "https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent#Readme",
-  "lint-staged": {
-    "*.css": [
-      "stylelint"
-    ],
-    "*.js": [
-      "eslint"
-    ]
-  },
   "devDependencies": {
-    "@wordpress/eslint-plugin": "^2.4",
-    "cross-env": "^6.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-loader": "^3.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsdoc": "^22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^2.5",
-    "husky": "^3.1",
-    "laravel-mix": "^5.0.9",
-    "lint-staged": "^9.5.0",
-    "node-wp-i18n": "^1.2.5",
-    "postcss-custom-properties": "^9.2.0",
-    "postcss-preset-env": "^6.7",
-    "prettier": "^2.2.1",
-    "sass": "^1.32.8",
-    "sass-loader": "^8.0",
-    "stylelint": "^9.10",
-    "stylelint-config-wordpress": "^14.0",
-    "stylelint-declaration-use-variable": "^1.7",
-    "stylelint-order": "^2.2",
-    "stylelint-webpack-plugin": "^1.1",
-    "vue-template-compiler": "^2.6.12"
+    "laravel-mix": "^6.0.39",
+    "postcss-preset-env": "^7.2",
+    "sass": "^1.48.0",
+    "sass-loader": "^12.4.0"
   },
   "dependencies": {
-    "classnames": "^2.2.6",
-    "postcss-css-variables": "^0.13.0",
-    "yett": "^0.1.13"
+    "acorn": "^8.7.0",
+    "classnames": "^2.3.1",
+    "yett": "^0.2.3"
   }
 }
