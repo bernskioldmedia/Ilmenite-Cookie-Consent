@@ -1,99 +1,100 @@
 /**
  * Internal dependencies
  */
-import { addConsentedCategory, hasConsentedTo, removeConsentedCategory } from './consent';
+import { addConsentedCategory, hasConsentedTo, removeConsentedCategory } from "./consent";
 
 export function showBanner() {
-	const consentBlock = '<div class="ilcc-cookie-consent-notice js--ilcc-cookie-consent-notice" id="cookie-consent-block"><div class="ilcc-cookie-consent-notice-content"><p><span>' + ilcc.cookieConsentTitle + '</span>' + ilcc.cookieConsentText + '</p><div class="ilcc-cookie-consent-actions"><button class="ilcc-cookie-consent-necessary js--ilcc-cookie-consent-necessary ilcc-cookie-consent-button">' + ilcc.necessaryText + '</button><button class="ilcc-cookie-consent-close js--ilcc-cookie-consent-close close-cookie-block ilcc-cookie-consent-button">' + ilcc.acceptText + '</button><button class="ilcc-cookie-consent-settings-toggle js--ilcc-cookie-consent-settings-toggle">' + ilcc.configureSettingsText + '</button></div></div>' + renderSettings() + '</div>';
+	const consentBlock = document.createElement( "div" );
+	consentBlock.id    = "cookie-consent-block";
+	consentBlock.classList.add( "ilcc-cookie-consent-notice" );
+	consentBlock.classList.add( "js--ilcc-cookie-consent-notice" );
+	consentBlock.innerHTML = "<div class=\"ilcc-cookie-consent-notice-content\"><p><span>" + ilcc.cookieConsentTitle + "</span>" + ilcc.cookieConsentText + "</p><div class=\"ilcc-cookie-consent-actions\"><button class=\"ilcc-cookie-consent-necessary js--ilcc-cookie-consent-necessary ilcc-cookie-consent-button\">" + ilcc.necessaryText + "</button><button class=\"ilcc-cookie-consent-close js--ilcc-cookie-consent-close close-cookie-block ilcc-cookie-consent-button\">" + ilcc.acceptText + "</button><button class=\"ilcc-cookie-consent-settings-toggle js--ilcc-cookie-consent-settings-toggle\">" + ilcc.configureSettingsText + "</button></div></div>" + renderSettings();
 
-	// Get body tag
-	const $body = jQuery( 'body.has-ilcc-banner' );
-
-	// Append to body
-	$body.append( consentBlock );
-
-	// Get the height of the consent block
-	const consentBlockHeight = jQuery( '.js--ilcc-cookie-consent-notice' ).innerHeight();
+	document.body.appendChild( consentBlock );
 
 	// Add class to body if top style.
-	if ( $body.hasClass( 'ilcc-style-top' ) ) {
-		$body.css( 'padding-top', consentBlockHeight + 'px' );
+	if ( document.body.classList.contains( "ilcc-style-top" ) ) {
+		const consentBlockHeight       = document.querySelector( ".js--ilcc-cookie-consent-notice" ).offsetHeight;
+		document.body.style.paddingTop = consentBlockHeight + "px";
 	}
 }
 
 export function removeBanner() {
-	jQuery( '.js--ilcc-cookie-consent-notice' ).slideToggle( {
-		start() {
-			const $body = jQuery( 'body' );
+	const consentNotice = document.querySelector( ".js--ilcc-cookie-consent-notice" );
 
-			if ( $body.hasClass( 'ilcc-style-top' ) ) {
-				$body.animate( {
-					'padding-top': '0px',
-				} );
-			}
-		},
-		complete() {
-			// Remove cookie banner class
-			jQuery( 'body' )
-				.removeClass( 'has-ilcc-banner' )
-				.removeClass( 'ilcc-style-top' )
-				.removeClass( 'ilcc-style-overlay' )
-				.removeClass( 'ilcc-style-takeover' )
-				.addClass( 'has-ilcc-consented' );
+	if ( ! consentNotice ) {
+		return;
+	}
 
-			// Remove the cookie banner from the DOM.
-			jQuery( this ).remove();
-		},
-	} );
+	if ( document.body.classList.contains( "ilcc-style-top" ) ) {
+		document.body.style.paddingTop = 0;
+		consentNotice.style.top        = ( -consentNotice.offsetHeight - 50 ) + "px";
+	}
+
+	if ( document.body.classList.contains( "ilcc-style-overlay" ) ) {
+		consentNotice.style.bottom = ( -consentNotice.offsetHeight - 50 ) + "px";
+	}
+
+	consentNotice.classList.add( "is-closed" );
+	document.body.classList.add( "ilcc-banner-closed" );
+
+	setTimeout( () => {
+		maybeRemoveClasses( document.body, [
+			"has-ilcc-banner"
+		] );
+		consentNotice.remove();
+	}, 750 );
 }
 
 export function toggleSettings() {
-	jQuery( '.js--ilcc-cookie-consent-settings' ).slideToggle();
+	const settings = document.querySelector( ".js--ilcc-cookie-consent-settings" );
+
+	settings.classList.toggle( "is-open" );
 }
 
 function renderSettings() {
 	return `
 		<div class="ilcc-cookie-consent-settings js--ilcc-cookie-consent-settings">
-		<p class="ilcc-cookie-consent-settings-title">${ ilcc.settingsTitle }</p>
-		<p class="ilcc-cookie-consent-settings-intro">${ ilcc.settingsDescription }</p>
+		<p class="ilcc-cookie-consent-settings-title">${ilcc.settingsTitle}</p>
+		<p class="ilcc-cookie-consent-settings-intro">${ilcc.settingsDescription}</p>
 		<div class="ilcc-cookie-consent-categories">
 			<a href="#" class="ilcc-cookie-consent-category ilcc-toggle-disabled" data-category="necessary">
 				<span class="ilcc-cookie-consent-category-info">
-					<strong>${ ilcc.necessaryHeading }</strong>
-					<p>${ ilcc.necessaryDescription }</p>
+					<strong>${ilcc.necessaryHeading}</strong>
+					<p>${ilcc.necessaryDescription}</p>
 				</span>
 				<span class="ilcc-cookie-consent-category-toggle">
-				${ renderToggle() }
+				${renderToggle()}
 				</span>
 			</a>
-			<a href="#" class="ilcc-cookie-consent-category js--ilcc-cookie-consent-toggle ${ renderActiveSelector( 'analytics' ) }" data-category="analytics">
+			<a href="#" class="ilcc-cookie-consent-category js--ilcc-cookie-consent-toggle ${renderActiveSelector( "analytics" )}" data-category="analytics">
 				<span class="ilcc-cookie-consent-category-info">
-					<strong>${ ilcc.analyticsHeading }</strong>
-					<p>${ ilcc.analyticsDescription }</p>
+					<strong>${ilcc.analyticsHeading}</strong>
+					<p>${ilcc.analyticsDescription}</p>
 				</span>
 				<span class="ilcc-cookie-consent-category-toggle">
-				${ renderToggle() }
+				${renderToggle()}
 				</span>
 			</a>
-			<a href="#" class="ilcc-cookie-consent-category js--ilcc-cookie-consent-toggle ${ renderActiveSelector( 'marketing' ) }" data-category="marketing">
+			<a href="#" class="ilcc-cookie-consent-category js--ilcc-cookie-consent-toggle ${renderActiveSelector( "marketing" )}" data-category="marketing">
 				<span class="ilcc-cookie-consent-category-info">
-					<strong>${ ilcc.marketingHeading }</strong>
-					<p>${ ilcc.marketingDescription }</p>
+					<strong>${ilcc.marketingHeading}</strong>
+					<p>${ilcc.marketingDescription}</p>
 				</span>
 				<span class="ilcc-cookie-consent-category-toggle">
-				${ renderToggle() }
+				${renderToggle()}
 				</span>
 			</a>
 		</div>
 		<div class="ilcc-cookie-consent-settings-save">
-			<button class="ilcc-cookie-consent-button js--ilcc-cookie-consent-settings-save-button">${ ilcc.saveSettingsText }</button>
+			<button class="ilcc-cookie-consent-button js--ilcc-cookie-consent-settings-save-button">${ilcc.saveSettingsText}</button>
 		</div>
 </div>
 	`;
 }
 
 function renderActiveSelector( category ) {
-	return hasConsentedTo( category ) ? 'ilcc-toggle-active' : '';
+	return hasConsentedTo( category ) ? "ilcc-toggle-active" : "";
 }
 
 function renderToggle() {
@@ -103,11 +104,23 @@ function renderToggle() {
 export function toggleCategory( element ) {
 	const category = element.dataset.category;
 
-	if ( element.classList.contains( 'ilcc-toggle-active' ) ) {
+	if ( element.classList.contains( "ilcc-toggle-active" ) ) {
 		removeConsentedCategory( category );
-		element.classList.remove( 'ilcc-toggle-active' );
+		element.classList.remove( "ilcc-toggle-active" );
 	} else {
 		addConsentedCategory( category );
-		element.classList.add( 'ilcc-toggle-active' );
+		element.classList.add( "ilcc-toggle-active" );
 	}
+}
+
+function maybeRemoveClass( element, className ) {
+	if ( element.classList.contains( className ) ) {
+		element.classList.remove( className );
+	}
+}
+
+function maybeRemoveClasses( element, classes ) {
+	classes.forEach( ( className ) => {
+		maybeRemoveClass( element, className );
+	} );
 }

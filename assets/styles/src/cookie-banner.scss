@@ -28,11 +28,12 @@ body {
 
 .ilcc-cookie-consent-notice {
 	z-index: 99999;
-	overflow-y: scroll;
-	max-height: 85vh;
 	padding: 1.4rem 0;
 	color: var(--ilcc-text-color);
 	background: var(--ilcc-background-color);
+	transition-property: all;
+	transition-duration: 1s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 
 	a {
 		text-decoration: underline;
@@ -166,12 +167,31 @@ body {
 }
 
 .ilcc-cookie-consent-settings {
-	display: none;
-	margin-top: 2rem;
-	padding-top: 1.5rem;
-	padding-bottom: 1.5rem;
+	max-height: 0;
+	overflow-y: hidden;
+	margin-top: 1.5rem;
 	border-top: 1px solid var(--ilcc-settings-border);
 	background-color: var(--ilcc-settings-background-color);
+	transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+
+	@media (prefers-reduced-motion: reduce) {
+		transition-duration: 0s;
+	}
+
+	&.is-open {
+		max-height: 50vh;
+		overflow-y: scroll;
+	}
+
+	> *:first-child {
+		margin-top: 1.5rem;
+	}
+
+	> *:last-child {
+		margin-bottom: 1.5rem;
+	}
 }
 
 .ilcc-cookie-consent-settings-title {
@@ -297,6 +317,9 @@ body.ilcc-style-top {
 	--ilcc-settings-border: #2e3234;
 	--ilcc-toggle-background-color: #e6e6e6;
 	--ilcc-toggle-handle-background-color: #b3b3b3;
+	transition-property: padding-top;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 
 	.ilcc-cookie-consent-notice {
 		position: absolute;
@@ -378,7 +401,7 @@ body.ilcc-style-overlay {
 
 body.ilcc-style-takeover {
 
-	&::before {
+	&.has-ilcc-banner::before {
 		position: fixed;
 		z-index: 9999;
 		width: 100%;
@@ -386,6 +409,13 @@ body.ilcc-style-takeover {
 		content: '';
 		opacity: 0.6;
 		background-color: #000000;
+		transition-property: opacity;
+		transition-duration: .5s;
+		transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+	}
+
+	&.ilcc-banner-closed::before {
+		opacity: 0;
 	}
 
 	.ilcc-cookie-consent-notice {
@@ -398,6 +428,10 @@ body.ilcc-style-takeover {
 		transform: translate(-50%, -50%);
 		border-radius: var(--ilcc-radius);
 		box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), 1px 2px 5px rgba(0, 0, 0, 0.1);
+
+		&.is-closed {
+			opacity: 0;
+		}
 
 		p {
 

@@ -1,8 +1,8 @@
 /**
  * Internal dependencies
  */
-import { getCookieValue, getJsonCookieValue, setCookie } from './cookies';
-import { settings } from './settings';
+import { getCookieValue, getJsonCookieValue, setCookie } from "./cookies";
+import { settings } from "./settings";
 
 /**
  * Set the "has set preferences" cookie.
@@ -10,10 +10,10 @@ import { settings } from './settings';
  * @param {boolean} hasSet If preference has been stored.
  */
 export function setHasSetPreferences( hasSet = true ) {
-	let value = '1';
+	let value = "1";
 
 	if ( ! hasSet ) {
-		value = '0';
+		value = "0";
 	}
 
 	setCookie( settings.setPreferencesCookieName, value );
@@ -59,7 +59,7 @@ export function hasConsentedTo( category ) {
  * @return {boolean} Prefs set or not.
  */
 export function hasUserSetPreferences() {
-	return '1' === getCookieValue( settings.setPreferencesCookieName );
+	return "1" === getCookieValue( settings.setPreferencesCookieName );
 }
 
 export function addConsentedCategory( category ) {
@@ -93,4 +93,3 @@ export function removeConsentedCategory( category ) {
 
 	setConsentedCategories( categories );
 }
-
