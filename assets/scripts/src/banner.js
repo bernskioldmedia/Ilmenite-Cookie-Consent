@@ -15,7 +15,7 @@ export function showBanner() {
 		<div class="ilcc-cookie-consent-notice-content">
 			<p><span>${ilcc.cookieConsentTitle}</span>${ilcc.cookieConsentText}</p>
 			<div class="ilcc-cookie-consent-actions">
-				<button class="ilcc-cookie-consent-necessary js--ilcc-cookie-consent-necessary ilcc-cookie-consent-button">${ilcc.necessaryText}</button>
+				${isConfigurable() ? `<button class="ilcc-cookie-consent-necessary js--ilcc-cookie-consent-necessary ilcc-cookie-consent-button">${ilcc.necessaryText}</button>` : ""}
 				<button class="ilcc-cookie-consent-close js--ilcc-cookie-consent-close close-cookie-block ilcc-cookie-consent-button">${ilcc.acceptText}</button>
 				${isConfigurable() ? `<button class="ilcc-cookie-consent-settings-toggle js--ilcc-cookie-consent-settings-toggle">${ilcc.configureSettingsText}</button>` : ""}
 			</div>
