@@ -170,12 +170,7 @@ class Ilmenite_Cookie_Consent {
 			return;
 		}
 
-		/**
-		 * We need jQuery for this plugin.
-		 */
-		wp_enqueue_script( 'jquery' );
-
-		wp_register_script( 'ilmenite-cookie-consent', $this->plugin_url . '/assets/scripts/dist/cookie-banner.js', [ 'jquery', 'ilcc-vendor' ], $this->version, true );
+		wp_register_script( 'ilmenite-cookie-consent', $this->plugin_url . '/assets/scripts/dist/cookie-banner.js', [ 'ilcc-vendor' ], $this->version, true );
 
 		wp_register_script( 'ilcc-vendor', $this->plugin_url . '/assets/scripts/dist/cookie-banner-vendor.js', [], $this->version, false );
 
