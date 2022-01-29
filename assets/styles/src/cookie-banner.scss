@@ -100,6 +100,7 @@ body {
 	border-radius: var(--ilcc-radius);
 	outline: none;
 	background-color: var(--ilcc-close-button);
+	white-space: nowrap;
 
 	@media screen and (min-width: 768px) {
 		width: auto;
@@ -133,6 +134,7 @@ body {
 	border: none;
 	outline: none;
 	background: transparent;
+	flex: 1 1 100%;
 
 	@media screen and (min-width: 768px) {
 		text-align: left;
