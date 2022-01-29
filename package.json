@@ -35,9 +35,9 @@
   },
   "homepage": "https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent#Readme",
   "devDependencies": {
-    "laravel-mix": "^6.0.39",
+    "laravel-mix": "^6.0.41",
     "postcss-preset-env": "^7.2",
-    "sass": "^1.48.0",
+    "sass": "^1.49.0",
     "sass-loader": "^12.4.0"
   },
   "dependencies": {
