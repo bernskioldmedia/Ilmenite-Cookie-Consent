@@ -226,7 +226,7 @@ class ILCC_Settings {
 	 * @return bool
 	 */
 	public static function is_analytics_shown() {
-		$shown = '1' === get_option( 'ilcc_settings_analytics_is_shown' );
+		$shown = '1' === get_option( 'ilcc_settings_analytics_is_shown', '1' );
 
 		return apply_filters( 'ilcc_settings_analytics_is_shown', $shown );
 	}
@@ -237,7 +237,7 @@ class ILCC_Settings {
 	 * @return bool
 	 */
 	public static function is_marketing_shown() {
-		$shown = '1' === get_option( 'ilcc_settings_marketing_is_shown' );
+		$shown = '1' === get_option( 'ilcc_settings_marketing_is_shown', '1' );
 
 		return apply_filters( 'ilcc_settings_marketing_is_shown', $shown );
 	}
@@ -267,18 +267,18 @@ class ILCC_Settings {
 		] );
 
 		$wp_customize->add_section( 'ilmenite_cookie_banner_style', [
-			'title'    => __( 'Style', 'ilmenite-cookie-consent' ),
-			'panel'    => 'ilmenite_cookie_banner',
+			'title' => __( 'Style', 'ilmenite-cookie-consent' ),
+			'panel' => 'ilmenite_cookie_banner',
 		] );
 
 		$wp_customize->add_section( 'ilmenite_cookie_banner_general', [
-			'title'    => __( 'General', 'ilmenite-cookie-consent' ),
-			'panel'    => 'ilmenite_cookie_banner',
+			'title' => __( 'General', 'ilmenite-cookie-consent' ),
+			'panel' => 'ilmenite_cookie_banner',
 		] );
 
 		$wp_customize->add_section( 'ilmenite_cookie_banner_necessary', [
-			'title'    => __( 'Section: Necessary', 'ilmenite-cookie-consent' ),
-			'panel'    => 'ilmenite_cookie_banner',
+			'title' => __( 'Section: Necessary', 'ilmenite-cookie-consent' ),
+			'panel' => 'ilmenite_cookie_banner',
 		] );
 
 		$wp_customize->add_section( 'ilmenite_cookie_banner_analytics', [
@@ -287,8 +287,8 @@ class ILCC_Settings {
 		] );
 
 		$wp_customize->add_section( 'ilmenite_cookie_banner_marketing', [
-			'title'    => __( 'Section: Marketing', 'ilmenite-cookie-consent' ),
-			'panel'    => 'ilmenite_cookie_banner',
+			'title' => __( 'Section: Marketing', 'ilmenite-cookie-consent' ),
+			'panel' => 'ilmenite_cookie_banner',
 		] );
 
 		/**
