@@ -1,5 +1,27 @@
 # Changelog
 
+## 3.2.0 - 2022-01-29
+
+- Adds Occitan language ([#28](https://github.com/bernskioldmedia/ilmenite-cookie-consent/pull/28))
+
+## Added
+
+- Add matomo integration ([#39](https://github.com/bernskioldmedia/ilmenite-cookie-consent/pull/39))
+- Allow customizing consent sections ([#38](https://github.com/bernskioldmedia/ilmenite-cookie-consent/pull/38))
+
+## Changed
+
+- Remove syncing debug mode with WP_DEBUG ([#37](https://github.com/bernskioldmedia/ilmenite-cookie-consent/pull/37))
+- Remove jQuery dependencies ([#36](https://github.com/bernskioldmedia/ilmenite-cookie-consent/pull/36))
+
+## Dependency Updates
+
+- Bump browserslist from 4.7.0 to 4.19.1 ([#34](https://github.com/bernskioldmedia/ilmenite-cookie-consent/pull/34))
+- Bump ws from 6.2.1 to 6.2.2 ([#35](https://github.com/bernskioldmedia/ilmenite-cookie-consent/pull/35))
+- Bump follow-redirects from 1.13.3 to 1.14.7 ([#33](https://github.com/bernskioldmedia/ilmenite-cookie-consent/pull/33))
+- Bump url-parse from 1.5.1 to 1.5.3 ([#31](https://github.com/bernskioldmedia/ilmenite-cookie-consent/pull/31))
+- Bump path-parse from 1.0.6 to 1.0.7 ([#27](https://github.com/bernskioldmedia/ilmenite-cookie-consent/pull/27))
+
 ## [3.1.0] - 2021-07-09
 
 - Added a filter to prevent the banner from loading on specific pages or templates. (#25)
@@ -38,7 +60,7 @@ default one for new installs.
 - Removed the `ilcc_has_user_consented` filter.
 - Removed the `ilcc_cookie_active_value` filter.
 - Replaced `ilcc_edit_text_capability`, `ilcc_edit_title_capability`, `ilcc_edit_button_capability` and `ilcc_edit_policy_url_capability` with a
-  simpler `ilcc_edit_texts_capability` that takes the setting as an argument.
+- simpler `ilcc_edit_texts_capability` that takes the setting as an argument.
 
 **Version 2.0.5**
 
