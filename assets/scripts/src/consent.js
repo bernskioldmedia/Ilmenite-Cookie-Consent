@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import { getCookieValue, getJsonCookieValue, setCookie } from "./cookies";
-import { settings } from "./settings";
+import { hasMatomo, settings } from "./settings";
 
 /**
  * Set the "has set preferences" cookie.
@@ -26,6 +26,10 @@ export function setHasSetPreferences( hasSet = true ) {
  */
 export function setConsentedCategories( categories = [] ) {
 	setCookie( settings.consentedCategories, JSON.stringify( categories ) );
+
+	if ( hasMatomo() && hasConsentedTo( "analytics" ) ) {
+		_paq.push( [ "setCookieConsentGiven" ] );
+	}
 }
 
 /**

@@ -2,10 +2,10 @@
  * Internal dependencies
  */
 import { removeBanner, showBanner, toggleCategory, toggleSettings } from "./banner";
-import { hasUserSetPreferences, setConsentedCategories, setHasSetPreferences } from "./consent";
+import { hasConsentedTo, hasUserSetPreferences, setConsentedCategories, setHasSetPreferences } from "./consent";
 import { getJsonCookieValue } from "./cookies";
 import { log, logDebug, logInfo } from "./log";
-import { getBannerStyle, isConfigurable, isDebugging, settings } from "./settings";
+import { getBannerStyle, hasMatomo, isConfigurable, isDebugging, settings } from "./settings";
 
 log( "=========== COOKIE CONSENT DEBUGGING ===========" );
 
@@ -22,6 +22,11 @@ if ( hasUserSetPreferences() ) {
 	logDebug( "The following categories were granted:" );
 	logDebug( getJsonCookieValue( settings.consentedCategories ) );
 	document.body.classList.add( "has-ilcc-consented" );
+
+	if ( hasMatomo() && hasConsentedTo( "analytics" ) ) {
+		_paq.push( [ "setCookieConsentGiven" ] );
+	}
+
 } else {
 	logDebug( "❌ User has not expressed consent." );
 	document.body.classList.add( "has-ilcc-banner" );
