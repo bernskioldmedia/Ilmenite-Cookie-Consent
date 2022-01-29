@@ -41,17 +41,17 @@ if ( document.querySelector( ".js--ilcc-cookie-consent-notice" ) ) {
 		] );
 	} );
 
-	document.querySelector( ".js--ilcc-cookie-consent-necessary" ).addEventListener( "click", function( e ) {
-		e.preventDefault();
-
-		removeBanner();
-		setHasSetPreferences();
-		setConsentedCategories( [
-			"necessary"
-		] );
-	} );
-
 	if ( isConfigurable() ) {
+		document.querySelector( ".js--ilcc-cookie-consent-necessary" ).addEventListener( "click", function( e ) {
+			e.preventDefault();
+
+			removeBanner();
+			setHasSetPreferences();
+			setConsentedCategories( [
+				"necessary"
+			] );
+		} );
+
 		document.querySelector( ".js--ilcc-cookie-consent-settings-toggle" ).addEventListener( "click", function( e ) {
 			e.preventDefault();
 			toggleSettings();
