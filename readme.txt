@@ -147,6 +147,13 @@ Just set their value somewhere in your code, such as in the functions.php file o
 
 == Changelog ==
 
+= Version 3.2.0 =
+- Add matomo integration
+- Allow customizing consent sections
+- Remove syncing debug mode with WP_DEBUG
+- Remove jQuery dependencies
+- Adds Occitan language (Thanks Mejans)
+
 = Version 3.1.0 =
 - Added a filter to prevent the banner from loading on specific pages or templates.
 - Declare support for PHP 8 when loading via composer.
