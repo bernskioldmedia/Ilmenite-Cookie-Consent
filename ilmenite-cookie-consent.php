@@ -117,9 +117,6 @@ class Ilmenite_Cookie_Consent {
 		// Add Translation Loading.
 		add_action( 'plugins_loaded', [ $this, 'load_languages' ] );
 
-		// Add body class
-		add_filter( 'body_class', [ $this, 'banner_body_class' ] );
-
 		// Boot other classes.
 		ILCC_Settings::hooks();
 
@@ -155,18 +152,11 @@ class Ilmenite_Cookie_Consent {
 	 * Load necessary scripts for the plugin.
 	 */
 	public function scripts() {
+
 		/**
 		 * If the banner shouldn't load on this page, bail early.
 		 */
 		if ( ! self::should_load_banner() ) {
-			return;
-		}
-
-		/**
-		 * Don't load anything if the user has
-		 * already consented to cookies.
-		 */
-		if ( ILCC_Consent::has_full_consent() ) {
 			return;
 		}
 
@@ -200,6 +190,7 @@ class Ilmenite_Cookie_Consent {
 			'saveSettingsText'              => ILCC_Settings::get_save_settings_button_title(),
 			'settingsTitle'                 => ILCC_Settings::get_settings_title(),
 			'settingsDescription'           => ILCC_Settings::get_settings_description(),
+			'debug'                         => $this->is_debugging(),
 		] );
 
 		/**
@@ -209,11 +200,7 @@ class Ilmenite_Cookie_Consent {
 
 		// Finally, enqueue!
 		wp_enqueue_script( 'ilcc-vendor' );
-
-		// Show banner only if no consent has been set.
-		if ( ! ILCC_Consent::has_set_preferences() ) {
-			wp_enqueue_script( 'ilmenite-cookie-consent' );
-		}
+		wp_enqueue_script( 'ilmenite-cookie-consent' );
 	}
 
 	/**
@@ -239,14 +226,6 @@ class Ilmenite_Cookie_Consent {
 		 * If the banner shouldn't load on this page, bail early.
 		 */
 		if ( ! self::should_load_banner() ) {
-			return;
-		}
-
-		/**
-		 * Don't load anything if the user has
-		 * already consented to cookies.
-		 */
-		if ( ILCC_Consent::has_set_preferences() ) {
 			return;
 		}
 
@@ -302,35 +281,6 @@ class Ilmenite_Cookie_Consent {
 	 */
 	public static function get_remember_me_duration() {
 		return apply_filters( 'ilcc_remember_duration', 90 );
-	}
-
-	/**
-	 * Add body classes
-	 *
-	 * @param array $classes
-	 *
-	 * @return array
-	 */
-	public function banner_body_class( $classes ) {
-		/**
-		 * If the banner shouldn't load on this page, bail early.
-		 */
-		if ( ! self::should_load_banner() ) {
-			return $classes;
-		}
-
-		if ( ILCC_Consent::has_set_preferences() ) {
-			$classes[] = 'has-ilcc-consented';
-		} else {
-			$classes[] = 'has-ilcc-banner';
-			$classes[] = 'ilcc-style-' . ILCC_Settings::get_style();
-		}
-
-		if ( $this->is_debugging() ) {
-			$classes[] = 'ilcc-is-debugging';
-		}
-
-		return $classes;
 	}
 
 	/**

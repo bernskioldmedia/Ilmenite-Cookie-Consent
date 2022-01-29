@@ -5,7 +5,7 @@ import { removeBanner, showBanner, toggleCategory, toggleSettings } from "./bann
 import { hasUserSetPreferences, setConsentedCategories, setHasSetPreferences } from "./consent";
 import { getJsonCookieValue } from "./cookies";
 import { log, logDebug, logInfo } from "./log";
-import { isConfigurable, settings } from "./settings";
+import { getBannerStyle, isConfigurable, isDebugging, settings } from "./settings";
 
 log( "=========== COOKIE CONSENT DEBUGGING ===========" );
 
@@ -21,9 +21,16 @@ if ( hasUserSetPreferences() ) {
 	logDebug( "✅ User has expressed consent." );
 	logDebug( "The following categories were granted:" );
 	logDebug( getJsonCookieValue( settings.consentedCategories ) );
+	document.body.classList.add( "has-ilcc-consented" );
 } else {
 	logDebug( "❌ User has not expressed consent." );
+	document.body.classList.add( "has-ilcc-banner" );
+	document.body.classList.add( "ilcc-style-" + getBannerStyle() );
 	showBanner();
+}
+
+if ( isDebugging() ) {
+	document.body.classList.add( "ilcc-is-debugging" );
 }
 
 if ( document.querySelector( ".js--ilcc-cookie-consent-notice" ) ) {

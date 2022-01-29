@@ -3,10 +3,10 @@
 /**
  * Internal dependencies
  */
-import { settings } from './settings';
+import { isDebugging } from "./settings";
 
 export function logDebug( message ) {
-	if ( ! settings.debug ) {
+	if ( ! isDebugging() ) {
 		return;
 	}
 
@@ -14,7 +14,7 @@ export function logDebug( message ) {
 }
 
 export function logError( message ) {
-	if ( ! settings.debug ) {
+	if ( ! isDebugging() ) {
 		return;
 	}
 
@@ -22,7 +22,7 @@ export function logError( message ) {
 }
 
 export function logInfo( message ) {
-	if ( ! settings.debug ) {
+	if ( ! isDebugging() ) {
 		return;
 	}
 
@@ -30,7 +30,7 @@ export function logInfo( message ) {
 }
 
 export function log( message ) {
-	if ( ! settings.debug ) {
+	if ( ! isDebugging() ) {
 		return;
 	}
 
@@ -38,7 +38,7 @@ export function log( message ) {
 }
 
 export function logWarning( message ) {
-	if ( ! settings.debug ) {
+	if ( ! isDebugging() ) {
 		return;
 	}
 
@@ -46,7 +46,7 @@ export function logWarning( message ) {
 }
 
 export function logTable( object ) {
-	if ( ! settings.debug ) {
+	if ( ! isDebugging() ) {
 		return;
 	}
 

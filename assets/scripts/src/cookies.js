@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import { settings } from './settings';
+import { isDebugging, settings } from "./settings";
 
 /**
  * Get the value of a cookie by its name.
@@ -46,7 +46,7 @@ export function getJsonCookieValue( name ) {
  * @param {string} value Cookie Value
  */
 export function setCookie( name, value ) {
-	if ( settings.debug ) {
+	if ( isDebugging() ) {
 		/* eslint-disable no-console */
 		console.log( 'Debug Mode Active. Not Setting Cookie.' );
 		console.log( 'Name: ' + name );
