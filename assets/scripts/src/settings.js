@@ -23,3 +23,7 @@ export function isMarketingShown() {
 export function isDebugging() {
 	return 1 === ilcc.debug;
 }
+
+export function hasMatomo() {
+	return typeof _paq !== "undefined";
+}
