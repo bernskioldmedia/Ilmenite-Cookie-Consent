@@ -13,15 +13,15 @@ export function isConfigurable() {
 }
 
 export function isAnalyticsShown() {
-	return 1 == ilcc.isAnalyticsShown;
+	return "1" == ilcc.isAnalyticsShown;
 }
 
 export function isMarketingShown() {
-	return 1 == ilcc.isMarketingShown;
+	return "1" == ilcc.isMarketingShown;
 }
 
 export function isDebugging() {
-	return 1 === ilcc.debug;
+	return "1" == ilcc.debug;
 }
 
 export function hasMatomo() {

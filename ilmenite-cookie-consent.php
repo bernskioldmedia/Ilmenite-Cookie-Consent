@@ -53,7 +53,7 @@ class Ilmenite_Cookie_Consent {
 	 *
 	 * @var string
 	 */
-	public $version = '3.2.0';
+	public $version = '3.3.0-beta1';
 
 	/**
 	 * The single instance of the class
@@ -127,7 +127,6 @@ class Ilmenite_Cookie_Consent {
 	 * Load Classes
 	 */
 	public function classes() {
-		require_once 'classes/class-consent.php';
 		require_once 'classes/class-trackers.php';
 		require_once 'classes/class-settings.php';
 	}
@@ -160,9 +159,9 @@ class Ilmenite_Cookie_Consent {
 			return;
 		}
 
-		wp_register_script( 'ilmenite-cookie-consent', $this->plugin_url . '/assets/scripts/dist/cookie-banner.js', [ 'ilcc-vendor' ], $this->version, true );
+		wp_register_script( 'ilmenite-cookie-consent', $this->plugin_url . '/assets/scripts/dist/cookie-banner.js', [], $this->version );
 
-		wp_register_script( 'ilcc-vendor', $this->plugin_url . '/assets/scripts/dist/cookie-banner-vendor.js', [], $this->version, false );
+		wp_register_script( 'ilcc-vendor', $this->plugin_url . '/assets/scripts/dist/cookie-banner-vendor.js', [ 'ilmenite-cookie-consent' ], $this->version );
 
 		/**
 		 * We localize the script to add our texts.
@@ -190,32 +189,15 @@ class Ilmenite_Cookie_Consent {
 			'saveSettingsText'              => ILCC_Settings::get_save_settings_button_title(),
 			'settingsTitle'                 => ILCC_Settings::get_settings_title(),
 			'settingsDescription'           => ILCC_Settings::get_settings_description(),
-			'debug'                         => $this->is_debugging(),
+			'necessaryDomains'              => ILCC_Trackers::get_necessary_list_for_js(),
+			'analyticsDomains'              => ILCC_Trackers::get_analytics_list_for_js(),
+			'marketingDomains'              => ILCC_Trackers::get_marketing_list_for_js(),
+			'debug'                         => $this->is_debugging() ? '1' : '0',
 		] );
 
-		/**
-		 * Add the whitelist and blacklist.
-		 */
-		wp_add_inline_script( 'ilcc-vendor', $this->get_allow_and_disallowlists(), 'before' );
-
 		// Finally, enqueue!
-		wp_enqueue_script( 'ilcc-vendor' );
 		wp_enqueue_script( 'ilmenite-cookie-consent' );
-	}
-
-	/**
-	 * Get the black- and whitelist HTML.
-	 *
-	 * @return string
-	 */
-	public function get_allow_and_disallowlists() {
-		$output = "window.YETT_BLACKLIST = [" . esc_js( ILCC_Trackers::get_disallow_for_js() ) . "];\n";
-
-		if ( ! empty( ILCC_Trackers::get_allowlist_for_js() ) ) {
-			$output .= 'window.YETT_WHITELIST = [' . esc_js( ILCC_Trackers::get_allowlist_for_js() ) . '];';
-		}
-
-		return $output;
+		wp_enqueue_script( 'ilcc-vendor' );
 	}
 
 	/**

@@ -4,82 +4,107 @@
 import { removeBanner, showBanner, toggleCategory, toggleSettings } from "./banner";
 import { hasConsentedTo, hasUserSetPreferences, setConsentedCategories, setHasSetPreferences } from "./consent";
 import { getJsonCookieValue } from "./cookies";
-import { log, logDebug, logInfo } from "./log";
+import { log, logDebug } from "./log";
 import { getBannerStyle, hasMatomo, isConfigurable, isDebugging, settings } from "./settings";
 
-log( "=========== COOKIE CONSENT DEBUGGING ===========" );
+document.addEventListener( "DOMContentLoaded", () => {
 
-logInfo( "Blacklisted Domains" );
-logInfo( window.YETT_BLACKLIST );
-logInfo( "Whitelisted Domains" );
-logInfo( window.YETT_WHITELIST );
+	log( "=========== COOKIE CONSENT DEBUGGING ===========" );
 
-/**
- * If the user has not already consented, show the banner.
- */
-if ( hasUserSetPreferences() ) {
-	logDebug( "✅ User has expressed consent." );
-	logDebug( "The following categories were granted:" );
-	logDebug( getJsonCookieValue( settings.consentedCategories ) );
-	document.body.classList.add( "has-ilcc-consented" );
+	window.YETT_BLACKLIST = [];
 
-	if ( hasMatomo() && hasConsentedTo( "analytics" ) ) {
-		_paq.push( [ "setCookieConsentGiven" ] );
+	if ( ! hasConsentedTo( "marketing" ) ) {
+		window.YETT_BLACKLIST.concat( ilcc.marketingDomains );
 	}
 
-} else {
-	logDebug( "❌ User has not expressed consent." );
-	document.body.classList.add( "has-ilcc-banner" );
-	document.body.classList.add( "ilcc-style-" + getBannerStyle() );
-	showBanner();
-}
+	if ( ! hasConsentedTo( "analytics" ) ) {
+		window.YETT_BLACKLIST.concat( ilcc.analyticsDomains );
+	}
 
-if ( isDebugging() ) {
-	document.body.classList.add( "ilcc-is-debugging" );
-}
+	window.YETT_WHITELIST = ilcc.necessaryDomains;
 
-if ( document.querySelector( ".js--ilcc-cookie-consent-notice" ) ) {
-	document.querySelector( ".js--ilcc-cookie-consent-close" ).addEventListener( "click", function( e ) {
-		e.preventDefault();
+	if ( hasConsentedTo( "marketing" ) ) {
+		window.YETT_WHITELIST.concat( ilcc.marketingDomains );
+	}
 
-		window.yett.unblock();
+	if ( hasConsentedTo( "analytics" ) ) {
+		window.YETT_WHITELIST.concat( ilcc.analyticsDomains );
+	}
 
-		removeBanner();
-		setHasSetPreferences();
-		setConsentedCategories( [
-			"necessary",
-			"marketing",
-			"analytics"
-		] );
-	} );
+	logDebug( "Allowed Domains:" );
+	logDebug( window.YETT_WHITELIST );
 
-	if ( isConfigurable() ) {
-		document.querySelector( ".js--ilcc-cookie-consent-necessary" ).addEventListener( "click", function( e ) {
+	logDebug( "Disallowed Domains:" );
+	logDebug( window.YETT_BLACKLIST );
+
+	/**
+	 * If the user has not already consented, show the banner.
+	 */
+	if ( hasUserSetPreferences() ) {
+		logDebug( "✅ User has expressed consent." );
+		logDebug( "The following categories were granted:" );
+		logDebug( getJsonCookieValue( settings.consentedCategories ) );
+		document.body.classList.add( "has-ilcc-consented" );
+
+		if ( hasMatomo() && hasConsentedTo( "analytics" ) ) {
+			_paq.push( [ "setCookieConsentGiven" ] );
+		}
+
+	} else {
+		logDebug( "❌ User has not expressed consent." );
+		document.body.classList.add( "has-ilcc-banner" );
+		document.body.classList.add( "ilcc-style-" + getBannerStyle() );
+		showBanner();
+	}
+
+	if ( isDebugging() ) {
+		document.body.classList.add( "ilcc-is-debugging" );
+	}
+
+	if ( document.querySelector( ".js--ilcc-cookie-consent-notice" ) ) {
+		document.querySelector( ".js--ilcc-cookie-consent-close" ).addEventListener( "click", function( e ) {
 			e.preventDefault();
+
+			window.yett.unblock();
 
 			removeBanner();
 			setHasSetPreferences();
 			setConsentedCategories( [
-				"necessary"
+				"necessary",
+				"marketing",
+				"analytics"
 			] );
 		} );
 
-		document.querySelector( ".js--ilcc-cookie-consent-settings-toggle" ).addEventListener( "click", function( e ) {
-			e.preventDefault();
-			toggleSettings();
-		} );
-
-		document.querySelector( ".js--ilcc-cookie-consent-settings-save-button" ).addEventListener( "click", function( e ) {
-			e.preventDefault();
-			setHasSetPreferences();
-			removeBanner();
-		} );
-
-		document.querySelectorAll( ".js--ilcc-cookie-consent-toggle" ).forEach( ( toggle ) => {
-			toggle.addEventListener( "click", function( e ) {
+		if ( isConfigurable() ) {
+			document.querySelector( ".js--ilcc-cookie-consent-necessary" ).addEventListener( "click", function( e ) {
 				e.preventDefault();
-				toggleCategory( this );
+
+				removeBanner();
+				setHasSetPreferences();
+				setConsentedCategories( [
+					"necessary"
+				] );
 			} );
-		} );
+
+			document.querySelector( ".js--ilcc-cookie-consent-settings-toggle" ).addEventListener( "click", function( e ) {
+				e.preventDefault();
+				toggleSettings();
+			} );
+
+			document.querySelector( ".js--ilcc-cookie-consent-settings-save-button" ).addEventListener( "click", function( e ) {
+				e.preventDefault();
+				setHasSetPreferences();
+				removeBanner();
+			} );
+
+			document.querySelectorAll( ".js--ilcc-cookie-consent-toggle" ).forEach( ( toggle ) => {
+				toggle.addEventListener( "click", function( e ) {
+					e.preventDefault();
+					toggleCategory( this );
+				} );
+			} );
+		}
 	}
-}
+
+} );

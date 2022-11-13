@@ -95,63 +95,53 @@ class ILCC_Trackers {
 	}
 
 	/**
-	 * Get Whitelist for use in JavaScript
+	 * Get domains used for marketing.
 	 *
-	 * @return string
+	 * @return array
 	 */
-	public static function get_allowlist_for_js() {
-		$allowlist = [];
+	public static function get_marketing_list_for_js() {
+		$list = [];
 
-		foreach ( self::get_necessary() as $domain ) {
+		foreach ( self::get_marketing() as $domain ) {
 			if ( ! empty( $domain ) ) {
-				$allowlist[] = '/' . addslashes( $domain ) . '/';
+				$list[] = '/' . addslashes( $domain ) . '/';
 			}
 		}
 
-		if( ILCC_Consent::has_consented_to( 'marketing') ){
-			foreach ( self::get_marketing() as $domain ) {
-				if ( ! empty( $domain ) ) {
-					$allowlist[] = '/' . addslashes( $domain ) . '/';
-				}
-			}
-		}
-
-		if( ILCC_Consent::has_consented_to( 'analytics') ){
-			foreach ( self::get_analytics() as $domain ) {
-				if ( ! empty( $domain ) ) {
-					$allowlist[] = '/' . addslashes( $domain ) . '/';
-				}
-			}
-		}
-
-		return implode( ',', $allowlist );
+		return $list;
 	}
 
 	/**
-	 * Get Disallow List for use in JavaScript
+	 * Get domains used for necessary cookies..
 	 *
-	 * @return string
+	 * @return array
 	 */
-	public static function get_disallow_for_js() {
+	public static function get_necessary_list_for_js() {
+		$list = [];
 
-		$disallow = [];
-
-		if( ! ILCC_Consent::has_consented_to( 'marketing') ){
-			foreach ( self::get_marketing() as $domain ) {
-				if ( ! empty( $domain ) ) {
-					$disallow[] = '/' . addslashes( $domain ) . '/';
-				}
+		foreach ( self::get_necessary() as $domain ) {
+			if ( ! empty( $domain ) ) {
+				$list[] = '/' . addslashes( $domain ) . '/';
 			}
 		}
 
-		if( ! ILCC_Consent::has_consented_to( 'analytics') ){
-			foreach ( self::get_analytics() as $domain ) {
-				if ( ! empty( $domain ) ) {
-					$disallow[] = '/' . addslashes( $domain ) . '/';
-				}
+		return $list;
+	}
+
+	/**
+	 * Get domains used for analytics.
+	 *
+	 * @return array
+	 */
+	public static function get_analytics_list_for_js() {
+		$list = [];
+
+		foreach ( self::get_analytics() as $domain ) {
+			if ( ! empty( $domain ) ) {
+				$list[] = '/' . addslashes( $domain ) . '/';
 			}
 		}
 
-		return implode( ',', $disallow );
+		return $list;
 	}
 }
