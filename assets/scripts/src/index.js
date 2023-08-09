@@ -24,7 +24,7 @@ if ( hasUserSetPreferences() ) {
 	document.body.classList.add( "has-ilcc-consented" );
 
 	if ( hasMatomo() && hasConsentedTo( "analytics" ) ) {
-		_paq.push( [ "setCookieConsentGiven" ] );
+		window._paq.push( [ "setCookieConsentGiven" ] );
 	}
 
 } else {

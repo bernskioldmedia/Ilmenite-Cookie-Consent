@@ -28,7 +28,7 @@ export function setConsentedCategories( categories = [] ) {
 	setCookie( settings.consentedCategories, JSON.stringify( categories ) );
 
 	if ( hasMatomo() && hasConsentedTo( "analytics" ) ) {
-		_paq.push( [ "setCookieConsentGiven" ] );
+		window._paq.push( [ "setCookieConsentGiven" ] );
 	}
 }
 
