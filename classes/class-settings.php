@@ -415,7 +415,7 @@ class ILCC_Settings {
 			'label'       => __( 'Configure Settings Button Text', 'ilmenite-cookie-consent' ),
 			'description' => __( 'A small button/link that the user can click on to open more fine-grained settings.', 'ilmenite-cookie-consent' ),
 			'settings'    => 'ilcc_configure_settings_text',
-			'section'     => 'ilmenite_cookie_banner',
+			'section'     => 'ilmenite_cookie_banner_general',
 			'priority'    => 80,
 		] ) );
 
