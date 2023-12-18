@@ -20,7 +20,7 @@ jobs:
         with:
           args: zip -qq -r build/ilmenite-cookie-consent.zip ${{ github.event.repository.name}}
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ilmenite-cookie-consent
           path: build/ilmenite-cookie-consent.zip
