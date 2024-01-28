@@ -226,7 +226,7 @@ class ILCC_Settings {
 	 * @return bool
 	 */
 	public static function is_analytics_shown() {
-		$hidden = empty( get_option( 'ilcc_settings_analytics_is_shown', ) );
+		$hidden = empty( get_option( 'ilcc_settings_analytics_is_shown' ) );
 		$shown  = ! $hidden;
 
 		return apply_filters( 'ilcc_settings_analytics_is_shown', $shown );
