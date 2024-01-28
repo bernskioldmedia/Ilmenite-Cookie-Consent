@@ -226,7 +226,7 @@ class ILCC_Settings {
 	 * @return bool
 	 */
 	public static function is_analytics_shown() {
-		$hidden = '' === get_option( 'ilcc_settings_analytics_is_shown', '1' );
+		$hidden = empty( get_option( 'ilcc_settings_analytics_is_shown' ) );
 		$shown  = ! $hidden;
 
 		return apply_filters( 'ilcc_settings_analytics_is_shown', $shown );
@@ -238,7 +238,7 @@ class ILCC_Settings {
 	 * @return bool
 	 */
 	public static function is_marketing_shown() {
-		$hidden = '' === get_option( 'ilcc_settings_marketing_is_shown', '1' );
+		$hidden = empty( get_option( 'ilcc_settings_marketing_is_shown' ) );
 		$shown  = ! $hidden;
 
 		return apply_filters( 'ilcc_settings_marketing_is_shown', $shown );
