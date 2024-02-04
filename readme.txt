@@ -27,6 +27,13 @@ Included in the package are complete translations for the following languages:
 - Lithuanian (Thanks @batiufa)
 - Swedish
 - Occitan (Thanks Mejans)
+- Norwegian
+- Danish
+- Hungarian
+- Spanish
+- German
+- Italian
+- Slovenian
 
 A complete *.pot* file is available in the *translations/* directory. If you use and translate this little plugin, please send us the translation so it can be included!
 
