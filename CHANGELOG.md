@@ -1,5 +1,22 @@
 # Changelog
 
+## 3.3.0 - 2024-02-04
+
+### What's Changed
+
+* Update NO and DK translation by @annlickander in https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/pull/75
+* Fix configure settings button text by @wikitdev in https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/pull/77
+* Fix logic on showing analytics and marketing by @crstauf in https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/pull/83
+* Added greek translation (Thanks Michail)
+
+### New Contributors
+
+* @annlickander made their first contribution in https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/pull/75
+* @wikitdev made their first contribution in https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/pull/77
+* @crstauf made their first contribution in https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/pull/83
+
+**Full Changelog**: https://github.com/bernskioldmedia/Ilmenite-Cookie-Consent/compare/3.2.0...3.3.0
+
 ## 3.2.0 - 2022-01-29
 
 - Adds Occitan language ([#28](https://github.com/bernskioldmedia/ilmenite-cookie-consent/pull/28))
