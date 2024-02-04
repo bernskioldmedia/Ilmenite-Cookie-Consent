@@ -110,6 +110,7 @@ Included in the package are complete translations for the following languages:
 - German
 - Italian
 - Slovenian
+- Greek (Thanks Michail)
 
 A complete *.pot* file is available in the *translations/* directory. If you use and translate this little plugin, please send us the translation so it can be included!
 
