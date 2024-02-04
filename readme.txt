@@ -154,6 +154,12 @@ Just set their value somewhere in your code, such as in the functions.php file o
 
 == Changelog ==
 
+= Version 3.3.0 =
+- Update NO and DK translation
+- Added greek translations (thanks Michail)
+- Fix a bug where the configure setting button text setting in the customizer would not save (thanks wikitdev)
+- Fix a bug with the logic on showing analytics and marketing (thanks crstauf)
+
 = Version 3.2.0 =
 - Add matomo integration
 - Allow customizing consent sections
