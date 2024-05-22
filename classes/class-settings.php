@@ -245,6 +245,19 @@ class ILCC_Settings {
 	}
 
 	/**
+	 * Check whether the Google Consent Mode integration is enabled.
+	 *
+	 * @return bool
+	 */
+	public static function is_consent_mode_integration_enabled() {
+		$enabled = get_option( 'ilcc_settings_google_consent_mode_enabled' );
+		$enabled = $enabled === '1' || $enabled === true || $enabled === 'true';
+
+
+		return apply_filters( 'ilcc_settings_google_consent_mode_enabled', $enabled );
+	}
+
+	/**
 	 * Add settings in the customer.
 	 *
 	 * @param WP_Customize_Manager $wp_customize
@@ -590,6 +603,23 @@ class ILCC_Settings {
 			'section'     => 'ilmenite_cookie_banner_marketing',
 			'priority'    => 80,
 			'type'        => 'textarea',
+		] ) );
+
+		/**
+		 * Consent Mode Integration
+		 */
+		$wp_customize->add_setting( 'ilcc_settings_google_consent_mode_enabled', [
+				'type'       => 'option',
+				'capability' => apply_filters( 'ilcc_edit_button_capability', 'edit_theme_options' ),
+		] );
+
+		$wp_customize->add_control( new \WP_Customize_Control( $wp_customize, 'ilcc_settings_google_consent_mode_enabled', [
+				'type'        => 'checkbox',
+				'label'       => __( 'Enable Consent Mode Integration', 'ilmenite-cookie-consent' ),
+				'description' => __( 'When checked the consent given by the user will integrate with Google Consent Mode v2.', 'ilmenite-cookie-consent' ),
+				'settings'    => 'ilcc_settings_google_consent_mode_enabled',
+				'section'     => 'ilmenite_cookie_banner_marketing',
+				'priority'    => 80,
 		] ) );
 
 		/**
