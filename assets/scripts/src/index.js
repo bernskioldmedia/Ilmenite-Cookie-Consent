@@ -6,6 +6,7 @@ import { hasConsentedTo, hasUserSetPreferences, setConsentedCategories, setHasSe
 import { getJsonCookieValue } from "./cookies";
 import { log, logDebug, logInfo } from "./log";
 import { getBannerStyle, hasMatomo, isConfigurable, isDebugging, settings } from "./settings";
+import { isConsentModeEnabled, grantConsent } from "./consent-mode";
 
 log( "=========== COOKIE CONSENT DEBUGGING ===========" );
 
@@ -25,6 +26,10 @@ if ( hasUserSetPreferences() ) {
 
 	if ( hasMatomo() && hasConsentedTo( "analytics" ) ) {
 		_paq.push( [ "setCookieConsentGiven" ] );
+	}
+
+	if(isConsentModeEnabled() && hasConsentedTo('marketing')) {
+		grantConsent();
 	}
 
 } else {
@@ -51,6 +56,7 @@ if ( document.querySelector( ".js--ilcc-cookie-consent-notice" ) ) {
 			"marketing",
 			"analytics"
 		] );
+		grantConsent();
 	} );
 
 	if ( isConfigurable() ) {

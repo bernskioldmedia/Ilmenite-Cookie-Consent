@@ -1,6 +1,6 @@
 import {getConsentedCategories} from "./consent";
 
-function isConsentModeEnabled() {
+export function isConsentModeEnabled() {
 	return ilcc.consentModeEnabled === '1';
 }
 
@@ -8,7 +8,7 @@ function hasGtagOnPage() {
 	return typeof gtag === 'function';
 }
 
-function grantConsent() {
+export function grantConsent() {
 	if (!isConsentModeEnabled() || !hasGtagOnPage()) {
 		return;
 	}
