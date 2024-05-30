@@ -65,7 +65,7 @@ class ILCC_Consent {
 			return;
 		}
 
-		if(false === apply_filters('ilcc_enable_default_consent_mode', true)) {
+		if(false === apply_filters('ilcc_enable_default_consent_mode', false)) {
 			return '';
 		}
 
