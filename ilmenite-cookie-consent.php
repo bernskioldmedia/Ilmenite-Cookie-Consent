@@ -119,6 +119,7 @@ class Ilmenite_Cookie_Consent {
 
 		// Boot other classes.
 		ILCC_Settings::hooks();
+		ILCC_Consent::hooks();
 
 		do_action( 'ilcc_init' );
 	}
@@ -190,6 +191,7 @@ class Ilmenite_Cookie_Consent {
 			'saveSettingsText'              => ILCC_Settings::get_save_settings_button_title(),
 			'settingsTitle'                 => ILCC_Settings::get_settings_title(),
 			'settingsDescription'           => ILCC_Settings::get_settings_description(),
+			'consentModeEnabled' 			=> ILCC_Settings::is_consent_mode_integration_enabled() ? '1' : '0',
 			'debug'                         => $this->is_debugging(),
 		] );
 
@@ -197,6 +199,11 @@ class Ilmenite_Cookie_Consent {
 		 * Add the whitelist and blacklist.
 		 */
 		wp_add_inline_script( 'ilcc-vendor', $this->get_allow_and_disallowlists(), 'before' );
+
+		/**
+		 * Add consent mode defaults.
+		 */
+		wp_add_inline_script('ilmenite-cookie-consent', ILCC_Consent::add_consent_mode_defaults(), 'before');
 
 		// Finally, enqueue!
 		wp_enqueue_script( 'ilcc-vendor' );

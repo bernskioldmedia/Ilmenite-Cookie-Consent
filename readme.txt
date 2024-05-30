@@ -2,7 +2,7 @@
 Contributors: Erik Bernskiold, annlickander, bernskioldmedia
 Tags: cookies, cookie notice, eu cookie law, cookie compliance, cookie banner, cookie consent, gdpr, privacy, tracker prevention, tracker
 Requires at least: 5.0
-Tested up to: 6.4
+Tested up to: 6.5
 Requires PHP: 7.2
 Stable tag: trunk
 License: GPLv2 or later
@@ -146,6 +146,8 @@ Just set their value somewhere in your code, such as in the functions.php file o
 
 `ilcc_is_active_on_page` - Return false to hide the banner from loading. Can be used to prevent the banner from loading on certain pages or templates.
 
+`ilcc_enable_default_consent_mode?` - Return false to disable the default consent mode. This is useful if you want to provide your own default configuration.
+
 == Screenshots ==
 
 1. The "top" style design of the cookie consent box out of the box.
@@ -153,6 +155,9 @@ Just set their value somewhere in your code, such as in the functions.php file o
 3. Customizer controls are available for all texts and URL.
 
 == Changelog ==
+
+= Version 3.4.0 =
+- Add Google Consent Mode v2 support
 
 = Version 3.3.0 =
 - Update NO and DK translation

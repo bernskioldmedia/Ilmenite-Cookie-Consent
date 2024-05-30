@@ -2,6 +2,10 @@
 
 class ILCC_Consent {
 
+	public static function hooks() {
+		add_action('wp_enqueue_scripts', [self::class, 'add_consent_mode_defaults']);
+	}
+
 	/**
 	 * Check if preferences have been set.
 	 *
@@ -54,6 +58,28 @@ class ILCC_Consent {
 		}
 
 		return [];
+	}
+
+	public static function add_consent_mode_defaults() {
+		if(!ILCC_Settings::is_consent_mode_integration_enabled()) {
+			return;
+		}
+
+		if(false === apply_filters('ilcc_enable_default_consent_mode', false)) {
+			return '';
+		}
+
+		return <<<JS
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied'
+});
+JS;
 	}
 
 }
